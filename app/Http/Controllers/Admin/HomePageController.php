@@ -18,6 +18,18 @@ class HomePageController extends Controller
     public function index()
     {
         //
+        $check_page = HomePage::first();
+
+        $count = HomePage::count();
+
+        if($count == 1)
+        {
+            return redirect()->route('admin.homepage.edit', $check_page->id);
+        }
+        else if($count < 1)
+        {
+            return redirect()->route('admin.homepage.create');
+        }
     }
 
     /**
@@ -61,23 +73,33 @@ class HomePageController extends Controller
 
         $about_image_one = $request->file('about_image_one');
         $about_image_one_name = uniqid() . $about_image_one->getClientOriginalName();
-        $about_image_one->move(public_path('images', $about_image_one_name));
+        $about_image_one->move(public_path('images'), $about_image_one_name);
 
         $about_image_two = $request->file('about_image_two');
         $about_image_two_name = uniqid() . $about_image_two->getClientOriginalName();
-        $about_image_two->move(public_path('images', $about_image_two_name));
+        $about_image_two->move(public_path('images'), $about_image_two_name);
+
+        $journey_image_one = $request->file('journey_image_one');
+        $journey_image_one_name = uniqid() . $journey_image_one->getClientOriginalName();
+        $journey_image_one->move(public_path('images'), $journey_image_one_name);
+
+        $journey_image_two = $request->file('journey_image_two');
+        $journey_image_two_name = uniqid() . $journey_image_two->getClientOriginalName();
+        $journey_image_two->move(public_path('images'), $journey_image_two_name);
 
         $eval_image = $request->file('eval_image');
         $eval_image_name = uniqid() . $eval_image->getClientOriginalName();
-        $eval_image->move(public_path('images', $eval_image_name));
+        $eval_image->move(public_path('images'), $eval_image_name);
 
         HomePage::create([
             'vision' => $request->vision,
             'mission' => $request->mission,
             'about_title' => $request->about_title,
             'about_text' => $request->about_text,
-            'about_image_one' => $about_image_one_name,
-            'about_image_two' => $about_image_two_name,
+            'about_image1' => $about_image_one_name,
+            'about_image2' => $about_image_two_name,
+            'journey_image1' => $journey_image_one_name,
+            'journey_image2' => $journey_image_two_name,
             'eval_title' => $request->eval_title,
             'eval_image' => $eval_image_name,
             'eval_text' => $request->eval_text,
@@ -110,9 +132,10 @@ class HomePageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(HomePage $homepage)
     {
         //
+        return view('admin.homepage.edit', compact('homepage'));
     }
 
     /**
