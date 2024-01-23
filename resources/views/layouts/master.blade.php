@@ -7,7 +7,6 @@
       <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
       <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="author" content="Creative Tim">
-    <meta name="csrf-token" content="{{csrf_token()}}">
 
       <title>Argon Dashboard - Free Dashboard for Bootstrap 4</title>
       <!-- Favicon -->
@@ -133,98 +132,7 @@
                 </ul>
             </div>
         </div>
-      <!-- Brand -->
-      <div class="sidenav-header  align-items-center">
-        <a class="navbar-brand" href="javascript:void(0)">
-          <img src="/assets/img/brand/blue.png" class="navbar-brand-img" alt="...">
-        </a>
-      </div>
-      <div class="navbar-inner">
-        <!-- Collapse -->
-        <div class="collapse navbar-collapse" id="sidenav-collapse-main">
-          <!-- Nav items -->
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link" href="examples/dashboard.html">
-                <i class="ni ni-tv-2 text-primary"></i>
-                <span class="nav-link-text">Dashboard</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link @yield('home-page')" href="{{route('admin.homepage.index')}}">
-                <i class="ni ni-planet text-orange"></i>
-                                <span class="nav-link-text">Home Page</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="examples/icons.html">
-                                <i class="ni ni-planet text-orange"></i>
-                                <span class="nav-link-text">Programme Page</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="examples/icons.html">
-                                <i class="ni ni-planet text-orange"></i>
-                                <span class="nav-link-text">Banner</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="examples/icons.html">
-                                <i class="ni ni-planet text-orange"></i>
-                                <span class="nav-link-text">Event</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="examples/icons.html">
-                                <i class="ni ni-planet text-orange"></i>
-                                <span class="nav-link-text">Programme</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('admin.award.index') }}">
-                                <i class="ni ni-planet text-orange"></i>
-                                <span class="nav-link-text">Awards</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="examples/icons.html">
-                                <i class="ni ni-planet text-orange"></i>
-                                <span class="nav-link-text">Partners</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="examples/icons.html">
-                                <i class="ni ni-planet text-orange"></i>
-                                <span class="nav-link-text">Lecturers</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/admin/faq">
-                                <i class="ni ni-planet text-orange"></i>
-                                <span class="nav-link-text">FAQ</span>
-                            </a>
-                        </li>
-                    </ul>
-                    <!-- Divider -->
-                    <hr class="my-3">
-                    <!-- Heading -->
-                    <h6 class="navbar-heading p-0 text-muted">
-                        <span>Products</span>
-                    </h6>
-                    <!-- Navigation -->
-                    <ul class="navbar-nav mb-md-3">
-                        <li class="nav-item">
-                            <a class="nav-link"
-                                href="https://demos.creative-tim.com/argon-dashboard/docs/getting-started/overview.html"
-                                target="_blank">
-                                <i class="ni ni-spaceship"></i>
-                                <span class="nav-link-text">Getting started</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+      
     </nav>
     <!-- Main content -->
     <div class="main-content" id="panel">
