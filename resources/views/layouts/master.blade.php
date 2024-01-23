@@ -43,7 +43,55 @@
             <li class="nav-item">
               <a class="nav-link" href="examples/icons.html">
                 <i class="ni ni-planet text-orange"></i>
-                <span class="nav-link-text">Icons</span>
+                <span class="nav-link-text">Home Page</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="examples/icons.html">
+                <i class="ni ni-planet text-orange"></i>
+                <span class="nav-link-text">Programme Page</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="examples/icons.html">
+                <i class="ni ni-planet text-orange"></i>
+                <span class="nav-link-text">Banner</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="examples/icons.html">
+                <i class="ni ni-planet text-orange"></i>
+                <span class="nav-link-text">Event</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="examples/icons.html">
+                <i class="ni ni-planet text-orange"></i>
+                <span class="nav-link-text">Programme</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="examples/icons.html">
+                <i class="ni ni-planet text-orange"></i>
+                <span class="nav-link-text">Awards</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="examples/icons.html">
+                <i class="ni ni-planet text-orange"></i>
+                <span class="nav-link-text">Partners</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="examples/icons.html">
+                <i class="ni ni-planet text-orange"></i>
+                <span class="nav-link-text">Lecturers</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="examples/icons.html">
+                <i class="ni ni-planet text-orange"></i>
+                <span class="nav-link-text">FAQ</span>
               </a>
             </li>
           </ul>
@@ -111,7 +159,7 @@
     <!-- Header -->
     <div class="header p-3">
       <div class="card p-2">
-        <h1>Content Here</h1>
+        @yield('content')
       </div>
     </div>
 
