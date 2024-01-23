@@ -35,13 +35,13 @@
           <!-- Nav items -->
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link active" href="examples/dashboard.html">
+              <a class="nav-link" href="examples/dashboard.html">
                 <i class="ni ni-tv-2 text-primary"></i>
                 <span class="nav-link-text">Dashboard</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="examples/icons.html">
+              <a class="nav-link @yield('home-page')" href="{{route('admin.homepage.index')}}">
                 <i class="ni ni-planet text-orange"></i>
                 <span class="nav-link-text">Home Page</span>
               </a>

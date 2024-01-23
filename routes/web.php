@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\HomePageController;
 use App\Http\Controllers\AdminController;
@@ -29,6 +30,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::prefix('admin')->name('admin.')->group(function(){
     Route::resource('/faq',FaqController::class);
     Route::resource('/homepage', HomePageController::class);
+    Route::resource('/banner', BannerController::class);
 });
 
 
