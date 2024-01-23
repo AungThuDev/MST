@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,5 +24,9 @@ Route::get('/admin', [AdminController::class, 'showDashboard']);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::prefix('admin')->name('admin.')->group(function(){
+    Route::resource('/faq',FaqController::class);
+});
 
 
