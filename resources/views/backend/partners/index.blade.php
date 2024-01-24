@@ -2,17 +2,18 @@
 
 @section('content')
     <div class="d-flex justify-content-start">
-        <h1 class="p-2">Awards</h1>
+        <h1 class="p-2">Partners</h1>
     </div>
     <div class="d-flex justify-content-end mb-4">
-        <a class="btn btn-success text-white" href="{{ route('admin.award.create') }}">Add New Award</a>
+        <a class="btn btn-success text-white" href="{{ route('admin.partner.create') }}">Add New Partner</a>
     </div>
+
     <div class="table-responsive">
-        <table id="award" class="table table-bordered table-hover">
+        <table id="partner" class="table table-bordered table-hover">
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Title</th>
+                    <th>Name</th>
                     <th>Description</th>
                     <th>Image</th>
                     <th>Created At</th>
@@ -22,20 +23,17 @@
             <tbody>
 
             </tbody>
-
         </table>
     </div>
 @endsection
 
-
 @section('script')
     <script>
-
-        let table = $('#award').DataTable({
+        let table = $('#partner').DataTable({
             'serverSide': true,
             'processing': true,
             'ajax': {
-                url: '/admin/award/',
+                url: '/admin/partner/',
                 error: function(xhr, testStatus, errorThrown) {
 
                 }
@@ -45,7 +43,7 @@
                     "data": "id"
                 },
                 {
-                    "data": "title"
+                    "data": "name"
                 },
                 {
                     "data": "description"

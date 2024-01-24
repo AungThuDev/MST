@@ -3,15 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Award;
-use Yajra\DataTables\Facades\DataTables;
+use App\Models\Partner;
 use Illuminate\Http\Request;
+use Yajra\DataTables\Facades\DataTables;
+use Illuminate\Support\Facades\File;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
-use Illuminate\Support\Facades\File;
 
-
-class AwardController extends Controller
+class PartnerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,13 +20,13 @@ class AwardController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $awards = Award::query();
+            $partner = Partner::query();
 
-            return DataTables::of($awards)
+            return DataTables::of($partner)
 
                 ->editColumn("description", function ($e) {
-                    if (Str::length($e->description) > 30) {
-                        $description = substr($e->description, 0, 20) . "...";
+                    if (Str::length($e->description) > 20) {
+                        $description = substr($e->description, 0, 30) . "...";
                     } else {
                         $description = $e->description;
                     }
@@ -35,7 +34,7 @@ class AwardController extends Controller
                 })
 
                 ->editColumn("image", function ($e) {
-                    $path = "/award/{$e->image}";
+                    $path = "/partner/{$e->image}";
                     return '<img style="width: 125px;" src="' . $path . '">';
                 })
 
@@ -45,14 +44,16 @@ class AwardController extends Controller
 
                 ->addColumn('action', function ($a) {
 
-                    $edit = '<a href=" ' . route('admin.award.edit', $a->id) . '" class="btn btn-success" style="margin-right: 10px;">Edit</a>';
-                    $delete = '<a href="javascript:void(0)" class="deleteButton btn btn-danger" record="award" data-id="' . $a->id . '">Delete</a>';
+                    $edit = '<a href=" ' . route('admin.partner.edit', $a->id) . '" class="btn btn-success" style="margin-right: 10px;">Edit</a>';
+                    $delete = '<a href="javascript:void(0)" class="deleteButton btn btn-danger" record="partner" data-id="' . $a->id . '">Delete</a>';
 
                     return '<div class="action">' . $edit . $delete . '</div>';
-                })->rawColumns(['action', 'image',"description"])->make(true);
+                })
+
+                ->rawColumns(['action', 'image','description'])->make(true);
         }
 
-        return view("backend.award.index");
+        return view('backend.partners.index');
     }
 
     /**
@@ -62,46 +63,42 @@ class AwardController extends Controller
      */
     public function create()
     {
-        return view("backend.award.create");
+        return view('backend.partners.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'title' => 'required|max:255',
+            'name' => 'required|max:255',
             'description' => 'required',
             'image' => 'required|image|mimes:png,jpg,jpeg'
         ]);
-
-        $award = new Award;
-
-        $award->title = $validated['title'];
-        $award->description = $validated['description'];
+        $partner = new Partner;
+        $partner->name = $validated['name'];
+        $partner->description = $validated['description'];
 
         $image = $request->file('image');
         $image_name = uniqid() . $image->getClientOriginalName();
-        $image->move(public_path('award'), $image_name);
+        $image->move(public_path('partner'), $image_name);
 
-        $award->image = $image_name;
-
-        $award->save();
-
-        return redirect()->back()->with('create', 'Award');
+        $partner->image = $image_name;
+        $partner->save();
+        return redirect()->back()->with('create', "Partner");
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Award $award
+     * @param  \App\Models\Partner  $partner
      * @return \Illuminate\Http\Response
      */
-    public function show(Award $award)
+    public function show(Partner $partner)
     {
 
     }
@@ -109,56 +106,56 @@ class AwardController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Award $award
+     * @param  \App\Models\Partner  $partner
      * @return \Illuminate\Http\Response
      */
-    public function edit(Award $award)
+    public function edit(Partner $partner)
     {
-        return view("backend.award.edit", compact("award"));
+        return view("backend.partners.edit", compact("partner"));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  \App\Models\Award  $award
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Partner  $partner
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Award $award)
+    public function update(Request $request, Partner $partner)
     {
         $validated = $request->validate([
-            'title' => 'required|max:255',
+            'name' => 'required|max:255',
             'description' => 'required',
             'image' => 'nullable|image|mimes:png,jpg,jpeg'
         ]);
 
         if ($request->has('image')) {
-            $image_path = "/award/{$award->image}";
+            $image_path = "/partner/{$partner->image}";
             if (File::exists(public_path($image_path))) {
                 File::delete(public_path($image_path));
             }
             $image = $request->file("image");
             $image_name = uniqid() . $image->getClientOriginalName();
-            $image->move(public_path("award"), $image_name);
+            $image->move(public_path("partner"), $image_name);
             $validated['image'] = $image_name;
         }
-        $award->update($validated);
-        return redirect()->back()->with('update', "Award");
+        $partner->update($validated);
+        return redirect()->back()->with('update', "Partner");
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Award  $award
+     * @param  \App\Models\Partner  $partner
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Award $award)
+    public function destroy(Partner $partner)
     {
-        $image_path = "/award/{$award->image}";
+        $image_path = "/partner/{$partner->image}";
         if (File::exists(public_path($image_path))) {
             File::delete(public_path($image_path));
         }
-        $award->delete();
+        $partner->delete();
         return response()->json(['status' => 1]);
     }
 }

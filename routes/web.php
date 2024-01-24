@@ -7,6 +7,8 @@ use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\CampusContentController;
 use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\Admin\InfoController;
+use App\Http\Controllers\Admin\LecturerController;
+use App\Http\Controllers\Admin\PartnerController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PrincipalController;
 use Illuminate\Support\Facades\Route;
@@ -40,7 +42,8 @@ Route::prefix('admin')->name('admin.')->group(function(){
     Route::resource('/banner', BannerController::class);
     Route::resource('/event', EventController::class);
     Route::resource('/campus', CampusContentController::class);
-    Route::resource('/info', InfoController::class);
+    Route::resource('/info', InfoController::class);    Route::resource('/lecturer',LecturerController::class);
+    Route::resource('/partner',PartnerController::class);
 });
 
 
