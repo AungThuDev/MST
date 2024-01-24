@@ -3,6 +3,8 @@
 use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\HomePageController;
 use App\Http\Controllers\Admin\AwardController;
+use App\Http\Controllers\Admin\LecturerController;
+use App\Http\Controllers\Admin\PartnerController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PrincipalController;
 use Illuminate\Support\Facades\Route;
@@ -33,7 +35,8 @@ Route::prefix('admin')->name('admin.')->group(function(){
     Route::resource('/principal',PrincipalController::class);
     Route::resource('/homepage', HomePageController::class);
     Route::resource('/award',AwardController::class);
-
+    Route::resource('/lecturer',LecturerController::class);
+    Route::resource('/partner',PartnerController::class);
 });
 
 

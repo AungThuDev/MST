@@ -1,29 +1,38 @@
 @extends('layouts.master')
 
+
 @section('content')
     <div class="d-flex justify-content-end">
-        <a href="{{ route('admin.award.index') }}" class="btn btn-danger">Back</a>
+        <a href="{{ route('admin.lecturer.index') }}" class="btn btn-danger">Back</a>
     </div>
     <div class="row p-4">
-        <form class="col" method="POST" action="{{ route("admin.award.store") }}" enctype="multipart/form-data">
+        <form class="col" method="POST" action="{{ route('admin.lecturer.update',$lecturer->id) }}"
+            enctype="multipart/form-data">
+            @method("PATCH")
             @csrf
             <div class="d-flex justify-content-center">
-                <h1>Add New Award</h1>
+                <h1>Edit Lecturer</h1>
             </div>
             <div class="form-group">
-                <label for="title">Title</label>
-                <input name="title" id="title" class="form-control" type="text">
-                @error('title')
+                <label for="name">Name</label>
+                <input name="name" id="name" class="form-control" type="text" value="{{ $lecturer->name }}">
+                @error('name')
                     <span class="badge badge-danger">{{ $message }}</span>
                 @enderror
             </div>
             <div class="form-group">
-                <label for="description">Description</label>
-                <textarea name="description" id="description" class="form-control"></textarea>
-                @error('description')
+                <label for="position">Position</label>
+                <input name="position" id="position" class="form-control" type="text" value="{{ $lecturer->position }}">
+                @error('position')
                     <span class="badge badge-danger">{{ $message }}</span>
                 @enderror
             </div>
+            @if ($lecturer->image)
+                <div class="d-flex flex-column mb-3">
+                    <label>Current Image</label>
+                    <img src="/lecturer/{{ $lecturer->image }}" style="width: 125px;">
+                </div>
+            @endif
             <div class="form-group">
                 <label>Image</label>
                 <input name="image" class="form-control" type="file" />

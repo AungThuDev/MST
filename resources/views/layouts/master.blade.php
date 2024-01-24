@@ -89,19 +89,19 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="examples/icons.html">
+                        <a class="nav-link" href="{{ route('admin.award.index') }}">
                             <i class="ni ni-planet text-orange"></i>
                             <span class="nav-link-text">Awards</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="examples/icons.html">
+                        <a class="nav-link" href="{{ route('admin.partner.index') }}">
                             <i class="ni ni-planet text-orange"></i>
                             <span class="nav-link-text">Partners</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="examples/icons.html">
+                        <a class="nav-link" href="{{ route('admin.lecturer.index') }}">
                             <i class="ni ni-planet text-orange"></i>
                             <span class="nav-link-text">Lecturers</span>
                         </a>
