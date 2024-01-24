@@ -3,6 +3,10 @@
 use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\HomePageController;
 use App\Http\Controllers\Admin\AwardController;
+use App\Http\Controllers\Admin\BannerController;
+use App\Http\Controllers\Admin\CampusContentController;
+use App\Http\Controllers\Admin\EventController;
+use App\Http\Controllers\Admin\InfoController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PrincipalController;
 use Illuminate\Support\Facades\Route;
@@ -33,7 +37,10 @@ Route::prefix('admin')->name('admin.')->group(function(){
     Route::resource('/principal',PrincipalController::class);
     Route::resource('/homepage', HomePageController::class);
     Route::resource('/award',AwardController::class);
-
+    Route::resource('/banner', BannerController::class);
+    Route::resource('/event', EventController::class);
+    Route::resource('/campus', CampusContentController::class);
+    Route::resource('/info', InfoController::class);
 });
 
 
