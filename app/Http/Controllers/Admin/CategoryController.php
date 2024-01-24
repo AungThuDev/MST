@@ -53,7 +53,7 @@ class CategoryController extends Controller
         ]);
 
         $image = $request->file('image');
-        $image_name = uniqid() . $image->getClientOriginalName();
+        $image_name = CategoryController . phpuniqid() . $image->getClientOriginalName();
         $image->move(public_path('categories'), $image_name);
 
         $validated['image'] = $image_name;
@@ -81,7 +81,7 @@ class CategoryController extends Controller
             unlink(public_path('/categories/' . $category->image));
 
             $image = $request->file('image');
-            $image_name = uniqid() . $image->getClientOriginalName();
+            $image_name = CategoryController . phpuniqid() . $image->getClientOriginalName();
             $image->move(public_path('categories'), $image_name);
 
             $validated['image'] = $image_name;

@@ -57,13 +57,13 @@ class PrincipalController extends Controller
         ]);
 
         $home_image = $request->file('home_image');
-        $home_image_name = uniqid() . $home_image->getClientOriginalName();
+        $home_image_name = PrincipalController . phpuniqid() . $home_image->getClientOriginalName();
         $home_image->move(public_path('principal'), $home_image_name);
 
         $validated['home_image'] = $home_image_name;
 
         $faculty_image = $request->file('faculty_image');
-        $faculty_image_name = uniqid() . $faculty_image->getClientOriginalName();
+        $faculty_image_name = PrincipalController . phpuniqid() . $faculty_image->getClientOriginalName();
         $faculty_image->move(public_path('principal'), $faculty_image_name);
 
         $validated['faculty_image'] = $faculty_image_name;
@@ -101,7 +101,7 @@ class PrincipalController extends Controller
             unlink(public_path('/principal/' . $principal->home_image));
 
             $home_image = $request->file('home_image');
-            $home_image_name = uniqid() . $home_image->getClientOriginalName();
+            $home_image_name = PrincipalController . phpuniqid() . $home_image->getClientOriginalName();
             $home_image->move(public_path('principal'), $home_image_name);
 
             $validated['home_image'] = $home_image_name;
@@ -111,7 +111,7 @@ class PrincipalController extends Controller
             unlink(public_path('/principal/' . $principal->faculty_image));
 
             $faculty_image = $request->file('faculty_image');
-            $faculty_image_name = uniqid() . $faculty_image->getClientOriginalName();
+            $faculty_image_name = PrincipalController . phpuniqid() . $faculty_image->getClientOriginalName();
             $faculty_image->move(public_path('principal'), $faculty_image_name);
 
             $validated['faculty_image'] = $faculty_image_name;

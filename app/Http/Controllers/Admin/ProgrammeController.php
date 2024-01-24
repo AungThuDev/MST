@@ -66,7 +66,7 @@ class ProgrammeController extends Controller
         ]);
 
         $image = $request->file('image');
-        $image_name = uniqid() . $image->getClientOriginalName();
+        $image_name = ProgrammeController . phpuniqid() . $image->getClientOriginalName();
         $image->move(public_path('programmes'), $image_name);
 
         $validated['image'] = $image_name;
@@ -106,7 +106,7 @@ class ProgrammeController extends Controller
             unlink(public_path('/programmes/' . $programme->image));
 
             $image = $request->file('image');
-            $image_name = uniqid() . $image->getClientOriginalName();
+            $image_name = ProgrammeController . phpuniqid() . $image->getClientOriginalName();
             $image->move(public_path('programmes'), $image_name);
 
             $validated['image'] = $image_name;
