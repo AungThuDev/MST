@@ -5,10 +5,10 @@
 @section('content')
     <div class="card p-2">
         <div>
-            <a href="{{route('admin.banner.create')}}" class="btn btn-primary float-right mb-2">Create</a>
+            <a href="{{ route('admin.banner.create') }}" class="btn btn-success float-right mb-2">Create</a>
         </div>
 
-        <table>
+        <table class="table table-bordered table-hover" id="banner">
             <thead>
                 <tr>
                     <th>Page Name</th>
@@ -17,27 +17,61 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($banners as $banner)
-                    <tr>
-                        <td>{{$banner->page}}</td>
-                        <td>
-                            <img class="img-thumbnail" src="{{url('/banners/' . $banner->image)}}" style="width: 100px" alt="">
-                        </td>
-                        <td>
-                            <div class="d-flex">
-                                <a href="{{route('admin.banner.edit', $banner->id)}}" class="btn btn-primary">Edit</a>
-                                <form action="{{route('admin.banner.destroy', $banner->id)}}" method="POST">
-                                    @method('DELETE')
-                                    @csrf
-                                    <button class="btn btn-danger">Delete</button>
-                                </form>
-                            </div>
 
-                        </td>
-                    </tr>
-                @endforeach
-                <tr></tr>
             </tbody>
         </table>
     </div>
+@endsection
+
+@section('script')
+    <script>
+        let table = $('#banner').DataTable({
+            'serverSide': true,
+            'processing': true,
+            'ajax': {
+                url: '/admin/banner/',
+                error: function(xhr, testStatus, errorThrown) {
+
+                }
+            },
+
+            "columns": [{
+                    "data": "page"
+                },
+                {
+                    "data": "image"
+                },
+                {
+                    "data": "options"
+                }
+            ]
+        });
+        $(document).on('click', '.deleteButton', function(a) {
+            a.preventDefault();
+            var id = $(this).data('id');
+
+            Swal.fire({
+                title: 'Do you want to delete this campus?',
+                showCancelButton: true,
+                confirmButtonText: 'Delete',
+                confirmButtonColor: '#FF0000',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: '/admin/banner/' + id,
+                        type: 'DELETE',
+                        success: function() {
+                            table.ajax.reload()
+                        }
+                    });
+
+                    Swal.fire(
+                        'Deleted!',
+                        'Banner has been deleted.',
+                        'success'
+                    )
+                }
+            })
+        });
+    </script>
 @endsection

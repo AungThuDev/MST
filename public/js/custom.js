@@ -13,12 +13,11 @@ $(document).ready(function () {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if(result.isConfirmed) {
-                // window.location.href = '/admin/delete-'+record+'/'+recordid;
                 $.ajax({
                     type: 'DELETE',
                     url: '/admin/'+ record + "/" + record_id,
                     data: {
-                        award: record_id
+                        record: record_id
                     },
                     success : function(resp) {
                         Swal.fire(
@@ -27,7 +26,6 @@ $(document).ready(function () {
                             'success'
                         );
                         row.classList.add("d-none");
-                        console.log(resp);
                     },
                     error : function(e) {
                         alert(e);
@@ -36,6 +34,5 @@ $(document).ready(function () {
             }
         })
         return false;
-        
     })
 })

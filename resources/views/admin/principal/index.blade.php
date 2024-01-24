@@ -6,23 +6,24 @@
                 <div class="card">
                     <div class="card-header">
                         <h1 class="card-title">Principal</h1>
-                        <?php $count = \App\Models\Principal::all()->count() ?>
-                        @if($count == 0)
-                            <a href="{{ route('admin.principal.create') }}" class="btn btn-primary top-right-btn">Create Principal</a>
+                        <?php $count = \App\Models\Principal::all()->count(); ?>
+                        @if ($count == 0)
+                            <a href="{{ route('admin.principal.create') }}" class="btn btn-success top-right-btn">Create
+                                Principal</a>
                         @endif
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
                         <table id="principal" class="table table-bordered table-hover">
                             <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Name</th>
-                                <th>Image</th>
-                                <th>Created</th>
-                                <th>Updated</th>
-                                <th>Action</th>
-                            </tr>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Image</th>
+                                    <th>Created</th>
+                                    <th>Updated</th>
+                                    <th>Action</th>
+                                </tr>
                             </thead>
                             <tbody>
 
@@ -51,8 +52,8 @@
             },
 
             "columns": [{
-                "data": "id"
-            },
+                    "data": "id"
+                },
                 {
                     'data': 'name'
                 },

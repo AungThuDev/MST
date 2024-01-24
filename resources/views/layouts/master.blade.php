@@ -6,8 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="author" content="Creative Tim">
 
+    <title>Argon Dashboard - Free Dashboard for Bootstrap 4</title>
+    <!-- Favicon -->
+    <link rel="icon" href="/assets/img/brand/favicon.png" type="image/png">
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
+    <!-- Icons -->
+    <link rel="stylesheet" href="/assets/vendor/nucleo/css/nucleo.css" type="text/css">
+    <link rel="stylesheet" href="/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
+    <!-- Page plugins -->
+    <!-- Argon CSS -->
+    <link rel="stylesheet" href="/assets/css/argon.css?v=1.2.0" type="text/css">
     <title>Argon Dashboard - Free Dashboard for Bootstrap 4</title>
     <!-- Favicon -->
     <link rel="icon" href="/assets/img/brand/favicon.png" type="image/png">
@@ -32,6 +47,114 @@
 </head>
 
 <body>
+    <!-- Sidenav -->
+    <nav class="sidenav navbar navbar-vertical  fixed-left  navbar-expand-xs navbar-light bg-white" id="sidenav-main">
+        <div class="scrollbar-inner">
+            <!-- Brand -->
+            <div class="sidenav-header  align-items-center">
+                <a class="navbar-brand" href="javascript:void(0)">
+                    <img src="/assets/img/brand/blue.png" class="navbar-brand-img" alt="...">
+                </a>
+            </div>
+            <div class="navbar-inner">
+                <!-- Collapse -->
+                <div class="collapse navbar-collapse" id="sidenav-collapse-main">
+                    <!-- Nav items -->
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="examples/dashboard.html">
+                                <i class="ni ni-tv-2 text-primary"></i>
+                                <span class="nav-link-text">Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('admin.homepage.index') }}">
+                                <i class="ni ni-planet text-orange"></i>
+                                <span class="nav-link-text">Home Page</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="examples/icons.html">
+                                <i class="ni ni-planet text-orange"></i>
+                                <span class="nav-link-text">Programme Page</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('admin.principal.index') }}">
+                                <i class="ni ni-planet text-orange"></i>
+                                <span class="nav-link-text">Principal</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('admin.banner.index') }}">
+                                <i class="ni ni-planet text-orange"></i>
+                                <span class="nav-link-text">Banner</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('admin.event.index') }}">
+                                <i class="ni ni-planet text-orange"></i>
+                                <span class="nav-link-text">Event</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="examples/icons.html">
+                                <i class="ni ni-planet text-orange"></i>
+                                <span class="nav-link-text">Programme</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('admin.award.index') }}">
+                                <i class="ni ni-planet text-orange"></i>
+                                <span class="nav-link-text">Awards</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('admin.partner.index') }}">
+                                <i class="ni ni-planet text-orange"></i>
+                                <span class="nav-link-text">Partners</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('admin.lecturer.index') }}">
+                                <i class="ni ni-planet text-orange"></i>
+                                <span class="nav-link-text">Lecturers</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('admin.faq.index') }}">
+                                <i class="ni ni-planet text-orange"></i>
+                                <span class="nav-link-text">FAQ</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- Divider -->
+                    <hr class="my-3">
+                    <!-- Heading -->
+                    <h6 class="navbar-heading p-0 text-muted">
+                        <span>Products</span>
+                    </h6>
+                    <!-- Navigation -->
+                    <ul class="navbar-nav mb-md-3">
+                        <li class="nav-item">
+                            <a class="nav-link"
+                                href="https://demos.creative-tim.com/argon-dashboard/docs/getting-started/overview.html"
+                                target="_blank">
+                                <i class="ni ni-spaceship"></i>
+                                <span class="nav-link-text">Getting started</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+    </nav>
+    <!-- Main content -->
+    <div class="main-content" id="panel">
+        <!-- Topnav -->
+        <nav class="navbar navbar-top navbar-expand navbar-dark bg-primary border-bottom">
+            <div class="container-fluid">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
 <!-- Sidenav -->
 <nav class="sidenav navbar navbar-vertical  fixed-left  navbar-expand-xs navbar-light bg-white" id="sidenav-main">
     <div class="scrollbar-inner">
@@ -147,26 +270,26 @@
         <div class="container-fluid">
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-                <!-- Navbar links -->
-                <div class="navbar-nav align-items-center  ml-md-auto ">
-                </div>
-                <ul class="navbar-nav align-items-center  ml-auto ml-md-0 ">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
-                           aria-expanded="false">
-                            <div class="media align-items-center">
-                  <span class="avatar avatar-sm rounded-circle">
-                    <img alt="Image placeholder" src="/assets/img/theme/team-4.jpg">
-                  </span>
-                                <div class="media-body  ml-2  d-none d-lg-block">
-                                    <span class="mb-0 text-sm  font-weight-bold">John Snow</span>
+                    <!-- Navbar links -->
+                    <div class="navbar-nav align-items-center  ml-md-auto ">
+                    </div>
+                    <ul class="navbar-nav align-items-center  ml-auto ml-md-0 ">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                <div class="media align-items-center">
+                                    <span class="avatar avatar-sm rounded-circle">
+                                        <img alt="Image placeholder" src="/assets/img/theme/team-4.jpg">
+                                    </span>
+                                    <div class="media-body  ml-2  d-none d-lg-block">
+                                        <span class="mb-0 text-sm  font-weight-bold">John Snow</span>
+                                    </div>
                                 </div>
-                            </div>
-                        </a>
-                        <div class="dropdown-menu  dropdown-menu-right ">
-                            <div class="dropdown-header noti-title">
-                                <h6 class="text-overflow m-0">Welcome!</h6>
-                            </div>
+                            </a>
+                            <div class="dropdown-menu  dropdown-menu-right ">
+                                <div class="dropdown-header noti-title">
+                                    <h6 class="text-overflow m-0">Welcome!</h6>
+                                </div>
 
                             <div class="dropdown-divider"></div>
                             <a href="#!" class="dropdown-item">
@@ -190,41 +313,69 @@
 </div>
 
 
-<!-- Argon Scripts -->
-<!-- Core -->
-<script src="/assets/vendor/jquery/dist/jquery.min.js"></script>
-<script src="/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<script src="/assets/vendor/js-cookie/js.cookie.js"></script>
-<script src="/assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
-<script src="/assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
-<!-- Optional JS -->
-<script src="/assets/vendor/chart.js/dist/Chart.min.js"></script>
-<script src="/assets/vendor/chart.js/dist/Chart.extension.js"></script>
-<!-- Argon JS -->
-<script src="/assets/js/argon.js?v=1.2.0"></script>
+  <!-- Argon Scripts -->
+  <!-- Core -->
+  <script src="/assets/vendor/jquery/dist/jquery.min.js"></script>
+  <script src="/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/assets/vendor/js-cookie/js.cookie.js"></script>
+  <script src="/assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
+  <script src="/assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
+  <!-- Optional JS -->
+  <script src="/assets/vendor/chart.js/dist/Chart.min.js"></script>
+  <script src="/assets/vendor/chart.js/dist/Chart.extension.js"></script>
+  <!-- Argon JS -->
+  <script src="/assets/js/argon.js?v=1.2.0"></script>
 <!-- Data Table-->
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 
-<script>
-    $(document).ready(function () {
-        let token = document.head.querySelector('meta[name="csrf-token"]');
-        if (token) {
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+
+    @yield('script')
+
+    <script>
+        $(document).ready(function() {
+            let token = document.head.querySelector('meta[name="csrf-token"]');
+            if (token) {
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+            }
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
                 }
-            });
-        }
-    })
-</script>
+            })
+            @if (session('create'))
+            Toast.fire({
+                icon: 'success',
+                title: '{{ session('create') }} created successfully!'
+            })
+            @endif
+            @if (session('update'))
+            Toast.fire({
+                icon: 'success',
+                title: "{{ session('update') }} updated successfully!"
+            }) @endif
+        })
+
+    </script>
 
 <!-- sweet alert -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-<script src="/js/custom.js"></script>
+{{-- <script src="/js/custom.js"></script> --}}
+
 
 @yield('script')
 </body>
+    </body>
 
 </html>

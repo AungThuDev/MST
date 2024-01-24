@@ -7,17 +7,12 @@ use App\Models\Award;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
 
 
 class AwardController extends Controller
 {
-
-    protected $rules = [
-        'title' => 'required',
-        'description' => 'required',
-        'image' => 'required|image|mimes:png,jpg,jpeg'
-    ];
     /**
      * Display a listing of the resource.
      *
@@ -30,6 +25,15 @@ class AwardController extends Controller
 
             return DataTables::of($awards)
 
+                ->editColumn("description", function ($e) {
+                    if (Str::length($e->description) > 30) {
+                        $description = substr($e->description, 0, 20) . "...";
+                    } else {
+                        $description = $e->description;
+                    }
+                    return '<p>' . $description . '</p>';
+                })
+
                 ->editColumn("image", function ($e) {
                     $path = "/award/{$e->image}";
                     return '<img style="width: 125px;" src="' . $path . '">';
@@ -41,12 +45,11 @@ class AwardController extends Controller
 
                 ->addColumn('action', function ($a) {
 
-                    $detail = '<a href=" ' . route('admin.award.show', $a->id) . '" class="btn btn-primary" style="margin-right: 10px;">Detail</a>';
-                    $edit = '<a href=" ' . route('admin.award.edit', $a->id) . '" class="btn btn-success" style="margin-right: 10px;">Edit</a>';
+                    $edit = '<a href=" ' . route('admin.award.edit', $a->id) . '" class="btn btn-warning" style="margin-right: 10px;">Edit</a>';
                     $delete = '<a href="javascript:void(0)" class="deleteButton btn btn-danger" record="award" data-id="' . $a->id . '">Delete</a>';
 
-                    return '<div class="action">' . $detail . $edit . $delete . '</div>';
-                })->rawColumns(['action', 'image'])->make(true);
+                    return '<div class="action">' . $edit . $delete . '</div>';
+                })->rawColumns(['action', 'image',"description"])->make(true);
         }
 
         return view("backend.award.index");
@@ -65,12 +68,16 @@ class AwardController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        $validated = $request->validate($this->rules);
+        $validated = $request->validate([
+            'title' => 'required|max:255',
+            'description' => 'required',
+            'image' => 'required|image|mimes:png,jpg,jpeg'
+        ]);
 
         $award = new Award;
 
@@ -85,24 +92,24 @@ class AwardController extends Controller
 
         $award->save();
 
-        return view('backend.award.index')->with('success', 'Success: Award added successfully.');
+        return redirect()->back()->with('create', 'Award');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Award  $award
+     * @param  \App\Models\Award $award
      * @return \Illuminate\Http\Response
      */
     public function show(Award $award)
     {
-        //
+
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Award  $award
+     * @param  \App\Models\Award $award
      * @return \Illuminate\Http\Response
      */
     public function edit(Award $award)
@@ -113,18 +120,30 @@ class AwardController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @param  \App\Models\Award  $award
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Award $award)
     {
-        $validated = $request->validate($this->rules);
-        // if($request->has('image')) {
-        //     if(File::exists(public_path()))
-        // } 
+        $validated = $request->validate([
+            'title' => 'required|max:255',
+            'description' => 'required',
+            'image' => 'nullable|image|mimes:png,jpg,jpeg'
+        ]);
+
+        if ($request->has('image')) {
+            $image_path = "/award/{$award->image}";
+            if (File::exists(public_path($image_path))) {
+                File::delete(public_path($image_path));
+            }
+            $image = $request->file("image");
+            $image_name = uniqid() . $image->getClientOriginalName();
+            $image->move(public_path("award"), $image_name);
+            $validated['image'] = $image_name;
+        }
         $award->update($validated);
-        return view('backend.award.index')->with('success', "Award updated successfully");
+        return redirect()->back()->with('update', "Award");
     }
 
     /**
@@ -140,6 +159,6 @@ class AwardController extends Controller
             File::delete(public_path($image_path));
         }
         $award->delete();
-        return response()->json(['status' => "no"]);
+        return response()->json(['status' => 1]);
     }
 }

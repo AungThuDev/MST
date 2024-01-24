@@ -57,17 +57,17 @@ class HomePageController extends Controller
             'mission' => 'required',
             'about_title' => 'required',
             'about_text' => 'required',
-            'about_image_one' => 'required|mimes:png,jpg,jpeg',
-            'about_image_two' => 'required|mimes:png,jpg,jpeg',
+            'about_image_one' => 'required|image|mimes:png,jpg,jpeg',
+            'about_image_two' => 'required|image|mimes:png,jpg,jpeg',
             'eval_title' => 'required',
-            'eval_image' => 'required|mimes:png,jpg,jpeg',
+            'eval_image' => 'required|image|mimes:png,jpg,jpeg',
             'eval_text' => 'required',
             'progress_one' => 'required',
-            'progress_one_percent' => 'required|numeric',
+            'progress_one_percent' => 'required|numeric|max:100',
             'progress_two' => 'required',
-            'progress_two_percent' => 'required|numeric',
+            'progress_two_percent' => 'required|numeric|max:100',
             'progress_three' => 'required',
-            'progress_three_percent' => 'required|numeric',
+            'progress_three_percent' => 'required|numeric|max:100',
             'course_text' => 'required'
         ]);
 
@@ -145,9 +145,103 @@ class HomePageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, HomePage $homepage)
     {
         //
+        $request->validate([
+            'vision' => 'required',
+            'mission' => 'required',
+            'about_title' => 'required',
+            'about_text' => 'required',
+            'eval_title' => 'required',
+            'eval_text' => 'required',
+            'progress_one' => 'required',
+            'progress_one_percent' => 'required|numeric',
+            'progress_two' => 'required',
+            'progress_two_percent' => 'required|numeric',
+            'progress_three' => 'required',
+            'progress_three_percent' => 'required|numeric',
+            'course_text' => 'required'
+        ]);
+
+        if($request->file('about_image_one'))
+        {
+            $about_image_one = $request->file('about_image_one');
+            $about_image_one_name = uniqid() . $about_image_one->getClientOriginalName();
+            $about_image_one->move(public_path('images'), $about_image_one_name);
+        }
+        else
+        {
+            $about_image_one_name = $homepage->about_image1;
+        }
+
+
+        if($request->file('about_image_two'))
+        {
+            $about_image_two = $request->file('about_image_two');
+            $about_image_two_name = uniqid() . $about_image_two->getClientOriginalName();
+            $about_image_two->move(public_path('images'), $about_image_two_name);
+        }
+        else
+        {
+            $about_image_two_name = $homepage->about_image2;
+        }
+
+        if($request->file('journey_image_one'))
+        {
+            $journey_image_one = $request->file('journey_image_one');
+            $journey_image_one_name = uniqid() . $journey_image_one->getClientOriginalName();
+            $journey_image_one->move(public_path('images'), $journey_image_one_name);
+        }
+        else
+        {
+            $journey_image_one_name = $homepage->journey_image1;
+        }
+
+        if($request->file('journey_image_two'))
+        {
+            $journey_image_two = $request->file('journey_image_two');
+            $journey_image_two_name = uniqid() . $journey_image_two->getClientOriginalName();
+            $journey_image_two->move(public_path('images'), $journey_image_two_name);
+        }
+        else
+        {
+            $journey_image_two_name = $homepage->journey_image2;
+        }
+
+        if($request->file('eval_image'))
+        {
+            $eval_image = $request->file('eval_image');
+            $eval_image_name = uniqid() . $eval_image->getClientOriginalName();
+            $eval_image->move(public_path('images'), $eval_image_name);
+        }
+        else
+        {
+            $eval_image_name = $homepage->eval_image;
+        }
+
+        $homepage->update([
+            'vision' => $request->vision,
+            'mission' => $request->mission,
+            'about_title' => $request->about_title,
+            'about_text' => $request->about_text,
+            'about_image1' => $about_image_one_name,
+            'about_image2' => $about_image_two_name,
+            'journey_image1' => $journey_image_one_name,
+            'journey_image2' => $journey_image_two_name,
+            'eval_title' => $request->eval_title,
+            'eval_image' => $eval_image_name,
+            'eval_text' => $request->eval_text,
+            'prograss1' => $request->progress_one,
+            'prograss1_percent' => $request->progress_one_percent,
+            'prograss2' => $request->progress_two,
+            'prograss2_percent' => $request->progress_two_percent,
+            'prograss3' => $request->progress_three,
+            'prograss3_percent' => $request->progress_three_percent,
+            'course_text' => $request->course_text
+        ]);
+
+        return redirect()->back()->with('success', 'Home Page Contents Updated');
     }
 
     /**
