@@ -5,15 +5,12 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h1 class="card-title">Principal</h1>
-                        <?php $count = \App\Models\Principal::all()->count() ?>
-                        @if($count == 0)
-                            <a href="{{ route('admin.principal.create') }}" class="btn btn-primary top-right-btn">Create Principal</a>
-                        @endif
+                        <h1 class="card-title">Programme Categories</h1>
+                        <a href="{{ route('admin.categories.create') }}" class="btn btn-primary top-right-btn">Create New Category</a>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <table id="principal" class="table table-bordered table-hover">
+                        <table id="categories" class="table table-bordered table-hover">
                             <thead>
                             <tr>
                                 <th>ID</th>
@@ -40,11 +37,11 @@
     <!-- /.container-fluid -->
 
     <script>
-        var principalTable = $('#principal').DataTable({
+        var categoriesTable = $('#categories').DataTable({
             'serverSide': true,
             'processing': true,
             'ajax': {
-                url: '/admin/principal/',
+                url: '/admin/categories/',
                 error: function(xhr, testStatus, errorThrown) {
 
                 }
@@ -57,7 +54,7 @@
                     'data': 'name'
                 },
                 {
-                    'data': 'home_image'
+                    'data': 'image'
                 },
                 {
                     "data": "created_at"
@@ -71,27 +68,27 @@
             ]
         });
 
-        $(document).on('click', '.deletePrincipalButton', function(a) {
+        $(document).on('click', '.deleteCategoriesButton', function(a) {
             a.preventDefault();
             const id = $(this).data('id');
             Swal.fire({
-                title: 'Do you want to delete this principal?',
+                title: 'Do you want to delete this category?',
                 showCancelButton: true,
                 confirmButtonText: 'Delete',
                 confirmButtonColor: '#FF0000',
             }).then((result) => {
                 if (result.isConfirmed) {
                     $.ajax({
-                        url: '/admin/principal/' + id,
+                        url: '/admin/categories/' + id,
                         type: 'DELETE',
                         success: function() {
-                            principalTable.ajax.reload();
+                            categoriesTable.ajax.reload();
                         }
                     });
 
                     Swal.fire(
                         'Deleted!',
-                        'Principal has been deleted.',
+                        'Category has been deleted.',
                         'success'
                     )
                 }

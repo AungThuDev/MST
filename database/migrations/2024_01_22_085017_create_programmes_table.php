@@ -15,7 +15,7 @@ class CreateProgrammesTable extends Migration
     {
         Schema::create('programmes', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
+            $table->string('name');
             $table->foreignId('category_id')->constrained()->cascadeOnDelete();
             $table->string('image');
             $table->longText('description');

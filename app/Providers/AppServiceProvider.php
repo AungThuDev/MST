@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\Principal;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -23,6 +25,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Gate::define('noPrincipal', function () {
+            $count = Principal::count();
+            return true;
+//            return $count == 0;
+        });
     }
 }

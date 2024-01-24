@@ -58,7 +58,7 @@ class FaqController extends Controller
 
         Faq::create($validated);
 
-        return redirect(route('admin.faq.index'))->with('draft', 'FAQ');
+        return redirect(route('admin.faq.index'))->with('success', 'FAQ created successfully');
     }
 
     public function edit(Faq $faq)

@@ -4,7 +4,11 @@ use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\HomePageController;
 use App\Http\Controllers\Admin\AwardController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PrincipalController;
+use App\Http\Controllers\ProgrammeController;
+use App\Http\Controllers\ProgrammePageController;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,6 +22,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/test', function () {
+    if (Gate::allows('noPrincipal')) {
+        dd( "Allowed");
+    } else {
+        dd( "Not Allowed");
+    }
+});
+
 Route::get('/', function () {
     return view('layouts.master');
 });
@@ -29,8 +41,25 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::prefix('admin')->name('admin.')->group(function(){
+    Route::get('/principal', [PrincipalController::class, 'index'])->name('principal.index');
+    Route::get('/principal/create', [PrincipalController::class, 'create'])->name('principal.create');
+    Route::post('/principal/store', [PrincipalController::class, 'store'])->name('principal.store');
+    Route::get('/principal/{principal}', [PrincipalController::class, 'show'])->name('principal.show');
+    Route::get('/principal/{principal}/edit', [PrincipalController::class, 'edit'])->name('principal.edit');
+    Route::patch('/principal/{principal}/update', [PrincipalController::class, 'update'])->name('principal.update');
+
+    Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
+    Route::get('/categories/create', [CategoryController::class, 'create'])->name('categories.create');
+    Route::post('/categories/store', [CategoryController::class, 'store'])->name('categories.store');
+    Route::get('/categories/{category}/edit', [CategoryController::class, 'edit'])->name('categories.edit');
+    Route::patch('/categories/{category}/update', [CategoryController::class, 'update'])->name('categories.update');
+    Route::delete('/categories/{category}', [CategoryController::class, 'destroy'])->name('categories.destroy');
+
+    Route::resource('/programme_page',ProgrammePageController::class)->except(['index', 'destroy']);
+
     Route::resource('/faq',FaqController::class);
-    Route::resource('/principal',PrincipalController::class);
+    Route::resource('/programmes',ProgrammeController::class);
+
     Route::resource('/homepage', HomePageController::class);
     Route::resource('/award',AwardController::class);
 

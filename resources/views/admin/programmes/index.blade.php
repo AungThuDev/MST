@@ -5,20 +5,21 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h1 class="card-title">Principal</h1>
-                        <?php $count = \App\Models\Principal::all()->count() ?>
-                        @if($count == 0)
-                            <a href="{{ route('admin.principal.create') }}" class="btn btn-primary top-right-btn">Create Principal</a>
-                        @endif
+                        <h1 class="card-title">Programmes</h1>
+                        <a href="{{ route('admin.programmes.create') }}" class="btn btn-primary top-right-btn">Create
+                            Programme</a>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <table id="principal" class="table table-bordered table-hover">
+                        <table id="programmes" class="table-responsive table-bordered table-hover">
                             <thead>
                             <tr>
                                 <th>ID</th>
                                 <th>Name</th>
+                                <th>Category</th>
                                 <th>Image</th>
+                                <th>duration</th>
+                                <th>link</th>
                                 <th>Created</th>
                                 <th>Updated</th>
                                 <th>Action</th>
@@ -40,12 +41,12 @@
     <!-- /.container-fluid -->
 
     <script>
-        var principalTable = $('#principal').DataTable({
+        var programmesTable = $('#programmes').DataTable({
             'serverSide': true,
             'processing': true,
             'ajax': {
-                url: '/admin/principal/',
-                error: function(xhr, testStatus, errorThrown) {
+                url: '/admin/programmes/',
+                error: function (xhr, testStatus, errorThrown) {
 
                 }
             },
@@ -57,7 +58,16 @@
                     'data': 'name'
                 },
                 {
-                    'data': 'home_image'
+                    'data': 'category_id'
+                },
+                {
+                    'data': 'image'
+                },
+                {
+                    'data': 'duration'
+                },
+                {
+                    'data': 'link'
                 },
                 {
                     "data": "created_at"
@@ -71,27 +81,27 @@
             ]
         });
 
-        $(document).on('click', '.deletePrincipalButton', function(a) {
+        $(document).on('click', '.deleteProgrammesButton', function (a) {
             a.preventDefault();
             const id = $(this).data('id');
             Swal.fire({
-                title: 'Do you want to delete this principal?',
+                title: 'Do you want to delete this programme?',
                 showCancelButton: true,
                 confirmButtonText: 'Delete',
                 confirmButtonColor: '#FF0000',
             }).then((result) => {
                 if (result.isConfirmed) {
                     $.ajax({
-                        url: '/admin/principal/' + id,
+                        url: '/admin/programmes/' + id,
                         type: 'DELETE',
-                        success: function() {
-                            principalTable.ajax.reload();
+                        success: function () {
+                            programmesTable.ajax.reload();
                         }
                     });
 
                     Swal.fire(
                         'Deleted!',
-                        'Principal has been deleted.',
+                        'Programme has been deleted.',
                         'success'
                     )
                 }

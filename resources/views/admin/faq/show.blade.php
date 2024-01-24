@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('content')
-    <section class="position-relative">
+    <section>
         <h1 class="text-center">FAQ</h1>
         <p class="faq-question">Q. {{ $faq->question }}</p>
         <p class="faq-answer">A. {{ $faq->answer }}</p>
