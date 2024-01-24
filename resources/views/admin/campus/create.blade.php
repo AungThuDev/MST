@@ -4,7 +4,7 @@
 
 @section('content')
     <div>
-        <a href="{{ route('admin.campus.index') }}" class="btn btn-primary float-right mb-2">All Campus</a>
+        <a href="{{ route('admin.campus.index') }}" class="btn btn-success float-right mb-2">All Campus</a>
     </div>
     <form action="{{ route('admin.campus.store') }}" method="POST">
         @csrf
@@ -13,7 +13,7 @@
                 <div class="col-12">
                     <div class="form-group">
                         <label for="">Campus Name<span style="color: red">*</span></label>
-                        <input type="text" class="form-control" value="{{ old('name') }}" name="name">
+                        <input type="text" class="form-control text-dark" value="{{ old('name') }}" name="name">
                         @error('name')
                             <span class="badge badge-danger">{{ $message }}</span>
                         @enderror
@@ -22,46 +22,48 @@
                 <div class="col-12">
                     <div class="form-group">
                         <label for="">Campus Address<span style="color: red">*</span></label>
-                        <textarea name="address" class="form-control">{{ old('address') }}</textarea>
+                        <textarea name="address" class="form-control text-dark">{{ old('address') }}</textarea>
                         @error('address')
                             <span class="badge badge-danger">{{ $message }}</span>
                         @enderror
                     </div>
                 </div>
                 <div class="col-4">
-                    <div class="form-group">
-                        <label for="">Campus Phone One<span style="color: red">*</span></label>
-                        <input type="text" class="form-control" value="{{ old('phone_one') }}" name="phone_one">
+                    <div class="form-group" id="phones">
+                        <label for="">Campus Phones<span style="color: red">*</span></label>
+                        <input placeholder="Enter Phone Number" type="text" class="form-control"
+                            value="{{ old('phones.0') }}" name="phones[]">
                         @error('phone_one')
                             <span class="badge badge-danger">{{ $message }}</span>
                         @enderror
                     </div>
                 </div>
+                <div class="col-8"></div>
                 <div class="col-4">
-                    <div class="form-group">
-                        <label for="">Campus Phone Two(Optional)</label>
-                        <input type="text" class="form-control" value="{{ old('phone_two') }}" name="phone_two">
-                        @error('phone_two')
-                            <span class="badge badge-danger">{{ $message }}</span>
-                        @enderror
-                    </div>
+                    <button class="btn btn-success addPhone" type="button">Add Another Phone</button>
                 </div>
-                <div class="col-4">
-                    <div class="form-group">
-                        <label for="">Campus Phone Three(Optional)</label>
-                        <input type="text" class="form-control" value="{{ old('phone_three') }}" name="phone_three">
-                        @error('phone_three')
-                            <span class="badge badge-danger">{{ $message }}</span>
-                        @enderror
-                    </div>
-                </div>
+
 
 
             </div>
             <div>
-                <button type="submit" class="btn btn-primary float-right">Create</button>
+                <button type="submit" class="btn btn-success float-right">Create</button>
             </div>
 
         </div>
     </form>
+@endsection
+
+@section('script')
+    <script>
+        $(document).on('click', '.addPhone', function(a) {
+            a.preventDefault();
+            var input = document.createElement('input');
+            input.type = 'text';
+            input.className = 'form-control mt-3';
+            input.name = 'phones[]';
+            input.placeholder = 'Enter Phone Number';
+            document.getElementById('phones').appendChild(input);
+        })
+    </script>
 @endsection

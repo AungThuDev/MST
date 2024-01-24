@@ -18,17 +18,25 @@ class CampusContentController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $campus = CampusContent::query();
+            $campus = CampusContent::with('phones')->get();
 
             return DataTables::of($campus)
 
+                ->editColumn("phones", function ($e) {
+                    $phones_list = '';
+                    foreach ($e->phones as $phone) {
+                        $phones_list .= '<li class="mt-2">' . $phone->number . '</li>';
+                    }
+                    return '<ul style="list-style: lower-latin;" class="phones">'  . $phones_list . '</ul>';
+                })
+
                 ->addColumn('options', function ($a) {
 
-                    $edit = '<a href=" ' . route('admin.campus.edit', $a->id) . '" class="btn btn-primary" style="margin-right: 10px;">Edit</a>';
+                    $edit = '<a href=" ' . route('admin.campus.edit', $a->id) . '" class="btn btn-warning" style="margin-right: 10px;">Edit</a>';
                     $delete = '<a href="javascript:void(0)" class="deleteButton btn btn-danger" record="award" data-id="' . $a->id . '">Delete</a>';
 
                     return '<div class="action">'  . $edit . $delete . '</div>';
-                })->rawColumns(['options'])->make(true);
+                })->rawColumns(['options','phones'])->make(true);
         }
 
         return view("admin.campus.index");
@@ -52,10 +60,11 @@ class CampusContentController extends Controller
      */
     public function store(Request $request)
     {
+        
         $request->validate([
             'name' => 'required',
             'address' => 'required',
-            'phone_one' => 'required|numeric',
+            'phones.0' => 'required|numeric',
         ]);
 
         $campus = CampusContent::create([
@@ -63,27 +72,12 @@ class CampusContentController extends Controller
             'address' => $request->address
         ]);
 
-        Phone::create([
-            'number' => $request->phone_one,
-            'campus_id' => $campus->id
-        ]);
-
-        if($request->phone_two)
-        {
+        foreach ($request->input('phones') as $phone) {
             Phone::create([
-                'number' => $request->phone_two,
+                'number' => $phone,
                 'campus_id' => $campus->id
             ]);
         }
-
-        if($request->phone_three)
-        {
-            Phone::create([
-                'number' => $request->phone_three,
-                'campus_id' => $campus->id
-            ]);
-        }
-
 
 
         return redirect()->back()->with('create', 'Campus');
@@ -159,6 +153,7 @@ class CampusContentController extends Controller
         }
 
         $campus->delete();
+        $campus->phones()->delete();
 
         return 'success';
     }

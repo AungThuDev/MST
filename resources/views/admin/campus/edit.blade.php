@@ -4,7 +4,7 @@
 
 @section('content')
     <div>
-        <a href="{{ route('admin.campus.index') }}" class="btn btn-primary float-right mb-2">All Campus</a>
+        <a href="{{ route('admin.campus.index') }}" class="btn btn-success float-right mb-2">All Campus</a>
     </div>
     <form action="{{ route('admin.campus.update', $campus->id) }}" enctype="multipart/form-data" method="POST">
         @method('PUT')
@@ -32,7 +32,7 @@
 
             </div>
             <div>
-                <button type="submit" class="btn btn-primary float-right">Update</button>
+                <button type="submit" class="btn btn-success float-right">Update</button>
             </div>
 
         </div>

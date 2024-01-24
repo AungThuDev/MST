@@ -25,16 +25,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('layouts.master');
+    return view('welcome');
 });
-
-Route::get('/admin', [AdminController::class, 'showDashboard']);
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::prefix('admin')->name('admin.')->group(function(){
+Route::prefix('admin')->name('admin.')->middleware('auth')->group(function(){
+    Route::get('/dashboard', [AdminController::class, 'showDashboard']);
     Route::resource('/faq',FaqController::class);
     Route::resource('/principal',PrincipalController::class);
     Route::resource('/homepage', HomePageController::class);
@@ -42,7 +41,8 @@ Route::prefix('admin')->name('admin.')->group(function(){
     Route::resource('/banner', BannerController::class);
     Route::resource('/event', EventController::class);
     Route::resource('/campus', CampusContentController::class);
-    Route::resource('/info', InfoController::class);    Route::resource('/lecturer',LecturerController::class);
+    Route::resource('/info', InfoController::class);    
+    Route::resource('/lecturer',LecturerController::class);
     Route::resource('/partner',PartnerController::class);
 });
 

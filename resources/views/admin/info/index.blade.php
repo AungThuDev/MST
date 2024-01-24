@@ -7,7 +7,7 @@
         <a href="{{ route('admin.info.create') }}" class="btn btn-primary text-white">Add New Info</a>
     </div>
 
-    <table class="table table-striped table-hover" id="info">
+    <table class="table table-bordered table-hover" id="info">
         <thead>
             <tr>
                 <th>Name</th>

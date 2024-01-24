@@ -4,7 +4,7 @@
 
 @section('content')
     <div>
-        <a href="{{ route('admin.info.index') }}" class="btn btn-primary float-right mb-2">All Contact Information</a>
+        <a href="{{ route('admin.info.index') }}" class="btn btn-success float-right mb-2">All Contact Information</a>
     </div>
     <form action="{{ route('admin.info.store') }}" method="POST">
         @csrf
@@ -31,7 +31,7 @@
 
             </div>
             <div>
-                <button type="submit" class="btn btn-primary float-right">Create</button>
+                <button type="submit" class="btn btn-success float-right">Create</button>
             </div>
 
         </div>

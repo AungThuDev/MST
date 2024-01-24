@@ -177,7 +177,7 @@
 
             </div>
             <div>
-                <button type="submit" class="btn btn-primary float-right">Create</button>
+                <button type="submit" class="btn btn-success float-right">Create</button>
             </div>
 
         </div>

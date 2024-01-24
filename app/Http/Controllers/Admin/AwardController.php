@@ -45,7 +45,7 @@ class AwardController extends Controller
 
                 ->addColumn('action', function ($a) {
 
-                    $edit = '<a href=" ' . route('admin.award.edit', $a->id) . '" class="btn btn-success" style="margin-right: 10px;">Edit</a>';
+                    $edit = '<a href=" ' . route('admin.award.edit', $a->id) . '" class="btn btn-warning" style="margin-right: 10px;">Edit</a>';
                     $delete = '<a href="javascript:void(0)" class="deleteButton btn btn-danger" record="award" data-id="' . $a->id . '">Delete</a>';
 
                     return '<div class="action">' . $edit . $delete . '</div>';

@@ -4,7 +4,7 @@
 
 @section('content')
     <div>
-        <a href="{{ route('admin.event.index') }}" class="btn btn-primary float-right mb-2">All Events</a>
+        <a href="{{ route('admin.event.index') }}" class="btn btn-success float-right mb-2">All Events</a>
     </div>
     <form action="{{ route('admin.event.store') }}" enctype="multipart/form-data" method="POST">
         @csrf
@@ -58,7 +58,7 @@
 
             </div>
             <div>
-                <button type="submit" class="btn btn-primary float-right">Create</button>
+                <button type="submit" class="btn btn-success float-right">Create</button>
             </div>
 
         </div>

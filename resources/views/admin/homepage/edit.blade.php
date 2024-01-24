@@ -190,7 +190,7 @@
 
             </div>
             <div>
-                <button type="submit" class="btn btn-primary float-right">Update</button>
+                <button type="submit" class="btn btn-success float-right">Update</button>
             </div>
 
         </div>

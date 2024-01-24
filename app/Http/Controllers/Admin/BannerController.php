@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Banner;
 use Illuminate\Http\Request;
+use Yajra\DataTables\Facades\DataTables;
 
 class BannerController extends Controller
 {
@@ -13,12 +14,29 @@ class BannerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
-        $banners = Banner::all();
+        if ($request->ajax()) {
+            $banners = Banner::query();
 
-        return view('admin.banner.index', compact('banners'));
+            return DataTables::of($banners)
+
+                ->editColumn("image", function ($e) {
+                    $path = "/banners/{$e->image}";
+                    return '<img style="width: 125px;" src="' . $path . '">';
+                })
+
+                ->addColumn('options', function ($a) {
+
+                    $edit = '<a href=" ' . route('admin.banner.edit', $a->id) . '" class="btn btn-warning" style="margin-right: 10px;">Edit</a>';
+                    $delete = '<a href="javascript:void(0)" class="deleteButton btn btn-danger" record="award" data-id="' . $a->id . '">Delete</a>';
+
+                    return '<div class="action">'  . $edit . $delete . '</div>';
+                })->rawColumns(['options', 'image'])->make(true);
+        }
+
+        return view("admin.banner.index");
         
     }
 
@@ -126,6 +144,6 @@ class BannerController extends Controller
 
         $banner->delete();
 
-        return redirect()->back()->with('success', 'Banner deleted');
+        return 'success';
     }
 }

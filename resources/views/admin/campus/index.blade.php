@@ -7,11 +7,12 @@
         <a href="{{ route('admin.campus.create') }}" class="btn btn-primary text-white">Add New Campus</a>
     </div>
 
-    <table class="table table-striped table-hover" id="campus">
+    <table class="table table-bordered table-hover" id="campus">
         <thead>
             <tr>
                 <th>Name</th>
                 <th>Address</th>
+                <th>Phones</th>
                 <th>Options</th>
             </tr>
         </thead>
@@ -38,6 +39,9 @@
                 },
                 {
                     "data": "address"
+                },
+                {
+                    "data": "phones"
                 },
                 {
                     "data": "options"

@@ -65,7 +65,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/admin/principal">
+                            <a class="nav-link" href="{{ route('admin.principal.index') }}">
                                 <i class="ni ni-planet text-orange"></i>
                                 <span class="nav-link-text">Principal</span>
                             </a>
@@ -77,7 +77,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="examples/icons.html">
+                            <a class="nav-link" href="{{ route('admin.event.index') }}">
                                 <i class="ni ni-planet text-orange"></i>
                                 <span class="nav-link-text">Event</span>
                             </a>
@@ -107,7 +107,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/admin/faq">
+                            <a class="nav-link" href="{{ route('admin.faq.index') }}">
                                 <i class="ni ni-planet text-orange"></i>
                                 <span class="nav-link-text">FAQ</span>
                             </a>

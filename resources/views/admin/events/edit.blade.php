@@ -4,7 +4,7 @@
 
 @section('content')
     <div>
-        <a href="{{ route('admin.event.index') }}" class="btn btn-primary float-right mb-2">All Events</a>
+        <a href="{{ route('admin.event.index') }}" class="btn btn-success float-right mb-2">All Events</a>
     </div>
     <form action="{{ route('admin.event.update', $event->id) }}" enctype="multipart/form-data" method="POST">
         @method('PUT')
@@ -65,7 +65,7 @@
 
             </div>
             <div>
-                <button type="submit" class="btn btn-primary float-right">Update</button>
+                <button type="submit" class="btn btn-success float-right">Update</button>
             </div>
 
         </div>
