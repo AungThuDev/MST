@@ -30,13 +30,13 @@ class CampusContentController extends Controller
                     return '<ul style="list-style: lower-latin;" class="phones">'  . $phones_list . '</ul>';
                 })
 
-                ->addColumn('options', function ($a) {
+                ->addColumn('action', function ($a) {
 
-                    $edit = '<a href=" ' . route('admin.campus.edit', $a->id) . '" class="btn btn-warning" style="margin-right: 10px;">Edit</a>';
+                    $edit = '<a href=" ' . route('admin.campus.edit', $a->id) . '" class="btn" style="margin-right: 10px;background-color: yellow;">Edit</a>';
                     $delete = '<a href="javascript:void(0)" class="deleteButton btn btn-danger" record="award" data-id="' . $a->id . '">Delete</a>';
 
                     return '<div class="action">'  . $edit . $delete . '</div>';
-                })->rawColumns(['options','phones'])->make(true);
+                })->rawColumns(['action','phones'])->make(true);
         }
 
         return view("admin.campus.index");
@@ -73,14 +73,18 @@ class CampusContentController extends Controller
         ]);
 
         foreach ($request->input('phones') as $phone) {
-            Phone::create([
-                'number' => $phone,
-                'campus_id' => $campus->id
-            ]);
+            if($phone != null)
+            {
+                Phone::create([
+                    'number' => $phone,
+                    'campus_id' => $campus->id
+                ]);
+            }
+
         }
 
 
-        return redirect()->back()->with('create', 'Campus');
+        return redirect()->route('admin.campus.index')->with('create', 'Campus');
     }
 
     /**
@@ -134,7 +138,7 @@ class CampusContentController extends Controller
             'address' => $request->address
         ]);
 
-        return redirect()->back()->with('update', 'Campus');
+        return redirect()->route('admin.campus.index')->with('update', 'Campus');
     }
 
     /**

@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('banner-page', 'nav-link nav-link active')
+@section('banner', 'nav-link nav-link active')
 
 @section('content')
     <div class="card p-2">
@@ -11,9 +11,10 @@
         <table class="table table-bordered table-hover" id="banner">
             <thead>
                 <tr>
+                    <th>Id</th>
                     <th>Page Name</th>
                     <th>Banner Image</th>
-                    <th>Options</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -28,6 +29,9 @@
         let table = $('#banner').DataTable({
             'serverSide': true,
             'processing': true,
+            'order': [
+                [0, 'desc']
+            ],
             'ajax': {
                 url: '/admin/banner/',
                 error: function(xhr, testStatus, errorThrown) {
@@ -36,13 +40,16 @@
             },
 
             "columns": [{
+                    "data": "id"
+                },
+                {
                     "data": "page"
                 },
                 {
                     "data": "image"
                 },
                 {
-                    "data": "options"
+                    "data": "action"
                 }
             ]
         });

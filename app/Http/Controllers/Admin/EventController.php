@@ -31,13 +31,14 @@ class EventController extends Controller
                     return Carbon::parse($e->created_at)->format("F j, Y, g:i a");
                 })
 
-                ->addColumn('options', function ($a) {
+                ->addColumn('action', function ($a) {
 
-                    $edit = '<a href=" ' . route('admin.event.edit', $a->id) . '" class="btn btn-warning" style="margin-right: 10px;">Edit</a>';
-                    $delete = '<a href="javascript:void(0)" class="deleteButton btn btn-danger" record="award" data-id="' . $a->id . '">Delete</a>';
+                    $detail = '<a href=" ' . route('admin.event.show', $a->id) . '" class="btn btn-sm btn-primary" style="margin-right: 10px;">Detail</a>';
+                    $edit = '<a href=" ' . route('admin.event.edit', $a->id) . '" class="btn btn-sm" style="margin-right: 10px;background-color: yellow;">Edit</a>';
+                    $delete = '<a href="javascript:void(0)" class="deleteButton btn btn-sm btn-danger" record="award" data-id="' . $a->id . '">Delete</a>';
 
-                    return '<div class="action">'  . $edit . $delete . '</div>';
-                })->rawColumns(['options', 'featured_image'])->make(true);
+                    return '<div class="action">'  . $detail . $edit . $delete . '</div>';
+                })->rawColumns(['action', 'featured_image'])->make(true);
         }
 
         return view("admin.events.index");
@@ -104,7 +105,7 @@ class EventController extends Controller
             'content_image2' => $content_image2_name
         ]);
 
-        return redirect()->back()->with('create', 'Event');
+        return redirect()->route('admin.event.index')->with('create', 'Event');
     }
 
     /**
@@ -113,9 +114,9 @@ class EventController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Event $event)
     {
-        //
+        return view('admin.events.detail', compact('event'));
     }
 
     /**
@@ -146,6 +147,7 @@ class EventController extends Controller
 
         if($request->file('featured_image'))
         {
+            unlink(public_path('/events/' . $event->featured_image));
             $featured_image = $request->file('featured_image');
             $featured_image_name = uniqid() . $featured_image->getClientOriginalName();
             $featured_image->move(public_path('events'), $featured_image_name);
@@ -156,6 +158,7 @@ class EventController extends Controller
         }
         if($request->file('content_image1'))
         {
+            unlink(public_path('/events/' . $event->content_image1));
             $content_image1 = $request->file('content_image1');
             $content_image1_name = uniqid() . $content_image1->getClientOriginalName();
             $content_image1->move(public_path('events'), $content_image1_name);
@@ -167,6 +170,7 @@ class EventController extends Controller
 
         if($request->file('content_image2'))
         {
+            unlink(public_path('/events/' . $event->content_image2));
             $content_image2 = $request->file('content_image2');
             $content_image2_name = uniqid() . $content_image2->getClientOriginalName();
             $content_image2->move(public_path('events'), $content_image2_name);
@@ -184,7 +188,7 @@ class EventController extends Controller
             'content_image2' => $content_image2_name
         ]);
 
-        return redirect()->back()->with('update', 'Event');
+        return redirect()->route('admin.event.index')->with('update', 'Event');
     }
 
     /**
@@ -198,6 +202,10 @@ class EventController extends Controller
         //
         $event->delete();
 
+        unlink(public_path('/events/' . $event->featured_image));
+        unlink(public_path('/events/' . $event->content_image1));
+        unlink(public_path('/events/' . $event->content_image2));
+        
         return 'success';
     }
 }

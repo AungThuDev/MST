@@ -1,20 +1,21 @@
 @extends('layouts.master')
 
-@section('banner-page', 'nav-link nav-link active')
+@section('event', 'nav-link nav-link active')
 
 @section('content')
 
     <div class="d-flex justify-content-end mb-5">
-        <a href="{{ route('admin.event.create') }}" class="btn btn-primary text-white">Add New Event</a>
+        <a href="{{ route('admin.event.create') }}" class="btn btn-success text-white">Add New Event</a>
     </div>
     <div class="table-responsive">
         <table class="table table-bordered table-hover" id="events">
             <thead>
                 <tr>
+                    <th>Id</th>
                     <th>Title</th>
                     <th>Featured Image</th>
                     <th>Created At</th>
-                    <th>Options</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -31,6 +32,9 @@
         let table = $('#events').DataTable({
             'serverSide': true,
             'processing': true,
+            'order': [
+                [0, 'desc']
+            ],
             'ajax': {
                 url: '/admin/event/',
                 error: function(xhr, testStatus, errorThrown) {
@@ -39,6 +43,9 @@
             },
 
             "columns": [{
+                    "data": "id"
+                },
+                {
                     "data": "title"
                 },
                 {
@@ -48,7 +55,7 @@
                     "data": "created_at"
                 },
                 {
-                    "data": "options"
+                    "data": "action"
                 }
             ]
         });

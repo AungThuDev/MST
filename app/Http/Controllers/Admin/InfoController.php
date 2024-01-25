@@ -21,13 +21,13 @@ class InfoController extends Controller
 
             return DataTables::of($info)
 
-                ->addColumn('options', function ($a) {
+                ->addColumn('action', function ($a) {
 
-                    $edit = '<a href=" ' . route('admin.info.edit', $a->id) . '" class="btn btn-warning" style="margin-right: 10px;">Edit</a>';
+                    $edit = '<a href=" ' . route('admin.info.edit', $a->id) . '" class="btn" style="margin-right: 10px;background-color: yellow;">Edit</a>';
                     $delete = '<a href="javascript:void(0)" class="deleteButton btn btn-danger" record="award" data-id="' . $a->id . '">Delete</a>';
 
                     return '<div class="action">'  . $edit . $delete . '</div>';
-                })->rawColumns(['options'])->make(true);
+                })->rawColumns(['action'])->make(true);
         }
 
         return view("admin.info.index");
@@ -63,7 +63,7 @@ class InfoController extends Controller
             'link' => $request->link
         ]);
 
-        return redirect()->back()->with('create', 'Contact Information');
+        return redirect()->route('admin.info.index')->with('create', 'Contact Information');
     }
 
     /**
@@ -108,7 +108,7 @@ class InfoController extends Controller
             'linl' => $request->link
         ]);
 
-        return redirect()->back()->with('update', 'Contact Information');
+        return redirect()->route('admin.info.index')->with('update', 'Contact Information');
     }
 
     /**

@@ -1,10 +1,10 @@
 @extends('layouts.master')
 
-@section('banner-page', 'nav-link nav-link active')
+@section('info', 'nav-link nav-link active')
 
 @section('content')
     <div>
-        <a href="{{ route('admin.info.index') }}" class="btn btn-success float-right mb-2">All Contact Information</a>
+        <a href="{{ route('admin.info.index') }}" class="btn btn-success float-right mb-2">Back</a>
     </div>
     <form action="{{ route('admin.info.update', $info->id) }}" method="POST">
         @method('PUT')
@@ -14,7 +14,7 @@
                 <div class="col-12">
                     <div class="form-group">
                         <label for="">Info Name<span style="color: red">*</span></label>
-                        <input type="text" class="form-control" value="{{ $info->name }}" name="name">
+                        <input type="text" class="form-control" value="{{ old('name') ?? $info->name }}" name="name">
                         @error('name')
                             <span class="badge badge-danger">{{ $message }}</span>
                         @enderror
@@ -23,7 +23,7 @@
                 <div class="col-12">
                     <div class="form-group">
                         <label for="">Info Link<span style="color: red">*</span></label>
-                        <textarea name="link" class="form-control">{{ $info->link }}</textarea>
+                        <textarea name="link" class="form-control">{{ old('link') ?? $info->link }}</textarea>
                         @error('link')
                             <span class="badge badge-danger">{{ $message }}</span>
                         @enderror

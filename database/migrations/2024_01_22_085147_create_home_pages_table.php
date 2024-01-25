@@ -32,7 +32,6 @@ class CreateHomePagesTable extends Migration
             $table->string('prograss2_percent');
             $table->string('prograss3');
             $table->string('prograss3_percent');
-            $table->longText('course_text');
             $table->timestamps();
         });
     }

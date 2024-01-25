@@ -1,11 +1,13 @@
 @extends('layouts.master')
 
+@section('award', 'nav-link nav-link active')
+
 @section('content')
     <div class="d-flex justify-content-end">
-        <a href="{{ route('admin.award.index') }}" class="btn btn-danger">Back</a>
+        <a href="{{ route('admin.award.index') }}" class="btn btn-success">Back</a>
     </div>
     <div class="row p-4">
-        <form class="col" method="POST" action="{{ route("admin.award.store") }}" enctype="multipart/form-data">
+        <form class="col" method="POST" action="{{ route('admin.award.store') }}" enctype="multipart/form-data">
             @csrf
             <div class="d-flex justify-content-center">
                 <h1>Add New Award</h1>
@@ -32,7 +34,7 @@
                 @enderror
             </div>
             <div>
-                <button type="submit" class="btn btn-primary mt-4">Submit</button>
+                <button type="submit" class="btn btn-success float-right mt-4">Create</button>
             </div>
         </form>
     </div>

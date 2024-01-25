@@ -1,5 +1,8 @@
 @extends('layouts.master')
 
+@section('award', 'nav-link nav-link active')
+
+
 @section('content')
     <div class="d-flex justify-content-start">
         <h1 class="p-2">Awards</h1>
@@ -7,7 +10,7 @@
     <div class="d-flex justify-content-end mb-4">
         <a class="btn btn-success text-white" href="{{ route('admin.award.create') }}">Add New Award</a>
     </div>
-    <div class="table-responsive">
+    <div class="">
         <table id="award" class="table table-bordered table-hover">
             <thead>
                 <tr>
@@ -30,10 +33,12 @@
 
 @section('script')
     <script>
-
         let table = $('#award').DataTable({
             'serverSide': true,
             'processing': true,
+            'order': [
+                [0, 'desc']
+            ],
             'ajax': {
                 url: '/admin/award/',
                 error: function(xhr, testStatus, errorThrown) {
@@ -60,6 +65,33 @@
                     "data": "action"
                 }
             ]
+        });
+        $(document).on('click', '.deleteButton', function(a) {
+            a.preventDefault();
+            var id = $(this).data('id');
+
+            Swal.fire({
+                title: 'Do you want to delete this award?',
+                showCancelButton: true,
+                confirmButtonText: 'Delete',
+                confirmButtonColor: '#FF0000',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: '/admin/award/' + id,
+                        type: 'DELETE',
+                        success: function() {
+                            table.ajax.reload()
+                        }
+                    });
+
+                    Swal.fire(
+                        'Deleted!',
+                        'Award has been deleted.',
+                        'success'
+                    )
+                }
+            })
         });
     </script>
 @endsection

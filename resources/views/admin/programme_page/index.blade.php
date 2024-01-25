@@ -1,11 +1,14 @@
 @extends('layouts.master')
+
+@section('programme-page', 'nav-link nav-link active')
+
 @section('content')
     <h1 class="text-center">Programme Page Content</h1>
 
-{{--    <div>--}}
-{{--        <img src="{{ asset('/programme_page/' . $programmePage->image) }}" style="width: 100%">--}}
-{{--        <div>--}}
-{{--            --}}
-{{--        </div>--}}
-{{--    </div>--}}
+    {{--    <div> --}}
+    {{--        <img src="{{ asset('/programme_page/' . $programmePage->image) }}" style="width: 100%"> --}}
+    {{--        <div> --}}
+    {{--            --}}
+    {{--        </div> --}}
+    {{--    </div> --}}
 @endsection

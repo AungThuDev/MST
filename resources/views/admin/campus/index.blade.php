@@ -1,19 +1,20 @@
 @extends('layouts.master')
 
-@section('banner-page', 'nav-link nav-link active')
+@section('campus', 'nav-link nav-link active')
 
 @section('content')
     <div class="d-flex justify-content-end mb-5">
-        <a href="{{ route('admin.campus.create') }}" class="btn btn-primary text-white">Add New Campus</a>
+        <a href="{{ route('admin.campus.create') }}" class="btn btn-success text-white">Add New Campus</a>
     </div>
 
     <table class="table table-bordered table-hover" id="campus">
         <thead>
             <tr>
+                <th>Id</th>
                 <th>Name</th>
                 <th>Address</th>
                 <th>Phones</th>
-                <th>Options</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -27,6 +28,9 @@
         let table = $('#campus').DataTable({
             'serverSide': true,
             'processing': true,
+            'order': [
+                [0, 'desc']
+            ],
             'ajax': {
                 url: '/admin/campus/',
                 error: function(xhr, testStatus, errorThrown) {
@@ -35,6 +39,9 @@
             },
 
             "columns": [{
+                    "data": "id"
+                },
+                {
                     "data": "name"
                 },
                 {
@@ -44,7 +51,7 @@
                     "data": "phones"
                 },
                 {
-                    "data": "options"
+                    "data": "action"
                 }
             ]
         });

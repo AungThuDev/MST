@@ -1,10 +1,10 @@
 @extends('layouts.master')
 
-@section('banner-page', 'nav-link nav-link active')
+@section('campus', 'nav-link nav-link active')
 
 @section('content')
     <div>
-        <a href="{{ route('admin.campus.index') }}" class="btn btn-success float-right mb-2">All Campus</a>
+        <a href="{{ route('admin.campus.index') }}" class="btn btn-success float-right mb-2">Back</a>
     </div>
     <form action="{{ route('admin.campus.store') }}" method="POST">
         @csrf
@@ -31,9 +31,9 @@
                 <div class="col-4">
                     <div class="form-group" id="phones">
                         <label for="">Campus Phones<span style="color: red">*</span></label>
-                        <input placeholder="Enter Phone Number" type="text" class="form-control"
+                        <input placeholder="Enter Phone Number" type="number" class="form-control"
                             value="{{ old('phones.0') }}" name="phones[]">
-                        @error('phone_one')
+                        @error('phones.0')
                             <span class="badge badge-danger">{{ $message }}</span>
                         @enderror
                     </div>
@@ -59,7 +59,7 @@
         $(document).on('click', '.addPhone', function(a) {
             a.preventDefault();
             var input = document.createElement('input');
-            input.type = 'text';
+            input.type = 'number';
             input.className = 'form-control mt-3';
             input.name = 'phones[]';
             input.placeholder = 'Enter Phone Number';
