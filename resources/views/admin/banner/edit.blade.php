@@ -1,10 +1,10 @@
 @extends('layouts.master')
 
-@section('banner-page', 'nav-link nav-link active')
+@section('banner', 'nav-link nav-link active')
 
 @section('content')
     <div>
-        <a href="{{ route('admin.banner.index') }}" class="btn btn-success float-right mb-2">All Banners</a>
+        <a href="{{ route('admin.banner.index') }}" class="btn btn-success float-right mb-2">Back</a>
     </div>
     <form action="{{ route('admin.banner.update', $banner->id) }}" enctype="multipart/form-data" method="POST">
         @method('PUT')
@@ -14,7 +14,8 @@
                 <div class="col-6">
                     <div class="form-group">
                         <label for="">Page Type<span style="color: red">*</span></label>
-                        <input type="text" value="{{ $banner->page }}" class="form-control" name="page_type">
+                        <input type="text" value="{{ old('page_type') ?? $banner->page }}" class="form-control"
+                            name="page_type">
                         @error('page_type')
                             <span class="badge badge-danger">{{ $message }}</span>
                         @enderror

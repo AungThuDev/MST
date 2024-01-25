@@ -1,10 +1,10 @@
 @extends('layouts.master')
 
-@section('banner-page', 'nav-link nav-link active')
+@section('event', 'nav-link nav-link active')
 
 @section('content')
     <div>
-        <a href="{{ route('admin.event.index') }}" class="btn btn-success float-right mb-2">All Events</a>
+        <a href="{{ route('admin.event.index') }}" class="btn btn-success float-right mb-2">Back</a>
     </div>
     <form action="{{ route('admin.event.store') }}" enctype="multipart/form-data" method="POST">
         @csrf

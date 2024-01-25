@@ -48,73 +48,85 @@
                 <!-- Nav items -->
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" href="examples/dashboard.html">
+                        <a class="nav-link @yield('dashboard')" href="{{ url('/admin/dashboard') }}">
                             <i class="ni ni-tv-2 text-primary"></i>
                             <span class="nav-link-text">Dashboard</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('admin.homepage.index') }}">
+                        <a class="nav-link @yield('home-page')" href="{{ route('admin.homepage.index') }}">
                             <i class="ni ni-planet text-orange"></i>
                             <span class="nav-link-text">Home Page</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/admin/programme_page">
+                        <a class="nav-link @yield('programme-page')" href="/admin/programme_page">
                             <i class="ni ni-planet text-orange"></i>
                             <span class="nav-link-text">Programme Page</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('admin.principal.index') }}">
+                        <a class="nav-link @yield('principal')" href="{{ route('admin.principal.index') }}">
                             <i class="ni ni-planet text-orange"></i>
                             <span class="nav-link-text">Principal</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('admin.banner.index') }}">
+                        <a class="nav-link @yield('banner')" href="{{ route('admin.banner.index') }}">
                             <i class="ni ni-planet text-orange"></i>
                             <span class="nav-link-text">Banner</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('admin.event.index') }}">
+                        <a class="nav-link @yield('event')" href="{{ route('admin.event.index') }}">
                             <i class="ni ni-planet text-orange"></i>
                             <span class="nav-link-text">Event</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/admin/categories">
+                        <a class="nav-link @yield('campus')" href="{{ route('admin.campus.index') }}">
+                            <i class="ni ni-planet text-orange"></i>
+                            <span class="nav-link-text">Campus</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @yield('category')" href="/admin/categories">
                             <i class="ni ni-planet text-orange"></i>
                             <span class="nav-link-text">Programme Categories</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/admin/programmes">
+                        <a class="nav-link @yield('programme')" href="/admin/programmes">
                             <i class="ni ni-planet text-orange"></i>
                             <span class="nav-link-text">Programme</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('admin.award.index') }}">
+                        <a class="nav-link @yield('award')" href="{{ route('admin.award.index') }}">
                             <i class="ni ni-planet text-orange"></i>
                             <span class="nav-link-text">Awards</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('admin.partner.index') }}">
+                        <a class="nav-link @yield('partner')" href="{{ route('admin.partner.index') }}">
                             <i class="ni ni-planet text-orange"></i>
                             <span class="nav-link-text">Partners</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('admin.lecturer.index') }}">
+                        <a class="nav-link @yield('lecturer')" href="{{ route('admin.lecturer.index') }}">
                             <i class="ni ni-planet text-orange"></i>
                             <span class="nav-link-text">Lecturers</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('admin.faq.index') }}">
+                        <a class="nav-link @yield('info')" href="{{ route('admin.info.index') }}">
+                            <i class="ni ni-planet text-orange"></i>
+                            <span class="nav-link-text">Contact Info</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @yield('faq')" href="{{ route('admin.faq.index') }}">
                             <i class="ni ni-planet text-orange"></i>
                             <span class="nav-link-text">FAQ</span>
                         </a>
@@ -177,7 +189,7 @@
             toast: true,
             position: 'top-end',
             showConfirmButton: false,
-            timer: 3000,
+            timer: 2000,
             timerProgressBar: true,
             didOpen: (toast) => {
                 toast.addEventListener('mouseenter', Swal.stopTimer)
@@ -205,4 +217,3 @@
 </body>
 
 </html>
-

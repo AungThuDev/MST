@@ -165,15 +165,6 @@
                         @enderror
                     </div>
                 </div>
-                <div class="col-12">
-                    <div class="form-group">
-                        <label for="">Course Text<span style="color: red">*</span></label>
-                        <textarea name="course_text" value="{{ old('course_text') }}" class="form-control"></textarea>
-                        @error('course_text')
-                            <span class="badge badge-danger">{{ $message }}</span>
-                        @enderror
-                    </div>
-                </div>
 
             </div>
             <div>

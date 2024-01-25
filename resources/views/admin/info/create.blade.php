@@ -1,10 +1,10 @@
 @extends('layouts.master')
 
-@section('banner-page', 'nav-link nav-link active')
+@section('info', 'nav-link nav-link active')
 
 @section('content')
     <div>
-        <a href="{{ route('admin.info.index') }}" class="btn btn-success float-right mb-2">All Contact Information</a>
+        <a href="{{ route('admin.info.index') }}" class="btn btn-success float-right mb-2">Back</a>
     </div>
     <form action="{{ route('admin.info.store') }}" method="POST">
         @csrf

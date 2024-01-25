@@ -1,4 +1,7 @@
 @extends('layouts.master')
+
+@section('faq', 'nav-link nav-link active')
+
 @section('content')
     <div class="container-fluid">
         <div class="row">

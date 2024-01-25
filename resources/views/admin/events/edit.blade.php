@@ -1,10 +1,10 @@
 @extends('layouts.master')
 
-@section('banner-page', 'nav-link nav-link active')
+@section('event', 'nav-link nav-link active')
 
 @section('content')
     <div>
-        <a href="{{ route('admin.event.index') }}" class="btn btn-success float-right mb-2">All Events</a>
+        <a href="{{ route('admin.event.index') }}" class="btn btn-success float-right mb-2">Back</a>
     </div>
     <form action="{{ route('admin.event.update', $event->id) }}" enctype="multipart/form-data" method="POST">
         @method('PUT')
@@ -14,7 +14,8 @@
                 <div class="col-12">
                     <div class="form-group">
                         <label for="">Event Title<span style="color: red">*</span></label>
-                        <input type="text" class="form-control" value="{{ $event->title }}" name="title">
+                        <input type="text" class="form-control" value="{{ old('title') ?? $event->title }}"
+                            name="title">
                         @error('title')
                             <span class="badge badge-danger">{{ $message }}</span>
                         @enderror
@@ -23,7 +24,7 @@
                 <div class="col-12">
                     <div class="form-group">
                         <label for="">Event Description<span style="color: red">*</span></label>
-                        <textarea name="description" class="form-control">{{ $event->description }}</textarea>
+                        <textarea name="description" class="form-control">{{ old('description') ?? $event->description }}</textarea>
                         @error('description')
                             <span class="badge badge-danger">{{ $message }}</span>
                         @enderror
@@ -31,7 +32,7 @@
                 </div>
                 <div class="col-12">
                     <div class="form-group">
-                        <label for="">Featured Image<span style="color: red">*</span></label>
+                        <label for="">Featured Image (Optional)</label>
                         <input type="file" class="form-control" name="featured_image">
                         <img src="{{ url('/events/' . $event->featured_image) }}" style="width: 100px" class="img-thumbnail"
                             alt="">

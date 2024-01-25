@@ -1,4 +1,7 @@
 @extends('layouts.master')
+
+@section('category', 'nav-link nav-link active')
+
 @section('content')
     <div class="container-fluid">
         <div class="row">
@@ -6,20 +9,21 @@
                 <div class="card">
                     <div class="card-header">
                         <h1 class="card-title">Programme Categories</h1>
-                        <a href="{{ route('admin.categories.create') }}" class="btn btn-primary top-right-btn">Create New Category</a>
+                        <a href="{{ route('admin.categories.create') }}" class="btn btn-primary top-right-btn">Create New
+                            Category</a>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
                         <table id="categories" class="table table-bordered table-hover">
                             <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Name</th>
-                                <th>Image</th>
-                                <th>Created</th>
-                                <th>Updated</th>
-                                <th>Action</th>
-                            </tr>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Image</th>
+                                    <th>Created</th>
+                                    <th>Updated</th>
+                                    <th>Action</th>
+                                </tr>
                             </thead>
                             <tbody>
 
@@ -48,8 +52,8 @@
             },
 
             "columns": [{
-                "data": "id"
-            },
+                    "data": "id"
+                },
                 {
                     'data': 'name'
                 },

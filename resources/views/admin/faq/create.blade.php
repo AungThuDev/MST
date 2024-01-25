@@ -1,4 +1,7 @@
 @extends('layouts.master')
+
+@section('faq', 'nav-link nav-link active')
+
 @section('content')
     <div class="px-4 py-3">
         <h1 class="text-center">Create A New FAQ</h1>

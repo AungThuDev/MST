@@ -59,6 +59,8 @@ class HomePageController extends Controller
             'about_text' => 'required',
             'about_image_one' => 'required|image|mimes:png,jpg,jpeg',
             'about_image_two' => 'required|image|mimes:png,jpg,jpeg',
+            'journey_image_one' => 'required|image|mimes:png,jpg,jpeg',
+            'journey_image_two' => 'required|image|mimes:png,jpg,jpeg',
             'eval_title' => 'required',
             'eval_image' => 'required|image|mimes:png,jpg,jpeg',
             'eval_text' => 'required',
@@ -73,23 +75,23 @@ class HomePageController extends Controller
 
         $about_image_one = $request->file('about_image_one');
         $about_image_one_name = uniqid() . $about_image_one->getClientOriginalName();
-        $about_image_one->move(public_path('images'), $about_image_one_name);
+        $about_image_one->move(public_path('homepage'), $about_image_one_name);
 
         $about_image_two = $request->file('about_image_two');
         $about_image_two_name = uniqid() . $about_image_two->getClientOriginalName();
-        $about_image_two->move(public_path('images'), $about_image_two_name);
+        $about_image_two->move(public_path('homepage'), $about_image_two_name);
 
         $journey_image_one = $request->file('journey_image_one');
         $journey_image_one_name = uniqid() . $journey_image_one->getClientOriginalName();
-        $journey_image_one->move(public_path('images'), $journey_image_one_name);
+        $journey_image_one->move(public_path('homepage'), $journey_image_one_name);
 
         $journey_image_two = $request->file('journey_image_two');
         $journey_image_two_name = uniqid() . $journey_image_two->getClientOriginalName();
-        $journey_image_two->move(public_path('images'), $journey_image_two_name);
+        $journey_image_two->move(public_path('homepage'), $journey_image_two_name);
 
         $eval_image = $request->file('eval_image');
         $eval_image_name = uniqid() . $eval_image->getClientOriginalName();
-        $eval_image->move(public_path('images'), $eval_image_name);
+        $eval_image->move(public_path('homepage'), $eval_image_name);
 
         HomePage::create([
             'vision' => $request->vision,
@@ -112,7 +114,7 @@ class HomePageController extends Controller
             'course_text' => $request->course_text
         ]);
 
-        return redirect()->back()->with('success', 'Home Page created Successfully');
+        return redirect()->back()->with('create', 'Home Page');
     }
 
     /**
@@ -166,9 +168,10 @@ class HomePageController extends Controller
 
         if($request->file('about_image_one'))
         {
+            unlink(public_path('/homepage/' . $homepage->about_image1));
             $about_image_one = $request->file('about_image_one');
             $about_image_one_name = uniqid() . $about_image_one->getClientOriginalName();
-            $about_image_one->move(public_path('images'), $about_image_one_name);
+            $about_image_one->move(public_path('homepage'), $about_image_one_name);
         }
         else
         {
@@ -178,9 +181,10 @@ class HomePageController extends Controller
 
         if($request->file('about_image_two'))
         {
+            unlink(public_path('/homepage/' . $homepage->about_image2));
             $about_image_two = $request->file('about_image_two');
             $about_image_two_name = uniqid() . $about_image_two->getClientOriginalName();
-            $about_image_two->move(public_path('images'), $about_image_two_name);
+            $about_image_two->move(public_path('homepage'), $about_image_two_name);
         }
         else
         {
@@ -189,9 +193,10 @@ class HomePageController extends Controller
 
         if($request->file('journey_image_one'))
         {
+            unlink(public_path('/homepage/' . $homepage->journey_image1));
             $journey_image_one = $request->file('journey_image_one');
             $journey_image_one_name = uniqid() . $journey_image_one->getClientOriginalName();
-            $journey_image_one->move(public_path('images'), $journey_image_one_name);
+            $journey_image_one->move(public_path('homepage'), $journey_image_one_name);
         }
         else
         {
@@ -200,9 +205,10 @@ class HomePageController extends Controller
 
         if($request->file('journey_image_two'))
         {
+            unlink(public_path('/homepage/' . $homepage->journey_image2));
             $journey_image_two = $request->file('journey_image_two');
             $journey_image_two_name = uniqid() . $journey_image_two->getClientOriginalName();
-            $journey_image_two->move(public_path('images'), $journey_image_two_name);
+            $journey_image_two->move(public_path('homepage'), $journey_image_two_name);
         }
         else
         {
@@ -211,9 +217,10 @@ class HomePageController extends Controller
 
         if($request->file('eval_image'))
         {
+            unlink(public_path('/homepage/' . $homepage->eval_image));
             $eval_image = $request->file('eval_image');
             $eval_image_name = uniqid() . $eval_image->getClientOriginalName();
-            $eval_image->move(public_path('images'), $eval_image_name);
+            $eval_image->move(public_path('homepage'), $eval_image_name);
         }
         else
         {
@@ -241,7 +248,7 @@ class HomePageController extends Controller
             'course_text' => $request->course_text
         ]);
 
-        return redirect()->back()->with('success', 'Home Page Contents Updated');
+        return redirect()->back()->with('update', 'Home Page');
     }
 
     /**

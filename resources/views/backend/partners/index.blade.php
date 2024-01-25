@@ -1,5 +1,8 @@
 @extends('layouts.master')
 
+@section('partner', 'nav-link nav-link active')
+
+
 @section('content')
     <div class="d-flex justify-content-start">
         <h1 class="p-2">Partners</h1>
@@ -32,6 +35,9 @@
         let table = $('#partner').DataTable({
             'serverSide': true,
             'processing': true,
+            'order': [
+                [0, 'desc']
+            ],
             'ajax': {
                 url: '/admin/partner/',
                 error: function(xhr, testStatus, errorThrown) {
@@ -58,6 +64,33 @@
                     "data": "action"
                 }
             ]
+        });
+        $(document).on('click', '.deleteButton', function(a) {
+            a.preventDefault();
+            var id = $(this).data('id');
+
+            Swal.fire({
+                title: 'Do you want to delete this partner?',
+                showCancelButton: true,
+                confirmButtonText: 'Delete',
+                confirmButtonColor: '#FF0000',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: '/admin/partner/' + id,
+                        type: 'DELETE',
+                        success: function() {
+                            table.ajax.reload()
+                        }
+                    });
+
+                    Swal.fire(
+                        'Deleted!',
+                        'Partner has been deleted.',
+                        'success'
+                    )
+                }
+            })
         });
     </script>
 @endsection

@@ -44,7 +44,7 @@ class LecturerController extends Controller
 
                 ->addColumn('action', function ($a) {
 
-                    $edit = '<a href=" ' . route('admin.lecturer.edit', $a->id) . '" class="btn btn-warning" style="margin-right: 10px;">Edit</a>';
+                    $edit = '<a href=" ' . route('admin.lecturer.edit', $a->id) . '" class="btn" style="margin-right: 10px; background-color: yellow;">Edit</a>';
                     $delete = '<a href="javascript:void(0)" class="deleteButton btn btn-danger" record="lecturer" data-id="' . $a->id . '">Delete</a>';
 
                     return '<div class="action">' . $edit . $delete . '</div>';
@@ -88,7 +88,7 @@ class LecturerController extends Controller
 
         $lecturer->image = $image_name;
         $lecturer->save();
-        return redirect()->back()->with('create', "Lecturer");
+        return redirect()->route('admin.lecturer.index')->with('create', "Lecturer");
     }
 
     /**
@@ -129,17 +129,16 @@ class LecturerController extends Controller
         ]);
 
         if ($request->has('image')) {
-            $image_path = "/lecturer/{$lecturer->image}";
-            if (File::exists(public_path($image_path))) {
-                File::delete(public_path($image_path));
-            }
+
+            unlink(public_path('/lecturer/' . $lecturer->image));
+
             $image = $request->file("image");
             $image_name = uniqid() . $image->getClientOriginalName();
             $image->move(public_path("lecturer"), $image_name);
             $validated['image'] = $image_name;
         }
         $lecturer->update($validated);
-        return redirect()->back()->with('update', "Lecturer");
+        return redirect()->route('admin.lecturer.index')->with('update', "Lecturer");
     }
 
     /**
@@ -150,11 +149,10 @@ class LecturerController extends Controller
      */
     public function destroy(Lecturer $lecturer)
     {
-        $image_path = "/lecturer/{$lecturer->image}";
-        if (File::exists(public_path($image_path))) {
-            File::delete(public_path($image_path));
-        }
+        unlink(public_path('/lecturer/' . $lecturer->image));
+
         $lecturer->delete();
-        return response()->json(['status' => 1]);
+
+        return 'success';
     }
 }

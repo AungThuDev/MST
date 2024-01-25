@@ -1,8 +1,11 @@
 @extends('layouts.master')
 
+@section('partner', 'nav-link nav-link active')
+
+
 @section('content')
     <div class="d-flex justify-content-end">
-        <a href="{{ route('admin.partner.index') }}" class="btn btn-danger">Back</a>
+        <a href="{{ route('admin.partner.index') }}" class="btn btn-success">Back</a>
     </div>
     <div class="row p-4">
         <form class="col" method="POST" action="{{ route('admin.partner.update', $partner->id) }}"
@@ -14,14 +17,15 @@
             </div>
             <div class="form-group">
                 <label for="name">Name</label>
-                <input name="name" id="name" class="form-control" type="text" value="{{ $partner->name }}">
+                <input name="name" id="name" class="form-control" type="text"
+                    value="{{ old('name') ?? $partner->name }}">
                 @error('name')
                     <span class="badge badge-danger">{{ $message }}</span>
                 @enderror
             </div>
             <div class="form-group">
                 <label for="description">Description</label>
-                <textarea name="description" id="description" class="form-control" type="text">{{ $partner->description }}</textarea>
+                <textarea name="description" id="description" class="form-control" type="text">{{ old('description') ?? $partner->description }}</textarea>
                 @error('description')
                     <span class="badge badge-danger">{{ $message }}</span>
                 @enderror
@@ -40,7 +44,7 @@
                 @enderror
             </div>
             <div>
-                <button type="submit" class="btn btn-primary mt-4">Submit</button>
+                <button type="submit" class="btn btn-success float-right mt-4">Update</button>
             </div>
         </form>
     </div>

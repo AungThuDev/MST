@@ -44,7 +44,7 @@ class PartnerController extends Controller
 
                 ->addColumn('action', function ($a) {
 
-                    $edit = '<a href=" ' . route('admin.partner.edit', $a->id) . '" class="btn btn-warning" style="margin-right: 10px;">Edit</a>';
+                    $edit = '<a href=" ' . route('admin.partner.edit', $a->id) . '" class="btn" style="margin-right: 10px;background-color:yellow;">Edit</a>';
                     $delete = '<a href="javascript:void(0)" class="deleteButton btn btn-danger" record="partner" data-id="' . $a->id . '">Delete</a>';
 
                     return '<div class="action">' . $edit . $delete . '</div>';
@@ -89,7 +89,7 @@ class PartnerController extends Controller
 
         $partner->image = $image_name;
         $partner->save();
-        return redirect()->back()->with('create', "Partner");
+        return redirect()->route('admin.partner.index')->with('create', "Partner");
     }
 
     /**
@@ -131,16 +131,16 @@ class PartnerController extends Controller
 
         if ($request->has('image')) {
             $image_path = "/partner/{$partner->image}";
-            if (File::exists(public_path($image_path))) {
-                File::delete(public_path($image_path));
-            }
+
+            unlink(public_path('/partner/' . $partner->image));
+
             $image = $request->file("image");
             $image_name = uniqid() . $image->getClientOriginalName();
             $image->move(public_path("partner"), $image_name);
             $validated['image'] = $image_name;
         }
         $partner->update($validated);
-        return redirect()->back()->with('update', "Partner");
+        return redirect()->route('admin.partner.index')->with('update', "Partner");
     }
 
     /**
@@ -151,11 +151,11 @@ class PartnerController extends Controller
      */
     public function destroy(Partner $partner)
     {
-        $image_path = "/partner/{$partner->image}";
-        if (File::exists(public_path($image_path))) {
-            File::delete(public_path($image_path));
-        }
+
+        unlink(public_path('/partner/' . $partner->image));
+
         $partner->delete();
-        return response()->json(['status' => 1]);
+
+        return 'success';
     }
 }

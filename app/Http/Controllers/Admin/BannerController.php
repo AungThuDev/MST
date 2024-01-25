@@ -27,13 +27,13 @@ class BannerController extends Controller
                     return '<img style="width: 125px;" src="' . $path . '">';
                 })
 
-                ->addColumn('options', function ($a) {
+                ->addColumn('action', function ($a) {
 
-                    $edit = '<a href=" ' . route('admin.banner.edit', $a->id) . '" class="btn btn-warning" style="margin-right: 10px;">Edit</a>';
+                    $edit = '<a href=" ' . route('admin.banner.edit', $a->id) . '" class="btn" style="margin-right: 10px;background-color: yellow;">Edit</a>';
                     $delete = '<a href="javascript:void(0)" class="deleteButton btn btn-danger" record="award" data-id="' . $a->id . '">Delete</a>';
 
                     return '<div class="action">'  . $edit . $delete . '</div>';
-                })->rawColumns(['options', 'image'])->make(true);
+                })->rawColumns(['action', 'image'])->make(true);
         }
 
         return view("admin.banner.index");
@@ -74,7 +74,7 @@ class BannerController extends Controller
             'image' => $image_name
         ]);
 
-        return redirect()->back()->with('success', 'Banner created successfully');
+        return redirect()->route('admin.banner.index')->with('create', 'Banner');
     }
 
     /**
@@ -116,6 +116,7 @@ class BannerController extends Controller
 
         if($request->file('page_banner'))
         {
+            unlink(public_path('/banners/' . $banner->image));
             $image = $request->file('page_banner');
             $image_name = uniqid() . $image->getClientOriginalName();
             $image->move(public_path('banners'), $image_name);
@@ -130,7 +131,7 @@ class BannerController extends Controller
             'image' => $image_name
         ]);
 
-        return redirect()->back()->with('success', $request->page_type . 'Banner updated');
+        return redirect()->route('admin.banner.index')->with('update', $request->page_type . 'Banner');
     }
 
     /**
@@ -143,6 +144,7 @@ class BannerController extends Controller
     {
 
         $banner->delete();
+        unlink(public_path('/banners/' . $banner->image));
 
         return 'success';
     }

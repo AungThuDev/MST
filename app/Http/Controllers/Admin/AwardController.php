@@ -45,7 +45,7 @@ class AwardController extends Controller
 
                 ->addColumn('action', function ($a) {
 
-                    $edit = '<a href=" ' . route('admin.award.edit', $a->id) . '" class="btn btn-warning" style="margin-right: 10px;">Edit</a>';
+                    $edit = '<a href=" ' . route('admin.award.edit', $a->id) . '" class="btn" style="margin-right: 10px;background-color:yellow;">Edit</a>';
                     $delete = '<a href="javascript:void(0)" class="deleteButton btn btn-danger" record="award" data-id="' . $a->id . '">Delete</a>';
 
                     return '<div class="action">' . $edit . $delete . '</div>';
@@ -92,7 +92,7 @@ class AwardController extends Controller
 
         $award->save();
 
-        return redirect()->back()->with('create', 'Award');
+        return redirect()->route('admin.award.index')->with('create', 'Award');
     }
 
     /**
@@ -143,7 +143,7 @@ class AwardController extends Controller
             $validated['image'] = $image_name;
         }
         $award->update($validated);
-        return redirect()->back()->with('update', "Award");
+        return redirect()->route('admin.award.index')->with('update', "Award");
     }
 
     /**

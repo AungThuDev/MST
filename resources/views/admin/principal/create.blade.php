@@ -1,4 +1,7 @@
 @extends('layouts.master')
+
+@section('principal', 'nav-link nav-link active')
+
 @section('content')
     <div class="px-4 py-3">
         <h1 class="text-center">Create Principal</h1>
@@ -19,7 +22,7 @@
                 <input class="form-control" type="file" id="home_image" name="home_image" accept="image/*">
             </div>
             @error('home_image')
-            <p class="badge badge-danger">{{ $message }}</p>
+                <p class="badge badge-danger">{{ $message }}</p>
             @enderror
 
             <div class="mt-4">
@@ -35,12 +38,11 @@
                 <input class="form-control" type="file" id="faculty_image" name="faculty_image" accept="image/*">
             </div>
             @error('faculty_image')
-            <p class="badge badge-danger">{{ $message }}</p>
+                <p class="badge badge-danger">{{ $message }}</p>
             @enderror
 
             <div class="mt-4">
-                <label for="faculty_text">Description For Faculty Page <span
-                        class="text-danger">*</span></label>
+                <label for="faculty_text">Description For Faculty Page <span class="text-danger">*</span></label>
                 <textarea class="form-control" id="faculty_text" name="faculty_text" rows="7">{{ old('faculty_text') }}</textarea>
                 @error('faculty_text')
                     <p class="badge badge-danger">{{ $message }}</p>
