@@ -21,7 +21,9 @@
                 <p class="badge badge-danger">{{ $message }}</p>
                 @enderror
             </div>
-            <button class="btn btn-primary mt-3 float-right">Create</button>
+            <button class="btn btn-success mt-3 float-right">Create</button>
         </form>
+
+        <a class="btn btn-success top-right-btn text-white" href="{{ route('admin.categories.index') }}">Back</a>
     </div>
 @endsection

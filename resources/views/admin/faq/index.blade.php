@@ -6,7 +6,7 @@
                 <div class="card">
                     <div class="card-header">
                         <h1 class="card-title">FAQ</h1>
-                        <a href="{{ route('admin.faq.create') }}" class="btn btn-success float-right">Create FAQ</a>
+                        <a href="{{ route('admin.faq.create') }}" class="btn btn-success float-right">Add new FAQ</a>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
@@ -16,7 +16,6 @@
                                 <th>ID</th>
                                 <th>Question</th>
                                 <th>Created</th>
-                                <th>Updated</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
@@ -37,6 +36,7 @@
 
     <script>
         var faqTable = $('#faq').DataTable({
+            "order": [[ 0, 'desc' ]],
             'serverSide': true,
             'processing': true,
             'ajax': {
@@ -54,9 +54,6 @@
                 },
                 {
                     "data": "created_at"
-                },
-                {
-                    'data': 'updated_at'
                 },
                 {
                     "data": "action"

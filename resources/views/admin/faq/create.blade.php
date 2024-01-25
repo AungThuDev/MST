@@ -23,5 +23,7 @@
             </div>
             <button class="btn btn-success mt-3 float-right">Create</button>
         </form>
+
+        <a class="btn btn-success top-right-btn text-white" href="{{ route('admin.faq.index') }}">Back</a>
     </div>
 @endsection

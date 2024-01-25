@@ -18,15 +18,12 @@ class FaqController extends Controller
 
             return DataTables::of($faq)
                 ->editColumn('created_at', function ($a) {
-                    return Carbon::parse($a->created_at)->format("Y-m-d H:i:s");
-                })
-                ->editColumn('updated_at', function ($a) {
-                    return Carbon::parse($a->updated_at)->format("Y-m-d H:i:s");
+                    return \Carbon\Carbon::parse($a->created_at)->format("F j, Y, g:i a");
                 })
                 ->addColumn('action', function ($a) {
 
                     $details = "<a href='/admin/faq/$a->id' class='btn btn-sm btn-primary' style='margin-right: 10px'>Details</a>";
-                    $edit = '<a href=" ' . route('admin.faq.edit', $a->id) . '" class="btn btn-sm btn-warning" style="margin-right: 10px;">Edit</a>';
+                    $edit = '<a href=" ' . route('admin.faq.edit', $a->id) . '" class="btn btn-sm" style="margin-right: 10px; background-color: yellow;">Edit</a>';
                     $delete = '<a href="" class="deleteFaqButton btn btn-sm btn-danger" data-id="' . $a->id . '">Delete</a>';
 
                     return '<div class="action">' . $details . $edit . $delete . '</div>';

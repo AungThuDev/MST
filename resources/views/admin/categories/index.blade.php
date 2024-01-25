@@ -6,7 +6,7 @@
                 <div class="card">
                     <div class="card-header">
                         <h1 class="card-title">Programme Categories</h1>
-                        <a href="{{ route('admin.categories.create') }}" class="btn btn-primary top-right-btn">Create New Category</a>
+                        <a href="{{ route('admin.categories.create') }}" class="btn btn-success top-right-btn">Add New Category</a>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
@@ -17,7 +17,6 @@
                                 <th>Name</th>
                                 <th>Image</th>
                                 <th>Created</th>
-                                <th>Updated</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
@@ -58,9 +57,6 @@
                 },
                 {
                     "data": "created_at"
-                },
-                {
-                    'data': 'updated_at'
                 },
                 {
                     "data": "action"
