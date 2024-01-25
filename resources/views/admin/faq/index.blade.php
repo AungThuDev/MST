@@ -10,15 +10,15 @@
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <table id="faq" class="table-responsive table-bordered table-hover">
+                        <table id="faq" class="table table-bordered table-hover">
                             <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Question</th>
-                                <th>Created</th>
-                                <th>Updated</th>
-                                <th>Action</th>
-                            </tr>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Question</th>
+                                    <th>Created</th>
+                                    <th>Updated</th>
+                                    <th>Action</th>
+                                </tr>
                             </thead>
                             <tbody>
 
@@ -47,8 +47,8 @@
             },
 
             "columns": [{
-                "data": "id"
-            },
+                    "data": "id"
+                },
                 {
                     'data': 'question'
                 },

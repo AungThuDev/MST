@@ -11,19 +11,19 @@
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <table id="programmes" class="table-responsive table-bordered table-hover">
+                        <table id="programmes" class="table table-bordered table-hover">
                             <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Name</th>
-                                <th>Category</th>
-                                <th>Image</th>
-                                <th>duration</th>
-                                <th>link</th>
-                                <th>Created</th>
-                                <th>Updated</th>
-                                <th>Action</th>
-                            </tr>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Category</th>
+                                    <th>Image</th>
+                                    <th>duration</th>
+                                    <th>link</th>
+                                    <th>Created</th>
+                                    <th>Updated</th>
+                                    <th>Action</th>
+                                </tr>
                             </thead>
                             <tbody>
 
@@ -46,14 +46,14 @@
             'processing': true,
             'ajax': {
                 url: '/admin/programmes/',
-                error: function (xhr, testStatus, errorThrown) {
+                error: function(xhr, testStatus, errorThrown) {
 
                 }
             },
 
             "columns": [{
-                "data": "id"
-            },
+                    "data": "id"
+                },
                 {
                     'data': 'name'
                 },
@@ -81,7 +81,7 @@
             ]
         });
 
-        $(document).on('click', '.deleteProgrammesButton', function (a) {
+        $(document).on('click', '.deleteProgrammesButton', function(a) {
             a.preventDefault();
             const id = $(this).data('id');
             Swal.fire({
@@ -94,7 +94,7 @@
                     $.ajax({
                         url: '/admin/programmes/' + id,
                         type: 'DELETE',
-                        success: function () {
+                        success: function() {
                             programmesTable.ajax.reload();
                         }
                     });
