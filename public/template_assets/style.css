@@ -1,0 +1,828 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    /* font-family: 'DM Sans', sans-serif; */
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+nav {
+    font-family: 'DM Sans', sans-serif;
+}
+
+.contact-bar p {
+    margin-bottom: 0;
+}
+
+.small-heading {
+    font-size: 18px;
+    font-family: 'DM Sans', sans-serif;
+    letter-spacing: 3px;
+}
+
+p {
+    font-size: 15px;
+}
+
+.banner-heading {
+    font-size: 90px;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 700;
+}
+
+.relative-container {
+    position: relative;
+    height: 670px;
+}
+
+.contact-banner {
+    background-image: url('images/contact-banner-min.jpg');
+    background-size: cover;
+    background-position: bottom;
+}
+
+.faq-banner {
+    background-image: url('images/faq-banner.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.academic-banner {
+    background-image: url('images/academic-banner-min.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.lecturer-banner {
+    background-image: url('images/Lecturers-min.png');
+    background-size: cover;
+    background-position: top;
+}
+
+.index-banner {
+    background-image: url('images/home.png');
+    background-size: cover;
+    background-position: top;
+}
+.event-banner {
+    background-image: url('images/event\ banner.jpg');
+    background-size: cover;
+    background-position: top;
+}
+.graduation-banner {
+    background-image: url('images/Graduation\ Banner.jpg');
+    background-size: cover;
+    background-position: top;
+}
+.fresher-banner {
+    background-image: url('images/Fresher\ Welcome\ Banner.jpg');
+    background-size: cover;
+    background-position: top;
+}
+.futsal-banner {
+    background-image: url('images/Futsal\ Banner.jpg');
+    background-size: cover;
+    background-position: top;
+}
+.badminton-banner {
+    background-image: url('images/Badminton\ banner-min.jpg');
+    background-size: cover;
+    background-position: top;
+}
+.mdy-banner {
+    background-image: url('images/Mdy\ opening\ banner.jpg');
+    background-size: cover;
+    background-position: top;
+}
+
+/* mnm */
+.relative-container:not(.lecturer-banner)::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(1, 0, 53, 0.5);
+    z-index: 1;
+}
+
+.absolute-element {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    max-width: 700px;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.dropdown-item:hover {
+    background-color: #2826c1;
+    color: white !important;
+}
+
+
+.heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 55px;
+    font-weight: bold;
+}
+
+.programme-container{
+    width: 80%;
+    max-width: 1300px;
+
+}
+
+.programme-header{
+    font-family: 'DM Sans', sans-serif;
+    font-size: 35px;
+    color: #36348E;
+}
+
+.programme-name{
+    font-size: 28px;
+    font-weight: bolder;
+}
+
+.programme-text{
+    font-size: 20px;
+}
+
+.itpec-logo{
+    height: 90px;
+}
+
+@media screen and (min-width: 992px) {
+    .chancellor-paragraph {
+        font-size: 25px;
+        line-height: 40px;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .dropdown-menu {
+        background-color: #010035;
+        border: none;
+    }
+
+    .dropdown-item:hover {
+        background-color: #2826c1;
+        color: white !important;
+    }
+
+    .small-heading {
+        font-size: 16px;
+    }
+
+    .banner {
+        font-size: 80px;
+    }
+    .heading {
+        font-size: 40px;
+    }
+
+    .programme-header{
+        font-size: 30px;
+    }
+
+    .programme-name{
+        font-size: 25px;
+    }
+
+    .programme-text{
+        font-size: 20px;
+    }
+
+    .itpec-logo{
+        height: 90px;
+    }
+
+    .chancellor-paragraph {
+        font-size: 18px;
+        line-height: 28px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .small-heading {
+        font-size: 14px;
+    }
+
+    
+    .dropdown-item:hover {
+        background-color: #2826c1;
+        color: white !important;
+    }
+
+    .banner {
+        font-size: 50px;
+    }
+
+    .banner-heading {
+        font-size: 65px;
+    }
+    .heading {
+        font-size: 30px;
+    }
+
+    .programme-header{
+        font-size: 25px;
+    }
+
+    .programme-name{
+        font-size: 20px;
+    }
+
+    .programme-text{
+        font-size: 17px;
+    }
+
+    .chancellor-paragraph {
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .small-heading {
+        font-size: 10px;
+    }
+
+    
+    .dropdown-item:hover {
+        background-color: #2826c1;
+        color: white !important;
+    }
+
+    .banner {
+        font-size: 25px;
+    }
+
+    .absolute-element p {
+        font-size: 10px;
+    }
+
+    .banner-heading {
+        font-size: 45px;
+    }
+
+    .relative-container {
+        height: 300px;
+        background-position: center;
+    }
+    .heading {
+        font-size: 30px;
+    }
+
+    .programme-header{
+        font-size: 25px;
+    }
+
+    .programme-name{
+        font-size: 20px;
+    }
+
+    .programme-text{
+        font-size: 17px;
+    }
+
+    .itpec-logo{
+        height: 60px;
+    }
+
+    .chancellor-paragraph {
+        font-size: 16px;
+        line-height: 30px;
+    }
+}  
+
+img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.no-underline {
+    text-decoration: none;
+}
+
+.question {
+    border: 1px solid #2826c1;
+    padding: 10px;
+    width: 100%;
+}
+
+.question p {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: bold;
+    font-size: 22px;
+    margin-bottom: 0;
+}
+
+li {
+    list-style-type: none;
+}
+
+.cormorant {
+    font-family: 'Cormorant Garamond', serif;
+}
+
+.send-message-btn {
+    background-color: #36348e;
+    color: white;
+    transition: background-color 0.5s ease;
+}
+
+.send-message-btn:hover {
+    background-color: rgb(255, 197, 58);
+}
+
+/* hhn */
+.banner-text {
+    position: absolute;
+    bottom: 10%;
+    /* Adjust to position the text vertically centered */
+    left: 35px;
+    /* Adjust to position the text horizontally centered */
+    /* transform: translate(-50%, -50%); */
+    text-align: center;
+    color: white;
+    max-width: 300px;
+    box-sizing: border-box;
+    /* Include padding within width and height */
+    z-index: 1000;
+}
+
+/* hhn */
+
+/* hhn */
+
+.academic-items {
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.academic-items:hover {
+    background-color: #36348E;
+    transform: scale(1.05);
+}
+
+.academic-items:hover .academic-icon {
+    color: #f9f9f9;
+}
+
+.academic-items:hover .academic-header {
+    color: rgb(255, 197, 58);
+}
+
+.academic-items:hover .academic-description {
+    color: #f9f9f9;
+}
+
+.academic-icon {
+    font-size: 35px;
+    color: #36348E;
+}
+
+.academic-header {
+    font-size: 24px;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+.image {
+    background-image: url('./images/academic-banner-2-cropped-min.jpg'), linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5));
+    background-size: cover;
+    background-position: right;
+    background-attachment: fixed;
+    height: 500px;
+    position: relative;
+}
+
+
+.counter {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.counter-icon {
+    font-size: 20px;
+    color: #36348E;
+}
+
+.image-container {
+    position: relative;
+    width: 100%;
+    /* Adjust the width as needed */
+    max-width: 600px;
+    /* Set a maximum width if necessary */
+    margin: auto;
+    /* Center the container */
+}
+
+.uni-image,
+.stu-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    /* Remove any default inline styles */
+}
+
+.stu-image {
+    position: absolute;
+    top: 25%;
+    right: 30%;
+}
+
+.footer-logo {
+    width: 300px;
+}
+
+.link-list li a {
+    text-decoration: none;
+    color: #f9f9f9;
+}
+
+.progress-bar {
+    background-color: #36348E;
+}
+
+.lect-name {
+    font-size: 20px;
+    letter-spacing: 1.5px;
+}
+
+.lect-role {
+    font-size: 15px;
+    color: #36348E;
+}
+
+/* hhn */
+
+.fa-brands {
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.fa-brands:hover {
+    color: #36348E;
+}
+
+.relative-container .col{
+    color: #ffffff;
+    margin-left: 15px;
+}
+
+/* visionmission */
+
+.vision-heading{
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 35px;
+    font-weight: 900;
+}
+
+/* about-us */
+
+.about-us{
+    position: relative;
+}
+
+.about-us .image1{
+    position: relative;
+    overflow: hidden;
+    margin-top: 150px;
+    width: 35%;
+    /* height: 1000px; */
+}
+
+
+.about-us .image1 img{
+    transition: transform 0.5s ease-in-out, filter 0.5s ease-in-out;
+}
+
+.about-us .image2 img{
+    transition: transform 0.5s ease-in-out, filter 0.5s ease-in-out;
+}
+.about-us .image2{
+    position: relative;
+    overflow: hidden;
+    margin-top: 100px;
+    width: 45%;
+    /* height: 1200px; */
+}
+
+.about-us .image1:hover img{
+    transform: scale(0.9);
+    filter: brightness(70%);
+}
+
+.about-us .image2:hover img{
+    transform: scale(0.9);
+    filter: brightness(70%);
+}
+
+.aboutus{
+    margin-top: 100px;
+    padding-left: 0;
+}
+
+.aboutuslist{
+    margin-top: 40px;
+}
+
+.aboutusicon{
+    font-size: 15px;
+    padding-right: 8px;
+    color: #2826c1;
+}
+
+.aboutusplus{
+    font-size: 25px;
+    padding-left: 8px;
+    color: #2826c1;
+}
+
+.aboutuslist h1{
+    margin-top: 30px;
+    font-size: 50px;
+}
+
+/* knowledge and experience */
+
+.knowledge{
+    margin-top: 100px;
+}
+
+.knowledge-heading{
+    font-size: 34px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 900;
+}
+
+.knowledge-list{
+    margin-top: 25px;
+}
+
+.knowledge-icon .uni{
+    font-size: 25px;
+    padding: 20px;
+    background-color: #36348e;
+    border-radius: 50%;
+    color: #ffffff;
+    background-size: 20px;
+    transition: background-color 0.4s ease-in-out;
+}
+
+.knowledge-icon .online{
+    font-size: 25px;
+    padding: 20px;
+    background-color: #ffc53a;
+    border-radius: 50%;
+    color: #292928;
+    background-size: 20px;
+    transition: background-color 0.4s ease-in-out;
+}
+
+.knowledge-icon .campus{
+    font-size: 25px;
+    padding: 20px;
+    background-color: #2B7258;
+    border-radius: 50%;
+    color: #ffffff;
+    background-size: 20px;
+    transition: background-color 0.4s ease-in-out;
+
+}
+
+.knowledge-list:hover .knowledge-icon .uni {
+    background-color: #ffc53a;
+    color: #292928;
+}
+
+.knowledge-list:hover .knowledge-icon .online {
+    background-color: #36348e;
+    color: #ffffff;
+}
+
+.knowledge-list:hover .knowledge-icon .campus {
+    background-color: #ffc53a;
+    color: #292928;
+}
+
+.applyconnect{
+    /* margin-top: 80px; */
+    column-gap: 0;
+}
+
+.knowledge-letter-apply{
+    background-color: #36348e;
+    color: #ffffff;
+}
+
+.knowledge-letter-connect{
+    background-color: #ffc53a;
+    color: #292928;
+}
+
+.knowledge-letter-apply h2{
+    margin-top: 20px;
+}
+
+.knowledge-letter-apply p{
+    padding: 10px;
+}
+
+.knowledge-letter-connect h2{
+    margin-top: 20px;
+}
+
+.knowledge-letter-connect p{
+    padding: 10px;
+}
+
+@media screen and (min-width: 992px) {
+    .valuable-img{
+        max-height: 280px;
+    }
+}
+
+
+@media screen and (max-width: 576px) {
+    .valuable-img{
+        height: 300px;
+    }
+}  
+
+/* largest-Univeristy progress bar  */
+
+.largest-paragraph{
+    height: 100%;
+    width: 100%;
+    /* padding: 120px; */
+    background-color: #36348e;
+    color: #ffffff;
+
+}
+
+.largest-heading{
+    font-size: 20px;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 900;
+}
+
+/* join us  */
+
+.joinus-container {
+    position: relative;
+    height: 100%; /* Set the desired height */
+    overflow: hidden;
+}
+
+.background-image {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.background-color-overlay {
+    background-color: #010035;
+    opacity: 0.3;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    position: absolute;
+}
+
+.absolute-element-largest {
+    position: absolute;
+    /* width: 800px; */
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    /* Add more styling for your absolute element */
+}
+
+.absolute-element-largest a{
+    background-color: #ffc53a;
+    text-decoration: none;
+    color: black;
+    padding: 20px;
+    
+}
+
+.course-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 25px;
+}
+
+.course-text {
+    font-size: 14px;
+}
+
+.course-card {
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+}
+
+.course-card:hover {
+    transform: scale(1.1);
+}
+
+.quote-container {
+    background-color: #fff;
+    padding: 20px;
+    max-width: 800px;
+}
+
+.quote-text {
+    font-style: italic;
+    font-family: 'Cormorant Garamond', serif;
+    color: #010035;
+}
+
+.vision-text, 
+.mission-text {
+    line-height: 30px;
+    letter-spacing: 1.2px;
+}
+
+.award-img .image1 img{
+    transition: transform 0.5s ease-in-out, filter 0.5s ease-in-out;
+}
+
+.award-img .image1:hover img{
+    transform: scale(0.9);
+    filter: brightness(70%);
+}
+
+.partner-view-title{
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 900;
+    font-size: 29px;
+}
+
+.cards-wrapper {
+    display: flex;
+    justify-content: center;
+  }
+.card img {
+max-width: 100%;
+max-height: 100%;
+}
+.card {
+/* margin: 0 0.5em; */ /* Is this necessary? */
+box-shadow: 2px 6px 8px 0 rgba(22, 22, 26, 0.18);
+border: none;
+border-radius: 0;
+}
+.carousel-inner {
+padding: 1em;
+}
+.carousel-control-prev,
+.carousel-control-next {
+  background-color: #e1e1e1;
+  width: 5vh;
+  height: 5vh;
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.owl-carousel .owl-nav button {
+    font-size: 24px; /* Adjust the font size as needed */
+    width: 40px; /* Adjust the width as needed */
+    height: 40px; /* Adjust the height as needed */
+  }
+
+  .event-card:hover{
+    transform: scale(1.1); 
+    transition: transform 0.5s ease;
+  }
+
+
+#nav-bar {
+    padding-left: 35px;
+    padding-right: 35px;
+}
+
+.event-title{
+    font-family: 'DM Sans', serif;
+    font-weight: bolder;
+    font-size: 27px;
+}
+
+.event-text{
+    font-size: 17px;
+}
+
+
