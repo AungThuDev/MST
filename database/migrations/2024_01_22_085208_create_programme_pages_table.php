@@ -16,10 +16,10 @@ class CreateProgrammePagesTable extends Migration
         Schema::create('programme_pages', function (Blueprint $table) {
             $table->id();
             $table->string('image');
-            $table->string('course');
-            $table->string('class');
-            $table->string('student');
-            $table->string('diploma');
+            $table->string('courses');
+            $table->string('classes');
+            $table->string('students');
+            $table->string('diplomas');
             $table->timestamps();
         });
     }

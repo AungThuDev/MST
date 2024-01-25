@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Principal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\Facades\DataTables;
 
 class PrincipalController extends Controller
@@ -21,7 +21,6 @@ class PrincipalController extends Controller
                     $path = "/principal/{$e->home_image}";
                     return '<img style="max-width: 125px;" src="' . $path . '">';
                 })
-
                 ->editColumn('created_at', function ($a) {
                     return Carbon::parse($a->created_at)->format("Y-m-d H:i:s");
                 })
@@ -33,7 +32,7 @@ class PrincipalController extends Controller
                     $details = "<a href='/admin/principal/$a->id' class='btn btn-sm btn-primary' style='margin-right: 10px'>Details</a>";
                     $edit = '<a href=" ' . route('admin.principal.edit', $a->id) . '" class="btn btn-sm btn-success" style="margin-right: 10px;">Edit</a>';
 
-                    return '<div class="action">' . $details . $edit  . '</div>';
+                    return '<div class="action">' . $details . $edit . '</div>';
 
                 })->rawColumns(['action', 'home_image'])->make(true);
         }
@@ -57,20 +56,20 @@ class PrincipalController extends Controller
         ]);
 
         $home_image = $request->file('home_image');
-        $home_image_name = PrincipalController . phpuniqid() . $home_image->getClientOriginalName();
+        $home_image_name =  uniqid() . $home_image->getClientOriginalName();
         $home_image->move(public_path('principal'), $home_image_name);
 
         $validated['home_image'] = $home_image_name;
 
         $faculty_image = $request->file('faculty_image');
-        $faculty_image_name = PrincipalController . phpuniqid() . $faculty_image->getClientOriginalName();
+        $faculty_image_name =  uniqid() . $faculty_image->getClientOriginalName();
         $faculty_image->move(public_path('principal'), $faculty_image_name);
 
         $validated['faculty_image'] = $faculty_image_name;
 
         Principal::create($validated);
 
-        return redirect('/admin/principal')->with('success', 'Principal created successfully');
+        return redirect('/admin/principal')->with('create', 'Principal');
     }
 
     public function show(Principal $principal)
@@ -101,7 +100,7 @@ class PrincipalController extends Controller
             unlink(public_path('/principal/' . $principal->home_image));
 
             $home_image = $request->file('home_image');
-            $home_image_name = PrincipalController . phpuniqid() . $home_image->getClientOriginalName();
+            $home_image_name =  uniqid() . $home_image->getClientOriginalName();
             $home_image->move(public_path('principal'), $home_image_name);
 
             $validated['home_image'] = $home_image_name;
@@ -111,7 +110,7 @@ class PrincipalController extends Controller
             unlink(public_path('/principal/' . $principal->faculty_image));
 
             $faculty_image = $request->file('faculty_image');
-            $faculty_image_name = PrincipalController . phpuniqid() . $faculty_image->getClientOriginalName();
+            $faculty_image_name =  uniqid() . $faculty_image->getClientOriginalName();
             $faculty_image->move(public_path('principal'), $faculty_image_name);
 
             $validated['faculty_image'] = $faculty_image_name;
@@ -119,7 +118,7 @@ class PrincipalController extends Controller
 
         $principal->update($validated);
 
-        return redirect(route('admin.principal.show', $principal->id))->with('success', 'Principal updated successfully');
+        return redirect(route('admin.principal.show', $principal->id))->with('update', 'Principal');
     }
 
 

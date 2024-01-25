@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Category;
-use App\Models\Principal;
 use App\Models\Programme;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -21,11 +21,9 @@ class ProgrammeController extends Controller
                     $path = "/programmes/{$e->image}";
                     return '<img style="max-width: 125px;" src="' . $path . '">';
                 })
-
                 ->editColumn('category_id', function ($a) {
                     return Category::find($a->category_id)->name;
                 })
-
                 ->editColumn('created_at', function ($a) {
                     return Carbon::parse($a->created_at)->format("Y-m-d H:i:s");
                 })
@@ -66,14 +64,14 @@ class ProgrammeController extends Controller
         ]);
 
         $image = $request->file('image');
-        $image_name = ProgrammeController . phpuniqid() . $image->getClientOriginalName();
+        $image_name = uniqid() . $image->getClientOriginalName();
         $image->move(public_path('programmes'), $image_name);
 
         $validated['image'] = $image_name;
 
         Programme::create($validated);
 
-        return redirect('/admin/programmes')->with('success', 'Programme created successfully');
+        return redirect('/admin/programmes')->with('create', 'Programme');
     }
 
     public function show(Programme $programme)
@@ -106,7 +104,7 @@ class ProgrammeController extends Controller
             unlink(public_path('/programmes/' . $programme->image));
 
             $image = $request->file('image');
-            $image_name = ProgrammeController . phpuniqid() . $image->getClientOriginalName();
+            $image_name =  uniqid() . $image->getClientOriginalName();
             $image->move(public_path('programmes'), $image_name);
 
             $validated['image'] = $image_name;
@@ -114,7 +112,7 @@ class ProgrammeController extends Controller
 
         $programme->update($validated);
 
-        return redirect(route('admin.programmes.show', $programme->id))->with('success', 'Programme updated successfully');
+        return redirect(route('admin.programmes.show', $programme->id))->with('update', 'Programme');
     }
 
     public function destroy(Programme $programme)

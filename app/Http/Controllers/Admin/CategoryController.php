@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Category;
-use App\Models\Principal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Yajra\DataTables\Facades\DataTables;
@@ -20,7 +20,6 @@ class CategoryController extends Controller
                     $path = "/categories/{$e->image}";
                     return '<img style="max-width: 125px;" src="' . $path . '">';
                 })
-
                 ->editColumn('created_at', function ($a) {
                     return Carbon::parse($a->created_at)->format("Y-m-d H:i:s");
                 })
@@ -32,7 +31,7 @@ class CategoryController extends Controller
                     $edit = '<a href=" ' . route('admin.categories.edit', $a->id) . '" class="btn btn-sm btn-success" style="margin-right: 10px;">Edit</a>';
                     $delete = '<a href="" class="deleteCategoriesButton btn btn-sm btn-danger" data-id="' . $a->id . '">Delete</a>';
 
-                    return '<div class="action">'  . $edit . $delete . '</div>';
+                    return '<div class="action">' . $edit . $delete . '</div>';
 
                 })->rawColumns(['action', 'image'])->make(true);
         }
@@ -53,14 +52,14 @@ class CategoryController extends Controller
         ]);
 
         $image = $request->file('image');
-        $image_name = CategoryController . phpuniqid() . $image->getClientOriginalName();
+        $image_name =  uniqid() . $image->getClientOriginalName();
         $image->move(public_path('categories'), $image_name);
 
         $validated['image'] = $image_name;
 
         Category::create($validated);
 
-        return redirect('/admin/categories')->with('success', 'Programme category created successfully');
+        return redirect('/admin/categories')->with('create', 'Programme category');
     }
 
     public function edit(Category $category)
@@ -81,7 +80,7 @@ class CategoryController extends Controller
             unlink(public_path('/categories/' . $category->image));
 
             $image = $request->file('image');
-            $image_name = CategoryController . phpuniqid() . $image->getClientOriginalName();
+            $image_name =  uniqid() . $image->getClientOriginalName();
             $image->move(public_path('categories'), $image_name);
 
             $validated['image'] = $image_name;
@@ -89,7 +88,7 @@ class CategoryController extends Controller
 
         $category->update($validated);
 
-        return redirect(route('admin.categories.index'))->with('success', 'Category updated successfully');
+        return redirect(route('admin.categories.index'))->with('update', 'Category');
     }
 
     public function destroy(Category $category)

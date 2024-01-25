@@ -6,12 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Models\Faq;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
-use PhpOffice\PhpSpreadsheet\Calculation\Statistical\Distributions\F;
 use Yajra\DataTables\Facades\DataTables;
 
 class FaqController extends Controller
 {
-    public function index(Request $request) {
+    public function index(Request $request)
+    {
 
         if ($request->ajax()) {
             $faq = Faq::query();
@@ -58,7 +58,7 @@ class FaqController extends Controller
 
         Faq::create($validated);
 
-        return redirect(route('admin.faq.index'))->with('success', 'FAQ created successfully');
+        return redirect(route('admin.faq.index'))->with('create', 'FAQ');
     }
 
     public function edit(Faq $faq)
@@ -77,7 +77,7 @@ class FaqController extends Controller
 
         $faq->update($validated);
 
-        return view('admin.faq.index');
+        return view('admin.faq.index')->with('update', 'FAQ');
     }
 
     public function destroy(Faq $faq)
