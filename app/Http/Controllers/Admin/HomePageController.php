@@ -6,24 +6,24 @@ use App\Http\Controllers\Controller;
 use App\Models\HomePage;
 use Illuminate\Http\Request;
 
-use function Ramsey\Uuid\v1;
-
 class HomePageController extends Controller
 {
     public function index()
     {
-        $check_page = HomePage::first();
+        $homePage = HomePage::first();
 
-        $count = HomePage::count();
+        if ($homePage) {
+            return redirect(route('admin.homepage.show', $homePage->id));
+        } else {
+            return redirect('/admin/homepage/create');
+        }
+    }
 
-        if($count == 1)
-        {
-            return redirect()->route('admin.homepage.edit', $check_page->id);
-        }
-        else if($count < 1)
-        {
-            return redirect()->route('admin.homepage.create');
-        }
+    public function show(HomePage $homepage)
+    {
+        return view('admin.homepage.show', [
+            'homepage' => $homepage
+        ]);
     }
 
     public function create()
@@ -33,74 +33,55 @@ class HomePageController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
+        $validated = $request->validate([
             'vision' => 'required|max:300',
             'mission' => 'required|max:300',
             'about_title' => 'required',
             'about_text' => 'required',
-            'about_image_one' => 'required|image|mimes:png,jpg,jpeg',
-            'about_image_two' => 'required|image|mimes:png,jpg,jpeg',
-            'journey_image_one' => 'required|image|mimes:png,jpg,jpeg',
-            'journey_image_two' => 'required|image|mimes:png,jpg,jpeg',
+            'about_image1' => 'required|image|mimes:png,jpg,jpeg',
+            'about_image2' => 'required|image|mimes:png,jpg,jpeg',
+            'journey_image1' => 'required|image|mimes:png,jpg,jpeg',
+            'journey_image2' => 'required|image|mimes:png,jpg,jpeg',
             'eval_title' => 'required',
             'eval_image' => 'required|image|mimes:png,jpg,jpeg',
-            'eval_text' => 'required',
-            'progress_one' => 'required',
-            'progress_one_percent' => 'required|numeric|max:100',
-            'progress_two' => 'required',
-            'progress_two_percent' => 'required|numeric|max:100',
-            'progress_three' => 'required',
-            'progress_three_percent' => 'required|numeric|max:100',
-            'course_text' => 'required'
+            'eval_text' => 'required|max:255',
+            'progress1' => 'required',
+            'progress1_percent' => 'required|numeric|max:100',
+            'progress2' => 'required',
+            'progress2_percent' => 'required|numeric|max:100',
+            'progress3' => 'required',
+            'progress3_percent' => 'required|numeric|max:100',
         ]);
 
-        $about_image_one = $request->file('about_image_one');
+        $about_image_one = $request->file('about_image1');
         $about_image_one_name = uniqid() . $about_image_one->getClientOriginalName();
         $about_image_one->move(public_path('homepage'), $about_image_one_name);
+        $validated['about_image1'] = $about_image_one_name;
 
-        $about_image_two = $request->file('about_image_two');
+        $about_image_two = $request->file('about_image2');
         $about_image_two_name = uniqid() . $about_image_two->getClientOriginalName();
         $about_image_two->move(public_path('homepage'), $about_image_two_name);
+        $validated['about_image2'] = $about_image_two_name;
 
-        $journey_image_one = $request->file('journey_image_one');
+
+        $journey_image_one = $request->file('journey_image1');
         $journey_image_one_name = uniqid() . $journey_image_one->getClientOriginalName();
         $journey_image_one->move(public_path('homepage'), $journey_image_one_name);
+        $validated['journey_image1'] = $journey_image_one_name;
 
-        $journey_image_two = $request->file('journey_image_two');
+        $journey_image_two = $request->file('journey_image2');
         $journey_image_two_name = uniqid() . $journey_image_two->getClientOriginalName();
         $journey_image_two->move(public_path('homepage'), $journey_image_two_name);
+        $validated['journey_image2'] = $journey_image_two_name;
 
         $eval_image = $request->file('eval_image');
         $eval_image_name = uniqid() . $eval_image->getClientOriginalName();
         $eval_image->move(public_path('homepage'), $eval_image_name);
+        $validated['eval_image'] = $eval_image_name;
 
-        HomePage::create([
-            'vision' => $request->vision,
-            'mission' => $request->mission,
-            'about_title' => $request->about_title,
-            'about_text' => $request->about_text,
-            'about_image1' => $about_image_one_name,
-            'about_image2' => $about_image_two_name,
-            'journey_image1' => $journey_image_one_name,
-            'journey_image2' => $journey_image_two_name,
-            'eval_title' => $request->eval_title,
-            'eval_image' => $eval_image_name,
-            'eval_text' => $request->eval_text,
-            'prograss1' => $request->progress_one,
-            'prograss1_percent' => $request->progress_one_percent,
-            'prograss2' => $request->progress_two,
-            'prograss2_percent' => $request->progress_two_percent,
-            'prograss3' => $request->progress_three,
-            'prograss3_percent' => $request->progress_three_percent,
-            'course_text' => $request->course_text
-        ]);
+        HomePage::create($validated);
 
-        return redirect()->back()->with('create', 'Home Page');
-    }
-
-    public function show($id)
-    {
-
+        return redirect()->route('admin.homepage.index')->with('create', 'Home page');
     }
 
     public function edit(HomePage $homepage)
@@ -110,105 +91,70 @@ class HomePageController extends Controller
 
     public function update(Request $request, HomePage $homepage)
     {
-        $request->validate([
-            'vision' => 'required',
-            'mission' => 'required',
+        $validated = $request->validate([
+            'vision' => 'required|max:300',
+            'mission' => 'required|max:300',
             'about_title' => 'required',
             'about_text' => 'required',
+            'about_image1' => 'image|mimes:png,jpg,jpeg',
+            'about_image2' => 'image|mimes:png,jpg,jpeg',
+            'journey_image1' => 'image|mimes:png,jpg,jpeg',
+            'journey_image2' => 'image|mimes:png,jpg,jpeg',
             'eval_title' => 'required',
-            'eval_text' => 'required',
-            'progress_one' => 'required',
-            'progress_one_percent' => 'required|numeric',
-            'progress_two' => 'required',
-            'progress_two_percent' => 'required|numeric',
-            'progress_three' => 'required',
-            'progress_three_percent' => 'required|numeric',
-            'course_text' => 'required'
+            'eval_image' => 'image|mimes:png,jpg,jpeg',
+            'eval_text' => 'required|max:255',
+            'progress1' => 'required',
+            'progress1_percent' => 'required|numeric|max:100',
+            'progress2' => 'required',
+            'progress2_percent' => 'required|numeric|max:100',
+            'progress3' => 'required',
+            'progress3_percent' => 'required|numeric|max:100',
         ]);
 
-        if($request->file('about_image_one'))
-        {
+        if ($request->file('about_image1')) {
             unlink(public_path('/homepage/' . $homepage->about_image1));
-            $about_image_one = $request->file('about_image_one');
+            $about_image_one = $request->file('about_image1');
             $about_image_one_name = uniqid() . $about_image_one->getClientOriginalName();
             $about_image_one->move(public_path('homepage'), $about_image_one_name);
-        }
-        else
-        {
-            $about_image_one_name = $homepage->about_image1;
+            $validated['about_image1'] = $about_image_one_name;
         }
 
 
-        if($request->file('about_image_two'))
-        {
+        if ($request->file('about_image2')) {
             unlink(public_path('/homepage/' . $homepage->about_image2));
-            $about_image_two = $request->file('about_image_two');
+            $about_image_two = $request->file('about_image2');
             $about_image_two_name = uniqid() . $about_image_two->getClientOriginalName();
             $about_image_two->move(public_path('homepage'), $about_image_two_name);
-        }
-        else
-        {
-            $about_image_two_name = $homepage->about_image2;
+            $validated['about_image2'] = $about_image_two_name;
         }
 
-        if($request->file('journey_image_one'))
-        {
+        if ($request->file('journey_image1')) {
             unlink(public_path('/homepage/' . $homepage->journey_image1));
-            $journey_image_one = $request->file('journey_image_one');
+            $journey_image_one = $request->file('journey_image1');
             $journey_image_one_name = uniqid() . $journey_image_one->getClientOriginalName();
             $journey_image_one->move(public_path('homepage'), $journey_image_one_name);
-        }
-        else
-        {
-            $journey_image_one_name = $homepage->journey_image1;
+            $validated['journey_image1'] = $journey_image_one_name;
         }
 
-        if($request->file('journey_image_two'))
-        {
+        if ($request->file('journey_image2')) {
             unlink(public_path('/homepage/' . $homepage->journey_image2));
-            $journey_image_two = $request->file('journey_image_two');
+            $journey_image_two = $request->file('journey_image2');
             $journey_image_two_name = uniqid() . $journey_image_two->getClientOriginalName();
             $journey_image_two->move(public_path('homepage'), $journey_image_two_name);
-        }
-        else
-        {
-            $journey_image_two_name = $homepage->journey_image2;
+            $validated['journey_image2'] = $journey_image_two_name;
         }
 
-        if($request->file('eval_image'))
-        {
+        if ($request->file('eval_image')) {
             unlink(public_path('/homepage/' . $homepage->eval_image));
             $eval_image = $request->file('eval_image');
             $eval_image_name = uniqid() . $eval_image->getClientOriginalName();
             $eval_image->move(public_path('homepage'), $eval_image_name);
-        }
-        else
-        {
-            $eval_image_name = $homepage->eval_image;
+            $validated['eval_image'] = $eval_image_name;
         }
 
-        $homepage->update([
-            'vision' => $request->vision,
-            'mission' => $request->mission,
-            'about_title' => $request->about_title,
-            'about_text' => $request->about_text,
-            'about_image1' => $about_image_one_name,
-            'about_image2' => $about_image_two_name,
-            'journey_image1' => $journey_image_one_name,
-            'journey_image2' => $journey_image_two_name,
-            'eval_title' => $request->eval_title,
-            'eval_image' => $eval_image_name,
-            'eval_text' => $request->eval_text,
-            'prograss1' => $request->progress_one,
-            'prograss1_percent' => $request->progress_one_percent,
-            'prograss2' => $request->progress_two,
-            'prograss2_percent' => $request->progress_two_percent,
-            'prograss3' => $request->progress_three,
-            'prograss3_percent' => $request->progress_three_percent,
-            'course_text' => $request->course_text
-        ]);
+        $homepage->update($validated);
 
-        return redirect()->back()->with('update', 'Home Page');
+        return redirect()->route('admin.homepage.index')->with('update', 'Home page');
     }
 
 }

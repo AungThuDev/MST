@@ -81,7 +81,7 @@ class ProgrammePageController extends Controller
 
         $programmePage->update($validated);
 
-        return redirect(route('admin.programme_page.edit', $programmePage->id))->with('update', 'Programme page content');
+        return redirect(route('admin.programme_page.index'))->with('update', 'Programme page content');
     }
 
 

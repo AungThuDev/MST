@@ -35,7 +35,7 @@
             @enderror
 
             <div class="mt-4">
-                <label for="students">Number of classes <span class="text-danger">*</span></label>
+                <label for="students">Number of students <span class="text-danger">*</span></label>
                 <input class="form-control" type="number" id="students" name="students" value="{{ old('students') }}">
             </div>
             @error('students')
@@ -43,7 +43,7 @@
             @enderror
 
             <div class="mt-4">
-                <label for="diplomas">Number of classes <span class="text-danger">*</span></label>
+                <label for="diplomas">Number of diplomas <span class="text-danger">*</span></label>
                 <input class="form-control" type="number" id="diplomas" name="diplomas" value="{{ old('diplomas') }}">
             </div>
             @error('diplomas')

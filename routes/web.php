@@ -15,7 +15,6 @@ use App\Http\Controllers\Admin\PartnerController;
 use App\Http\Controllers\Admin\PrincipalController;
 use App\Http\Controllers\Admin\ProgrammeController;
 use App\Http\Controllers\Admin\ProgrammePageController;
-use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -63,7 +62,7 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::resource('/faq', FaqController::class);
     Route::resource('/programmes', ProgrammeController::class);
 
-    Route::resource('/homepage', HomePageController::class);
+    Route::resource('/homepage', HomePageController::class)->except('destroy');
     Route::resource('/award', AwardController::class)->except('show');
     Route::resource('/banner', BannerController::class);
     Route::resource('/event', EventController::class);

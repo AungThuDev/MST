@@ -26,12 +26,12 @@ class CreateHomePagesTable extends Migration
             $table->string('eval_image');
             $table->string('eval_title');
             $table->string('eval_text');
-            $table->string('prograss1');
-            $table->string('prograss1_percent');
-            $table->string('prograss2');
-            $table->string('prograss2_percent');
-            $table->string('prograss3');
-            $table->string('prograss3_percent');
+            $table->string('progress1');
+            $table->string('progress1_percent');
+            $table->string('progress2');
+            $table->string('progress2_percent');
+            $table->string('progress3');
+            $table->string('progress3_percent');
             $table->timestamps();
         });
     }

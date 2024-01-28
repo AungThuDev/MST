@@ -65,7 +65,6 @@ class CampusContentController extends Controller
                     'campus_id' => $campus->id
                 ]);
             }
-
         }
 
         return redirect()->route('admin.campus.index')->with('create', 'Campus');
@@ -88,7 +87,7 @@ class CampusContentController extends Controller
     public function update(Request $request, $id)
     {
 
-        $validated = $request->validate([
+        $request->validate([
             'name' => 'required',
             'address' => 'required',
             'phones.*' => 'required',
@@ -105,7 +104,16 @@ class CampusContentController extends Controller
             'address' => $request->address
         ]);
 
-        $campus->phones()->sync($validated['phones']);
+        $campus->phones()->delete();
+
+        foreach ($request->input('phones') as $phone) {
+            if ($phone != null) {
+                Phone::create([
+                    'number' => $phone,
+                    'campus_id' => $campus->id
+                ]);
+            }
+        }
 
         return redirect()->route('admin.campus.index')->with('update', 'Campus');
     }
