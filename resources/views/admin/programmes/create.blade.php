@@ -6,6 +6,8 @@
     <div class="px-4 py-3">
         <h1 class="text-center">Create A New Programme</h1>
 
+        <a class="btn btn-success top-right-btn text-white" href="{{ route('admin.programmes.index') }}">Back</a>
+
         <form method="POST" action="{{ route('admin.programmes.store') }}" enctype="multipart/form-data">
             @csrf
 
@@ -20,9 +22,9 @@
             <div class="mt-3">
                 <label for="category_id">Category <span class="text-danger">*</span></label>
                 <select class="form-control" name="category_id" id="category_id">
-                    <option value="">-select</option>
+                    <option  value="">-select</option>
                     @foreach ($categories as $category)
-                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                        <option value="{{ $category->id }}" {{ old('category_id') == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
                     @endforeach
                 </select>
                 @error('category_id')
@@ -62,7 +64,7 @@
                     <p class="badge badge-danger">{{ $message }}</p>
                 @enderror
             </div>
-            <button class="btn btn-primary mt-3 float-right">Create</button>
+            <button class="btn btn-success mt-3 float-right">Create</button>
         </form>
     </div>
 @endsection

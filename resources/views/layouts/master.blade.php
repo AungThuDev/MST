@@ -80,7 +80,7 @@
                     <li class="nav-item">
                         <a class="nav-link @yield('event')" href="{{ route('admin.event.index') }}">
                             <i class="ni ni-planet text-orange"></i>
-                            <span class="nav-link-text">Event</span>
+                            <span class="nav-link-text">Events</span>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -98,7 +98,7 @@
                     <li class="nav-item">
                         <a class="nav-link @yield('programme')" href="/admin/programmes">
                             <i class="ni ni-planet text-orange"></i>
-                            <span class="nav-link-text">Programme</span>
+                            <span class="nav-link-text">Programmes</span>
                         </a>
                     </li>
                     <li class="nav-item">

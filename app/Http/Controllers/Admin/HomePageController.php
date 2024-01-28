@@ -10,14 +10,8 @@ use function Ramsey\Uuid\v1;
 
 class HomePageController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
         $check_page = HomePage::first();
 
         $count = HomePage::count();
@@ -32,29 +26,16 @@ class HomePageController extends Controller
         }
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
         return view('admin.homepage.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
         $request->validate([
-            'vision' => 'required',
-            'mission' => 'required',
+            'vision' => 'required|max:300',
+            'mission' => 'required|max:300',
             'about_title' => 'required',
             'about_text' => 'required',
             'about_image_one' => 'required|image|mimes:png,jpg,jpeg',
@@ -117,39 +98,18 @@ class HomePageController extends Controller
         return redirect()->back()->with('create', 'Home Page');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
-        //
+
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit(HomePage $homepage)
     {
-        //
         return view('admin.homepage.edit', compact('homepage'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, HomePage $homepage)
     {
-        //
         $request->validate([
             'vision' => 'required',
             'mission' => 'required',
@@ -251,14 +211,4 @@ class HomePageController extends Controller
         return redirect()->back()->with('update', 'Home Page');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

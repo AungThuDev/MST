@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Faq;
 use Illuminate\Http\Request;
-use Illuminate\Support\Carbon;
 use Yajra\DataTables\Facades\DataTables;
 
 class FaqController extends Controller
@@ -22,9 +21,9 @@ class FaqController extends Controller
                 })
                 ->addColumn('action', function ($a) {
 
-                    $details = "<a href='/admin/faq/$a->id' class='btn btn-sm btn-primary' style='margin-right: 10px'>Details</a>";
-                    $edit = '<a href=" ' . route('admin.faq.edit', $a->id) . '" class="btn btn-sm" style="margin-right: 10px; background-color: yellow;">Edit</a>';
-                    $delete = '<a href="" class="deleteFaqButton btn btn-sm btn-danger" data-id="' . $a->id . '">Delete</a>';
+                    $details = "<a href='/admin/faq/$a->id' class='btn btn-sm btn-primary mt-1'>Details</a>";
+                    $edit = '<a href=" ' . route('admin.faq.edit', $a->id) . '" class="btn btn-sm m-1" style="background-color: yellow;">Edit</a>';
+                    $delete = '<a href="" class="deleteFaqButton btn btn-sm btn-danger m-1" data-id="' . $a->id . '">Delete</a>';
 
                     return '<div class="action">' . $details . $edit . $delete . '</div>';
 

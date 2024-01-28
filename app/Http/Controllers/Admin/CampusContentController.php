@@ -10,61 +10,47 @@ use Yajra\DataTables\Facades\DataTables;
 
 class CampusContentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index(Request $request)
     {
         if ($request->ajax()) {
             $campus = CampusContent::with('phones')->get();
 
             return DataTables::of($campus)
-
                 ->editColumn("phones", function ($e) {
                     $phones_list = '';
                     foreach ($e->phones as $phone) {
                         $phones_list .= '<li class="mt-2">' . $phone->number . '</li>';
                     }
-                    return '<ul style="list-style: lower-latin;" class="phones">'  . $phones_list . '</ul>';
+                    return '<ul style="list-style: lower-roman  ;" class="phones">' . $phones_list . '</ul>';
                 })
-
+                ->editColumn("address", function ($e) {
+                    return substr($e->address, 0, 40) . '...';
+                })
                 ->addColumn('action', function ($a) {
 
-                    $edit = '<a href=" ' . route('admin.campus.edit', $a->id) . '" class="btn" style="margin-right: 10px;background-color: yellow;">Edit</a>';
-                    $delete = '<a href="javascript:void(0)" class="deleteButton btn btn-danger" record="award" data-id="' . $a->id . '">Delete</a>';
+                    $details = "<a href='/admin/campus/$a->id' class='btn btn-sm btn-primary mt-1'>Details</a>";
+                    $edit = '<a href=" ' . route('admin.campus.edit', $a->id) . '" class="btn btn-sm m-1" style="background-color: yellow;">Edit</a>';
+                    $delete = '<a href="javascript:void(0)" class="deleteButton btn btn-sm btn-danger" record="award" data-id="' . $a->id . '">Delete</a>';
 
-                    return '<div class="action">'  . $edit . $delete . '</div>';
-                })->rawColumns(['action','phones'])->make(true);
+                    return '<div class="action">' . $details . $edit . $delete . '</div>';
+                })->rawColumns(['action', 'phones'])->make(true);
         }
 
         return view("admin.campus.index");
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         return view('admin.campus.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        
-        $request->validate([
+
+        $validated = $request->validate([
             'name' => 'required',
             'address' => 'required',
-            'phones.0' => 'required|numeric',
+            'phones.*' => 'required',
         ]);
 
         $campus = CampusContent::create([
@@ -73,8 +59,7 @@ class CampusContentController extends Controller
         ]);
 
         foreach ($request->input('phones') as $phone) {
-            if($phone != null)
-            {
+            if ($phone != null) {
                 Phone::create([
                     'number' => $phone,
                     'campus_id' => $campus->id
@@ -83,27 +68,16 @@ class CampusContentController extends Controller
 
         }
 
-
         return redirect()->route('admin.campus.index')->with('create', 'Campus');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function show(CampusContent $campus)
     {
-        //
+        return view('admin.campus.show', [
+            'campus' => $campus
+        ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         $campus = CampusContent::find($id);
@@ -111,25 +85,18 @@ class CampusContentController extends Controller
         return view('admin.campus.edit', compact('campus'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
 
-        $request->validate([
+        $validated = $request->validate([
             'name' => 'required',
-            'address' => 'required'
+            'address' => 'required',
+            'phones.*' => 'required',
         ]);
 
         $campus = CampusContent::where('id', $id)->first();
 
-        if(!$campus)
-        {
+        if (!$campus) {
             return redirect()->back()->with('error', 'Campus not found');
         }
 
@@ -138,21 +105,16 @@ class CampusContentController extends Controller
             'address' => $request->address
         ]);
 
+        $campus->phones()->sync($validated['phones']);
+
         return redirect()->route('admin.campus.index')->with('update', 'Campus');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         $campus = CampusContent::find($id);
 
-        if(!$campus)
-        {
+        if (!$campus) {
             return redirect()->back()->with('error', 'Campus not found');
         }
 

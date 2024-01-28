@@ -1,33 +1,31 @@
 @extends('layouts.master')
-
 @section('partner', 'nav-link nav-link active')
-
-
 @section('content')
     <div class="d-flex justify-content-end">
         <a href="{{ route('admin.partner.index') }}" class="btn btn-success">Back</a>
     </div>
     <div class="row p-4">
         <form class="col" method="POST" action="{{ route('admin.partner.update', $partner->id) }}"
-            enctype="multipart/form-data">
+              enctype="multipart/form-data">
             @method('PATCH')
             @csrf
             <div class="d-flex justify-content-center">
                 <h1>Edit Partner</h1>
             </div>
             <div class="form-group">
-                <label for="name">Name</label>
+                <label for="name">Name <span class="text-danger">*</span></label>
                 <input name="name" id="name" class="form-control" type="text"
-                    value="{{ old('name') ?? $partner->name }}">
+                       value="{{ old('name') ?? $partner->name }}">
                 @error('name')
-                    <span class="badge badge-danger">{{ $message }}</span>
+                <span class="badge badge-danger">{{ $message }}</span>
                 @enderror
             </div>
             <div class="form-group">
-                <label for="description">Description</label>
-                <textarea name="description" id="description" class="form-control" type="text">{{ old('description') ?? $partner->description }}</textarea>
+                <label for="description">Description <span class="text-danger">*</span></label>
+                <textarea name="description" id="description" class="form-control"
+                          type="text">{{ old('description') ?? $partner->description }}</textarea>
                 @error('description')
-                    <span class="badge badge-danger">{{ $message }}</span>
+                <span class="badge badge-danger">{{ $message }}</span>
                 @enderror
             </div>
             @if ($partner->image)
@@ -37,10 +35,10 @@
                 </div>
             @endif
             <div class="form-group">
-                <label>Image</label>
-                <input name="image" class="form-control" type="file" />
+                <label for="image">Image<span class="text-gray">(Optional)</span></label>
+                <input id="image" name="image" class="form-control" type="file" accept="image/*"/>
                 @error('image')
-                    <span class="badge badge-danger">{{ $message }}</span>
+                <span class="badge badge-danger">{{ $message }}</span>
                 @enderror
             </div>
             <div>

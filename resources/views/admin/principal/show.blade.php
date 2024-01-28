@@ -5,7 +5,7 @@
 @section('content')
     <section>
         <h1 class="text-center">Principal - {{ $principal->name }}</h1>
-        <a class="top-right-btn btn btn-primary" href="{{ route('admin.principal.edit', $principal->id) }}">Edit</a>
+        <a class="top-right-btn btn btn-success" href="{{ route('admin.principal.edit', $principal->id) }}">Edit</a>
 
         <h2 class="mt-5">Home Page</h2>
         <div class="d-flex justify-content-between">

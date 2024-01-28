@@ -1,8 +1,5 @@
 @extends('layouts.master')
-
 @section('award', 'nav-link nav-link active')
-
-
 @section('content')
     <div class="d-flex justify-content-start">
         <h1 class="p-2">Awards</h1>
@@ -13,14 +10,14 @@
     <div class="">
         <table id="award" class="table table-bordered table-hover">
             <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Title</th>
-                    <th>Description</th>
-                    <th>Image</th>
-                    <th>Created At</th>
-                    <th>Action</th>
-                </tr>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Image</th>
+                <th>Created At</th>
+                <th>Action</th>
+            </tr>
             </thead>
             <tbody>
 
@@ -41,14 +38,14 @@
             ],
             'ajax': {
                 url: '/admin/award/',
-                error: function(xhr, testStatus, errorThrown) {
+                error: function (xhr, testStatus, errorThrown) {
 
                 }
             },
 
             "columns": [{
-                    "data": "id"
-                },
+                "data": "id"
+            },
                 {
                     "data": "title"
                 },
@@ -66,7 +63,7 @@
                 }
             ]
         });
-        $(document).on('click', '.deleteButton', function(a) {
+        $(document).on('click', '.deleteButton', function (a) {
             a.preventDefault();
             var id = $(this).data('id');
 
@@ -80,7 +77,7 @@
                     $.ajax({
                         url: '/admin/award/' + id,
                         type: 'DELETE',
-                        success: function() {
+                        success: function () {
                             table.ajax.reload()
                         }
                     });

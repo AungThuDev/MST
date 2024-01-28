@@ -1,0 +1,59 @@
+---general
+XXX--- lastest on top of table ---XXX
+delete old photos
+page title
+add index for home page and programme page
+page headers
+
+---lecture 
+XXX--- old values, required star ---XXX
+XXX--- redirect to index after storing, updating ---XXX
+XXX--- Image (Optional)  in edit page ---XXX
+
+---partners
+XXX--- old values, required star ---XXX
+XXX--- redirect to index after storing, updating ---XXX
+XXX--- Image (Optional)  in edit page ---XXX
+
+---awards
+XXX--- old values, required star ---XXX
+XXX--- redirect to index after storing, updating ---XXX
+XXX--- Image (Optional)  in edit page ---XXX
+
+---faq
+XXX--- back btn in detail, edit, create pages ---XXX
+XXX--- remove updated_at column ---XXX
+XXX--- change created_at format using carbon ---XXX
+
+---programmes
+XXX--- remove updated_at column ---XXX
+XXX--- input select old values in both create and edit pages ---XXX
+XXX--- back btn in detail, create, edit ---XXX
+
+---event
+XXX--- redirect to index after creating event and editing event ---XXX
+XXX--- adding detail page and detail button in action column ---XXX
+XXX--- add id column in event index table ---XXX
+XXX--- change column name from options to action ---XXX
+XXX--- old values in edit page ---XXX
+XXX--- make featured image optional in edit page ---XXX
+XXX--- fix delete function ---XXX	
+
+---banner
+XXX--- redirect after creating, editing ---XXX
+XXX--- old values in create form ---XXX
+XXX--- make Page banner optioanl in edit form ---XXX
+
+---principal
+XXX--- blocks create route ---XXX
+XXX--- back btn in detail, edit, create pages ---XXX
+
+---homepage
+XXX--- vision mission maximum words validation ---XXX	
+XXX--- old values ---XXX
+
+---campus
+XXX--- detail page ---XXX
+old values
+phones in edit
+XXX--- roman chracters in phone list ---XXX

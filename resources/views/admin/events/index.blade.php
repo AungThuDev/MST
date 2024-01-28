@@ -1,7 +1,5 @@
 @extends('layouts.master')
-
 @section('event', 'nav-link nav-link active')
-
 @section('content')
 
     <div class="d-flex justify-content-end mb-5">
@@ -10,20 +8,19 @@
     <div class="table-responsive">
         <table class="table table-bordered table-hover" id="events">
             <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Title</th>
-                    <th>Featured Image</th>
-                    <th>Created At</th>
-                    <th>Action</th>
-                </tr>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Featured Image</th>
+                <th>Created At</th>
+                <th>Action</th>
+            </tr>
             </thead>
             <tbody>
 
             </tbody>
         </table>
     </div>
-
 
 @endsection
 
@@ -37,14 +34,14 @@
             ],
             'ajax': {
                 url: '/admin/event/',
-                error: function(xhr, testStatus, errorThrown) {
+                error: function (xhr, testStatus, errorThrown) {
 
                 }
             },
 
             "columns": [{
-                    "data": "id"
-                },
+                "data": "id"
+            },
                 {
                     "data": "title"
                 },
@@ -60,7 +57,7 @@
             ]
         });
 
-        $(document).on('click', '.deleteButton', function(a) {
+        $(document).on('click', '.deleteButton', function (a) {
             a.preventDefault();
             var id = $(this).data('id');
 
@@ -74,7 +71,7 @@
                     $.ajax({
                         url: '/admin/event/' + id,
                         type: 'DELETE',
-                        success: function() {
+                        success: function () {
                             table.ajax.reload();
                         }
                     });

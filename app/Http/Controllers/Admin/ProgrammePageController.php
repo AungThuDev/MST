@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Programme;
 use App\Models\ProgrammePage;
 use Illuminate\Http\Request;
 
@@ -14,13 +13,17 @@ class ProgrammePageController extends Controller
         $programmePage = ProgrammePage::first();
 
         if ($programmePage) {
-            return redirect(route('admin.programme_page.edit', $programmePage->id));
+            return redirect(route('admin.programme_page.show', $programmePage->id));
         } else {
             return redirect('/admin/programme_page/create');
         }
-//        return view('admin.programme_page.index', [
-//            'programmePage' => ProgrammePage::first()
-//        ]);
+    }
+
+    public function show(ProgrammePage $programmePage)
+    {
+        return view('admin.programme_page.show', [
+            'programmePage' => $programmePage
+        ]);
     }
 
     public function create()
@@ -39,7 +42,7 @@ class ProgrammePageController extends Controller
         ]);
 
         $image = $request->file('image');
-        $image_name =  uniqid() . $image->getClientOriginalName();
+        $image_name = uniqid() . $image->getClientOriginalName();
         $image->move(public_path('programme_page'), $image_name);
 
         $validated['image'] = $image_name;
@@ -70,7 +73,7 @@ class ProgrammePageController extends Controller
             unlink(public_path('/programme_page/' . $programmePage->image));
 
             $image = $request->file('image');
-            $image_name =  uniqid() . $image->getClientOriginalName();
+            $image_name = uniqid() . $image->getClientOriginalName();
             $image->move(public_path('programme_page'), $image_name);
 
             $validated['image'] = $image_name;

@@ -39,7 +39,7 @@
                 </div>
                 <div class="col-12">
                     <div class="form-group">
-                        <label for="">Content Image 1 (Optional)</label>
+                        <label for="">Content Image 1 <span class="text-gray">(Optional)</span></label>
                         <input type="file" class="form-control" name="content_image1">
                         @error('content_image1')
                             <span class="badge badge-danger">{{ $message }}</span>
@@ -48,7 +48,7 @@
                 </div>
                 <div class="col-12">
                     <div class="form-group">
-                        <label for="">Content Image 2 (Optional)</label>
+                        <label for="">Content Image 2 <span class="text-gray">(Optional)</span></label>
                         <input type="file" class="form-control" name="content_image2">
                         @error('content_image2')
                             <span class="badge badge-danger">{{ $message }}</span>

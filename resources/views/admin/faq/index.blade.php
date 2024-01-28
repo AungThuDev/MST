@@ -36,12 +36,12 @@
 
     <script>
         var faqTable = $('#faq').DataTable({
-            "order": [[ 0, 'desc' ]],
+            "order": [[0, 'desc']],
             'serverSide': true,
             'processing': true,
             'ajax': {
                 url: '/admin/faq/',
-                error: function(xhr, testStatus, errorThrown) {
+                error: function (xhr, testStatus, errorThrown) {
 
                 }
             },
@@ -61,7 +61,7 @@
             ]
         });
 
-        $(document).on('click', '.deleteFaqButton', function(a) {
+        $(document).on('click', '.deleteFaqButton', function (a) {
             a.preventDefault();
             const id = $(this).data('id');
             Swal.fire({
@@ -74,7 +74,7 @@
                     $.ajax({
                         url: '/admin/faq/' + id,
                         type: 'DELETE',
-                        success: function() {
+                        success: function () {
                             faqTable.ajax.reload();
                         }
                     });

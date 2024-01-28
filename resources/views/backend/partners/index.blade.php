@@ -14,14 +14,14 @@
     <div class="table-responsive">
         <table id="partner" class="table table-bordered table-hover">
             <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Image</th>
-                    <th>Created At</th>
-                    <th>Action</th>
-                </tr>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Image</th>
+                <th>Created At</th>
+                <th>Action</th>
+            </tr>
             </thead>
             <tbody>
 
@@ -40,14 +40,14 @@
             ],
             'ajax': {
                 url: '/admin/partner/',
-                error: function(xhr, testStatus, errorThrown) {
+                error: function (xhr, testStatus, errorThrown) {
 
                 }
             },
 
             "columns": [{
-                    "data": "id"
-                },
+                "data": "id"
+            },
                 {
                     "data": "name"
                 },
@@ -65,7 +65,7 @@
                 }
             ]
         });
-        $(document).on('click', '.deleteButton', function(a) {
+        $(document).on('click', '.deleteButton', function (a) {
             a.preventDefault();
             var id = $(this).data('id');
 
@@ -79,7 +79,7 @@
                     $.ajax({
                         url: '/admin/partner/' + id,
                         type: 'DELETE',
-                        success: function() {
+                        success: function () {
                             table.ajax.reload()
                         }
                     });

@@ -9,12 +9,11 @@
                 <div class="card">
                     <div class="card-header">
                         <h1 class="card-title">Programmes</h1>
-                        <a href="{{ route('admin.programmes.create') }}" class="btn btn-primary top-right-btn">Create
-                            Programme</a>
+                        <a href="{{ route('admin.programmes.create') }}" class="btn btn-success top-right-btn">Add new programme</a>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <table id="programmes" class="table table-bordered table-hover">
+                        <table id="programmes" class="table-responsive table-bordered table-hover">
                             <thead>
                                 <tr>
                                     <th>ID</th>
@@ -24,7 +23,6 @@
                                     <th>duration</th>
                                     <th>link</th>
                                     <th>Created</th>
-                                    <th>Updated</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -45,6 +43,7 @@
 
     <script>
         var programmesTable = $('#programmes').DataTable({
+            "order": [[0, 'desc']],
             'serverSide': true,
             'processing': true,
             'ajax': {
@@ -74,9 +73,6 @@
                 },
                 {
                     "data": "created_at"
-                },
-                {
-                    'data': 'updated_at'
                 },
                 {
                     "data": "action"

@@ -6,6 +6,8 @@
     <div class="px-4 py-3">
         <h1 class="text-center">Edit Programme</h1>
 
+        <a class="btn btn-success top-right-btn text-white" href="{{ route('admin.programmes.index') }}">Back</a>
+
         <form method="POST" action="{{ route('admin.programmes.update', $programme->id) }}" enctype="multipart/form-data">
             @csrf
             @method('PATCH')
@@ -25,7 +27,7 @@
                     <option disabled value="">-select</option>
                     @foreach ($categories as $category)
                         <option value="{{ $category->id }}"
-                            {{ $programme->category->id === $category->id ? 'selected' : '' }}>{{ $category->name }}
+                            {{ old('category_id') == $category->id || (!old('category_id') && $programme->category->id == $category->id) ? 'selected' : '' }}>{{ $category->name }}
                         </option>
                     @endforeach
                 </select>
@@ -68,7 +70,7 @@
                     <p class="badge badge-danger">{{ $message }}</p>
                 @enderror
             </div>
-            <button class="btn btn-primary mt-3 float-right">Save</button>
+            <button class="btn btn-success mt-3 float-right">Update</button>
         </form>
     </div>
 @endsection

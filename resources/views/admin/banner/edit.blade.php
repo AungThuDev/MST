@@ -23,7 +23,7 @@
                 </div>
                 <div class="col-6">
                     <div class="form-group">
-                        <label for="">Page Banner<span style="color: red">*</span></label>
+                        <label for="">Page Banner <span class="text-gray">(Optional)</span></label>
                         <input type="file" class="form-control" name="page_banner">
                         <img class="img-thumbnail" style="width: 100px" src="{{ url('/banners/' . $banner->image) }}"
                             alt="">

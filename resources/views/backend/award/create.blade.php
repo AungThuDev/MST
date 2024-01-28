@@ -1,7 +1,5 @@
 @extends('layouts.master')
-
 @section('award', 'nav-link nav-link active')
-
 @section('content')
     <div class="d-flex justify-content-end">
         <a href="{{ route('admin.award.index') }}" class="btn btn-success">Back</a>
@@ -13,24 +11,24 @@
                 <h1>Add New Award</h1>
             </div>
             <div class="form-group">
-                <label for="title">Title</label>
-                <input name="title" id="title" class="form-control" type="text">
+                <label for="title">Title <span class="text-danger">*</span></label>
+                <input name="title" id="title" class="form-control" type="text" value="{{ old('title') }}">
                 @error('title')
-                    <span class="badge badge-danger">{{ $message }}</span>
+                <span class="badge badge-danger">{{ $message }}</span>
                 @enderror
             </div>
             <div class="form-group">
-                <label for="description">Description</label>
-                <textarea name="description" id="description" class="form-control"></textarea>
+                <label for="description">Description <span class="text-danger">*</span></label>
+                <textarea name="description" id="description" class="form-control">{{ old('description') }}</textarea>
                 @error('description')
-                    <span class="badge badge-danger">{{ $message }}</span>
+                <span class="badge badge-danger">{{ $message }}</span>
                 @enderror
             </div>
             <div class="form-group">
-                <label>Image</label>
-                <input name="image" class="form-control" type="file" />
+                <label for="image">Image <span class="text-danger">*</span></label>
+                <input id="image" name="image" class="form-control" type="file"/>
                 @error('image')
-                    <span class="badge badge-danger">{{ $message }}</span>
+                <span class="badge badge-danger">{{ $message }}</span>
                 @enderror
             </div>
             <div>

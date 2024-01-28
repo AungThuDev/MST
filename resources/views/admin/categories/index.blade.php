@@ -37,6 +37,7 @@
 
     <script>
         var categoriesTable = $('#categories').DataTable({
+            "order": [[0, 'desc']],
             'serverSide': true,
             'processing': true,
             'ajax': {

@@ -6,6 +6,8 @@
     <div class="px-4 py-3">
         <h1 class="text-center">Create Principal</h1>
 
+        <a class="btn btn-success top-right-btn text-white" href="{{ route('admin.principal.index') }}">Back</a>
+
         <form method="POST" action="{{ route('admin.principal.store') }}" enctype="multipart/form-data">
             @csrf
 

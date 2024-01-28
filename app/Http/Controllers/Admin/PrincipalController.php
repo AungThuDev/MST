@@ -22,15 +22,12 @@ class PrincipalController extends Controller
                     return '<img style="max-width: 125px;" src="' . $path . '">';
                 })
                 ->editColumn('created_at', function ($a) {
-                    return Carbon::parse($a->created_at)->format("Y-m-d H:i:s");
-                })
-                ->editColumn('updated_at', function ($a) {
-                    return Carbon::parse($a->updated_at)->format("Y-m-d H:i:s");
+                    return \Carbon\Carbon::parse($a->created_at)->format("F j, Y, g:i a");
                 })
                 ->addColumn('action', function ($a) {
 
-                    $details = "<a href='/admin/principal/$a->id' class='btn btn-sm btn-primary' style='margin-right: 10px'>Details</a>";
-                    $edit = '<a href=" ' . route('admin.principal.edit', $a->id) . '" class="btn btn-sm btn-success" style="margin-right: 10px;">Edit</a>';
+                    $details = "<a href='/admin/principal/$a->id' class='btn btn-sm btn-primary m-1' style='margin-right: 10px'>Details</a>";
+                    $edit = '<a href=" ' . route('admin.principal.edit', $a->id) . '" class="btn btn-sm m-1" style="background-color: yellow">Edit</a>';
 
                     return '<div class="action">' . $details . $edit . '</div>';
 
@@ -42,6 +39,10 @@ class PrincipalController extends Controller
 
     public function create()
     {
+        if (Principal::count() > 0) {
+            return redirect('/admin/principal');
+        }
+
         return view('admin.principal.create');
     }
 
@@ -56,13 +57,13 @@ class PrincipalController extends Controller
         ]);
 
         $home_image = $request->file('home_image');
-        $home_image_name =  uniqid() . $home_image->getClientOriginalName();
+        $home_image_name = uniqid() . $home_image->getClientOriginalName();
         $home_image->move(public_path('principal'), $home_image_name);
 
         $validated['home_image'] = $home_image_name;
 
         $faculty_image = $request->file('faculty_image');
-        $faculty_image_name =  uniqid() . $faculty_image->getClientOriginalName();
+        $faculty_image_name = uniqid() . $faculty_image->getClientOriginalName();
         $faculty_image->move(public_path('principal'), $faculty_image_name);
 
         $validated['faculty_image'] = $faculty_image_name;
@@ -100,7 +101,7 @@ class PrincipalController extends Controller
             unlink(public_path('/principal/' . $principal->home_image));
 
             $home_image = $request->file('home_image');
-            $home_image_name =  uniqid() . $home_image->getClientOriginalName();
+            $home_image_name = uniqid() . $home_image->getClientOriginalName();
             $home_image->move(public_path('principal'), $home_image_name);
 
             $validated['home_image'] = $home_image_name;
@@ -110,7 +111,7 @@ class PrincipalController extends Controller
             unlink(public_path('/principal/' . $principal->faculty_image));
 
             $faculty_image = $request->file('faculty_image');
-            $faculty_image_name =  uniqid() . $faculty_image->getClientOriginalName();
+            $faculty_image_name = uniqid() . $faculty_image->getClientOriginalName();
             $faculty_image->move(public_path('principal'), $faculty_image_name);
 
             $validated['faculty_image'] = $faculty_image_name;

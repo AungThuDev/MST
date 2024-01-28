@@ -5,6 +5,9 @@
 @section('content')
     <section>
         <h1 class="text-center">Edit Principal</h1>
+
+        <a class="btn btn-success top-right-btn text-white" href="{{ route('admin.principal.index') }}">Back</a>
+
         <form method="POST" action="{{ route('admin.principal.update', $principal->id) }}" enctype="multipart/form-data">
             @method('PATCH')
             @csrf
@@ -54,7 +57,7 @@
                 @enderror
             </div>
 
-            <button class="btn btn-primary mt-3 float-right">Save</button>
+            <button class="btn btn-success mt-3 float-right">Update</button>
         </form>
     </section>
 @endsection

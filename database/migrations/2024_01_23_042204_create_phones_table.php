@@ -16,7 +16,8 @@ class CreatePhonesTable extends Migration
         Schema::create('phones', function (Blueprint $table) {
             $table->id();
             $table->string('number');
-            $table->integer('campus_id');
+            $table->unsignedBigInteger('campus_id');
+            $table->foreign('campus_id')->references('id')->on('campus_contents')->cascadeOnDelete();
             $table->timestamps();
         });
     }

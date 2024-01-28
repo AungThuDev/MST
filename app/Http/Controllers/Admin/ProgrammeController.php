@@ -25,16 +25,13 @@ class ProgrammeController extends Controller
                     return Category::find($a->category_id)->name;
                 })
                 ->editColumn('created_at', function ($a) {
-                    return Carbon::parse($a->created_at)->format("Y-m-d H:i:s");
-                })
-                ->editColumn('updated_at', function ($a) {
-                    return Carbon::parse($a->updated_at)->format("Y-m-d H:i:s");
+                    return \Carbon\Carbon::parse($a->created_at)->format("F j, Y, g:i a");
                 })
                 ->addColumn('action', function ($a) {
 
-                    $details = "<a href='/admin/programmes/$a->id' class='btn btn-sm btn-primary' style='margin-right: 10px'>Details</a>";
-                    $edit = '<a href=" ' . route('admin.programmes.edit', $a->id) . '" class="btn btn-sm btn-success" style="margin-right: 10px;">Edit</a>';
-                    $delete = '<a href="" class="deleteProgrammesButton btn btn-sm btn-danger" data-id="' . $a->id . '">Delete</a>';
+                    $details = "<a href='/admin/programmes/$a->id' class='btn btn-sm btn-primary m-1' style='margin-right: 10px'>Details</a>";
+                    $edit = '<a href=" ' . route('admin.programmes.edit', $a->id) . '" class="btn btn-sm m-1" style="margin-right: 10px; background-color: yellow;">Edit</a>';
+                    $delete = '<a href="" class="deleteProgrammesButton btn btn-sm btn-danger m-1" data-id="' . $a->id . '">Delete</a>';
 
                     return '<div class="action">' . $details . $edit . $delete . '</div>';
 

@@ -1,8 +1,1 @@
-swal
-
-block create route with middleware
-
-
-back btn ???
-
-index table column too long
+delete old photos in event
