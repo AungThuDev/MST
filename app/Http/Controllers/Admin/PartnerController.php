@@ -34,10 +34,11 @@ class PartnerController extends Controller
                 })
                 ->addColumn('action', function ($a) {
 
+                    $details = "<a href='/admin/partner/$a->id' class='btn btn-sm btn-primary m-1'>Details</a>";
                     $edit = '<a href=" ' . route('admin.partner.edit', $a->id) . '" class="btn btn-sm mt-1" style="background-color:yellow;">Edit</a>';
                     $delete = '<a href="javascript:void(0)" class="deleteButton btn btn-sm btn-danger m-1" record="partner" data-id="' . $a->id . '">Delete</a>';
 
-                    return '<div class="action">' . $edit . $delete . '</div>';
+                    return '<div class="action">' . $details . $edit . $delete . '</div>';
                 })
                 ->rawColumns(['action', 'image', 'description'])->make(true);
         }
@@ -72,7 +73,9 @@ class PartnerController extends Controller
 
     public function show(Partner $partner)
     {
-
+        return view('backend.partners.show', [
+            'partner' => $partner
+        ]);
     }
 
     public function edit(Partner $partner)

@@ -1,6 +1,8 @@
 @extends('layouts.master')
+@section('campus', 'nav-link nav-link active')
+@section('title', 'Admin - Campus')
 @section('content')
-    <h1 class="text-center">Campus Content</h1>
+    <h1 class="text-center">Campus Info</h1>
     <a class="btn btn-success top-right-btn" href="/admin/campus">Back</a>
 
     <h3>Name</h3>

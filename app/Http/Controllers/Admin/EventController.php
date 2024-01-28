@@ -107,7 +107,9 @@ class EventController extends Controller
             $featured_image_name = $event->featured_image;
         }
         if ($request->file('content_image1')) {
-            unlink(public_path('/events/' . $event->content_image1));
+            if ($event->content_image1) {
+                unlink(public_path('/events/' . $event->content_image1));
+            }
             $content_image1 = $request->file('content_image1');
             $content_image1_name = uniqid() . $content_image1->getClientOriginalName();
             $content_image1->move(public_path('events'), $content_image1_name);
@@ -116,7 +118,9 @@ class EventController extends Controller
         }
 
         if ($request->file('content_image2')) {
-            unlink(public_path('/events/' . $event->content_image2));
+            if ($event->content_iamge2) {
+                unlink(public_path('/events/' . $event->content_image2));
+            }
             $content_image2 = $request->file('content_image2');
             $content_image2_name = uniqid() . $content_image2->getClientOriginalName();
             $content_image2->move(public_path('events'), $content_image2_name);
@@ -139,9 +143,10 @@ class EventController extends Controller
     {
         $event->delete();
 
-//        unlink(public_path('/events/' . $event->featured_image));
-//        unlink(public_path('/events/' . $event->content_image1));
-//        unlink(public_path('/events/' . $event->content_image2));
+        unlink(public_path('/events/' . $event->featured_image));
+
+        unlink(public_path('/events/' . $event->content_image1));
+        unlink(public_path('/events/' . $event->content_image2));
 
         return 'success';
     }

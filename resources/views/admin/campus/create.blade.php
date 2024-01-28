@@ -1,12 +1,14 @@
 @extends('layouts.master')
 @section('campus', 'nav-link nav-link active')
+@section('title', 'Admin - Campus')
 @section('content')
+    <h1 class="text-center">Create Campus</h1>
     <div>
         <a href="{{ route('admin.campus.index') }}" class="btn btn-success float-right mb-2">Back</a>
     </div>
     <form action="{{ route('admin.campus.store') }}" method="POST">
         @csrf
-        <div class="card p-2">
+        <div class=" p-2">
             <div class="row">
                 <div class="col-12">
                     <div class="form-group">
@@ -28,37 +30,37 @@
                         @enderror
                     </div>
                 </div>
-                <div class="col-4">
-                    <div class="form-group" id="phones">
-                        <label for="phones">Campus Phones <span style="color: red">*</span></label>
-                        @if(old('phones'))
-                            @for($i = 0; $i < count(old('phones')); $i++)
-                                <div class="d-flex align-items-center justify-content-start">
-                                    <div>
-                                        <input id="phones" placeholder="Enter Phone Number" type="text"
-                                               class="form-control mt-3"
-                                               value="{{ old('phones')[$i] }}" name="phones[]">
-                                        @error('phones.' . $i)
-                                        <span class="badge badge-danger">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-                                    @if($i !== 0)
-                                        <button class="btn d-flex justify-content-center align-items-center btn-secondary rounded-circle closeBtn">X</button>
-                                    @endif
-                                </div>
-
-                            @endfor
-                        @else
-                            <input id="phones" placeholder="Enter Phone Number" type="text" class="form-control"
-                                   name="phones[]">
-                        @endif
-                    </div>
-                </div>
-                <div class="col-8"></div>
-                <div class="col-4">
-                    <button class="btn btn-success addPhone" type="button">Add Another Phone</button>
-                </div>
             </div>
+
+            <div class="form-group" id="phones">
+                <label for="phones">Campus Phones <span style="color: red">*</span></label>
+                @if(old('phones'))
+                    @for($i = 0; $i < count(old('phones')); $i++)
+                        <div class="d-flex align-items-center">
+                            <div>
+                                <input id="phones" placeholder="Enter Phone Number" type="text"
+                                       class="form-control mt-3 phone-input"
+                                       value="{{ old('phones')[$i] }}" name="phones[]">
+                                @error('phones.' . $i)
+                                <span class="badge badge-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            @if($i !== 0)
+                                <button
+                                    class="closeBtn">
+                                    X
+                                </button>
+                            @endif
+                        </div>
+
+                    @endfor
+                @else
+                    <input id="phones" placeholder="Enter Phone Number" type="text" class="form-control phone-input"
+                           name="phones[]">
+                @endif
+            </div>
+            <button class="btn btn-success addPhone" type="button">Add Another Phone</button>
+
             <div>
                 <button type="submit" class="btn btn-success float-right">Create</button>
             </div>
@@ -72,17 +74,17 @@
         $(document).on('click', '.addPhone', function (a) {
             a.preventDefault();
             let div = document.createElement('div');
-            div.className = 'd-flex align-items-center justify-content-between mt-3 ';
+            div.className = 'd-flex align-items-center mt-3 ';
 
             var input = document.createElement('input');
             input.type = 'text';
-            input.className = 'form-control';
+            input.className = 'form-control phone-input';
             input.name = 'phones[]';
             input.placeholder = 'Enter Phone Number';
 
             let closeBtn = document.createElement('button');
             closeBtn.innerText = 'X';
-            closeBtn.className = 'btn btn-primary d-flex justify-content-center align-items-center closeBtn';
+            closeBtn.className = 'closeBtn';
 
             div.appendChild(input);
             div.appendChild(closeBtn);

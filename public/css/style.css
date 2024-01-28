@@ -18,7 +18,23 @@
     left: 15px;
 }
 
+.phone-input {
+    width: 200px;
+}
+
 .closeBtn {
-    width: 1px;
-    height: 1px;
+    margin-left: 10px;
+    background-color: #918787;
+    border: none;
+    color: white;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+
+.closeBtn:hover {
+    color: white;
 }

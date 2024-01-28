@@ -1,5 +1,6 @@
 @extends('layouts.master')
 @section('award', 'nav-link nav-link active')
+@section('title', 'Admin - Awards')
 @section('content')
     <div class="d-flex justify-content-end">
         <a href="{{ route('admin.award.index') }}" class="btn btn-success">Back</a>
@@ -14,16 +15,17 @@
                 <h1>Edit Award</h1>
             </div>
             <div class="form-group">
-                <label class="">Title <span class="text-danger">*</span></label>
-                <input name="title" class="form-control" type="text" value="{{ old('title') ?? $award->title }}">
+                <label for="title">Title <span class="text-danger">*</span></label>
+                <input id="title" name="title" class="form-control" type="text"
+                       value="{{ old('title') ?? $award->title }}">
                 @error('title')
                 <span class="badge badge-danger">{{ $message }}</span>
                 @enderror
             </div>
             <div class="form-group">
-                <label class="">Description <span class="text-danger">*</span></label>
-                <textarea name="description"
-                          class="form-control">{{ old('description') ?? $award->description }}</textarea>
+                <label for="description">Description <span class="text-danger">*</span></label>
+                <textarea id="description" name="description"
+                          class="form-control" rows="5">{{ old('description') ?? $award->description }}</textarea>
                 @error('description')
                 <span class="badge badge-danger">{{ $message }}</span>
                 @enderror
@@ -36,7 +38,7 @@
             @endif
             <div class="form-group">
                 <label>Image<span class="text-gray">(Optional)</span></label>
-                <input name="image" class="form-control" type="file"/>
+                <input name="image" class="form-control" type="file" accept="image/*"/>
                 @error('image')
                 <span class="badge badge-danger">{{ $message }}</span>
                 @enderror

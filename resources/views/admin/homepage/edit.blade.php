@@ -1,7 +1,10 @@
 @extends('layouts.master')
 @section('home-page', 'nav-link nav-link active')
+@section('title', 'Admin - Home Page')
 @section('content')
     <h1 class="text-center">Edit Home Page Content</h1>
+
+    <a class="btn btn-success text-white top-right-btn" href="{{ route('admin.homepage.index') }}">Back</a>
 
     <form action="{{ route('admin.homepage.update', $homepage->id) }}" enctype="multipart/form-data" method="POST">
         @csrf
@@ -57,7 +60,7 @@
                 <div class="col-6">
                     <div class="form-group d-flex flex-column">
                         <label for="">About Image One <span class="text-gray">(Optional)</span></label>
-                        <input type="file" class="form-control" name="about_image1">
+                        <input type="file" class="form-control" name="about_image1" accept="image/*">
                         @error('about_image1')
                         <span class="badge badge-danger">{{ $message }}</span>
                         @enderror
@@ -68,7 +71,7 @@
                 <div class="col-6">
                     <div class="form-group d-flex flex-column">
                         <label for="">About Image Two<span class="text-gray">(Optional)</span></label>
-                        <input type="file" class="form-control" name="about_image2">
+                        <input type="file" class="form-control" name="about_image2" accept="image/*">
                         @error('about_image2')
                         <span class="badge badge-danger">{{ $message }}</span>
                         @enderror
@@ -79,9 +82,9 @@
 
                 <h1 class="col-12 mt-5 pt-5">'To The Journey Ahead' Section</h1>
                 <div class="col-6">
-                    <div class="form-group">
+                    <div class="form-group d-flex flex-column">
                         <label for="">Journey Image One<span class="text-gray">(Optional)</span></label>
-                        <input type="file" class="form-control" name="journey_image1">
+                        <input type="file" class="form-control" name="journey_image1" accept="image/*">
                         @error('journey_image1')
                         <span class="badge badge-danger">{{ $message }}</span>
                         @enderror
@@ -90,9 +93,9 @@
                     </div>
                 </div>
                 <div class="col-6">
-                    <div class="form-group">
+                    <div class="form-group d-flex flex-column">
                         <label for="">Journey Image Two<span class="text-gray">(Optional)</span></label>
-                        <input type="file" class="form-control" name="journey_image2">
+                        <input type="file" class="form-control" name="journey_image2" accept="image/*">
                         @error('journey_image2')
                         <span class="badge badge-danger">{{ $message }}</span>
                         @enderror
@@ -115,9 +118,9 @@
                     </div>
                 </div>
                 <div class="col-6">
-                    <div class="form-group">
+                    <div class="form-group d-flex flex-column">
                         <label for="">Evaluation Image<span class="text-gray">(Optional)</span></label>
-                        <input type="file" class="form-control" name="eval_image">
+                        <input type="file" class="form-control" name="eval_image" accept="image/*">
                         @error('eval_image')
                         <span class="badge badge-danger">{{ $message }}</span>
                         @enderror

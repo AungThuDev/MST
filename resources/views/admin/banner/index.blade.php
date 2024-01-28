@@ -1,7 +1,6 @@
 @extends('layouts.master')
-
 @section('banner', 'nav-link nav-link active')
-
+@section('title', 'Admin - Banners')
 @section('content')
     <div class="card p-2">
         <div>
@@ -10,12 +9,12 @@
 
         <table class="table table-bordered table-hover" id="banner">
             <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Page Name</th>
-                    <th>Banner Image</th>
-                    <th>Action</th>
-                </tr>
+            <tr>
+                <th>Id</th>
+                <th>Page Name</th>
+                <th>Banner Image</th>
+                <th>Action</th>
+            </tr>
             </thead>
             <tbody>
 
@@ -34,14 +33,14 @@
             ],
             'ajax': {
                 url: '/admin/banner/',
-                error: function(xhr, testStatus, errorThrown) {
+                error: function (xhr, testStatus, errorThrown) {
 
                 }
             },
 
             "columns": [{
-                    "data": "id"
-                },
+                "data": "id"
+            },
                 {
                     "data": "page"
                 },
@@ -53,7 +52,7 @@
                 }
             ]
         });
-        $(document).on('click', '.deleteButton', function(a) {
+        $(document).on('click', '.deleteButton', function (a) {
             a.preventDefault();
             var id = $(this).data('id');
 
@@ -67,7 +66,7 @@
                     $.ajax({
                         url: '/admin/banner/' + id,
                         type: 'DELETE',
-                        success: function() {
+                        success: function () {
                             table.ajax.reload()
                         }
                     });

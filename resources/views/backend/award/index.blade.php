@@ -1,5 +1,6 @@
 @extends('layouts.master')
 @section('award', 'nav-link nav-link active')
+@section('title', 'Admin - Awards')
 @section('content')
     <div class="d-flex justify-content-start">
         <h1 class="p-2">Awards</h1>

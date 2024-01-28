@@ -1,7 +1,6 @@
 @extends('layouts.master')
-
 @section('principal', 'nav-link nav-link active')
-
+@section('title', 'Admin - Principal')
 @section('content')
     <div class="container-fluid">
         <div class="row">

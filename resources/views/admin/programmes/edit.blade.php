@@ -1,23 +1,23 @@
 @extends('layouts.master')
-
 @section('programme', 'nav-link nav-link active')
-
+@section('title', 'Admin - Programmes')
 @section('content')
     <div class="px-4 py-3">
         <h1 class="text-center">Edit Programme</h1>
 
         <a class="btn btn-success top-right-btn text-white" href="{{ route('admin.programmes.index') }}">Back</a>
 
-        <form method="POST" action="{{ route('admin.programmes.update', $programme->id) }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('admin.programmes.update', $programme->id) }}"
+              enctype="multipart/form-data">
             @csrf
             @method('PATCH')
 
             <div>
                 <label for="name">Name <span class="text-danger">*</span></label>
                 <input class="form-control" id="name" type="text" name="name"
-                    value="{{ old('name') ?? $programme->name }}">
+                       value="{{ old('name') ?? $programme->name }}">
                 @error('name')
-                    <p class="badge badge-danger">{{ $message }}</p>
+                <p class="badge badge-danger">{{ $message }}</p>
                 @enderror
             </div>
 
@@ -32,7 +32,7 @@
                     @endforeach
                 </select>
                 @error('category_id')
-                    <p class="badge badge-danger">{{ $message }}</p>
+                <p class="badge badge-danger">{{ $message }}</p>
                 @enderror
             </div>
 
@@ -42,32 +42,33 @@
                 <input class="form-control" type="file" id="image" name="image" accept="image/*">
             </div>
             @error('image')
-                <p class="badge badge-danger">{{ $message }}</p>
+            <p class="badge badge-danger">{{ $message }}</p>
             @enderror
 
             <div class="mt-3">
                 <label for="description">Description <span class="text-danger">*</span></label>
-                <textarea class="form-control" id="description" name="description" rows="7">{{ old('description') ?? $programme->description }}</textarea>
+                <textarea class="form-control" id="description" name="description"
+                          rows="7">{{ old('description') ?? $programme->description }}</textarea>
                 @error('description')
-                    <p class="badge badge-danger">{{ $message }}</p>
+                <p class="badge badge-danger">{{ $message }}</p>
                 @enderror
             </div>
 
             <div class="mt-3">
                 <label for="duration">Duration <span class="text-danger">*</span></label>
                 <input class="form-control" id="duration" type="text" name="duration"
-                    value="{{ old('duration') ?? $programme->duration }}">
+                       value="{{ old('duration') ?? $programme->duration }}">
                 @error('duration')
-                    <p class="badge badge-danger">{{ $message }}</p>
+                <p class="badge badge-danger">{{ $message }}</p>
                 @enderror
             </div>
 
             <div class="mt-3">
                 <label for="link">Link <span class="text-danger">*</span></label>
                 <input class="form-control" id="link" type="text" name="link"
-                    value="{{ old('link') ?? $programme->link }}">
+                       value="{{ old('link') ?? $programme->link }}">
                 @error('link')
-                    <p class="badge badge-danger">{{ $message }}</p>
+                <p class="badge badge-danger">{{ $message }}</p>
                 @enderror
             </div>
             <button class="btn btn-success mt-3 float-right">Update</button>

@@ -36,14 +36,22 @@ class AwardController extends Controller
                 })
                 ->addColumn('action', function ($a) {
 
+                    $details = "<a href='/admin/award/$a->id' class='btn btn-sm btn-primary m-1'>Details</a>";
                     $edit = '<a href=" ' . route('admin.award.edit', $a->id) . '" class="btn btn-sm m-1" style="background-color:yellow;">Edit</a>';
                     $delete = '<a href="javascript:void(0)" class="deleteButton btn btn-sm btn-danger m-1" record="award" data-id="' . $a->id . '">Delete</a>';
 
-                    return '<div class="action">' . $edit . $delete . '</div>';
+                    return '<div class="action">' . $details . $edit . $delete . '</div>';
                 })->rawColumns(['action', 'image', "description"])->make(true);
         }
 
         return view("backend.award.index");
+    }
+
+    public function show(Award $award)
+    {
+        return view('backend.award.show', [
+            'award' => $award
+        ]);
     }
 
     public function create()

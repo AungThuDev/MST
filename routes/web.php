@@ -63,13 +63,13 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::resource('/programmes', ProgrammeController::class);
 
     Route::resource('/homepage', HomePageController::class)->except('destroy');
-    Route::resource('/award', AwardController::class)->except('show');
+    Route::resource('/award', AwardController::class);
     Route::resource('/banner', BannerController::class);
     Route::resource('/event', EventController::class);
     Route::resource('/campus', CampusContentController::class);
     Route::resource('/info', InfoController::class);
     Route::resource('/lecturer', LecturerController::class)->except('show');
-    Route::resource('/partner', PartnerController::class)->except('show');
+    Route::resource('/partner', PartnerController::class);
 });
 
 

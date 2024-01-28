@@ -1,6 +1,8 @@
 @extends('layouts.master')
 @section('event', 'nav-link nav-link active')
+@section('title', 'Admin - Events')
 @section('content')
+    <h1>Events</h1>
 
     <div class="d-flex justify-content-end mb-5">
         <a href="{{ route('admin.event.create') }}" class="btn btn-success text-white">Add New Event</a>

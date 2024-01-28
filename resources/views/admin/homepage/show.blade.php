@@ -1,4 +1,6 @@
 @extends('layouts.master')
+@section('title', 'Admin - Home Page')
+@section('home-page', 'nav-link nav-link active')
 @section('content')
     <h1 class="text-center">Home Page</h1>
 

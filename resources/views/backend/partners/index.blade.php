@@ -1,8 +1,6 @@
 @extends('layouts.master')
-
 @section('partner', 'nav-link nav-link active')
-
-
+@section('title', 'Admin - Partners')
 @section('content')
     <div class="d-flex justify-content-start">
         <h1 class="p-2">Partners</h1>
@@ -12,7 +10,7 @@
     </div>
 
     <div class="table-responsive">
-        <table id="partner" class="table table-bordered table-hover">
+        <table id="partner" class="table-responsive table-bordered table-hover">
             <thead>
             <tr>
                 <th>ID</th>

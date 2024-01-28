@@ -1,6 +1,9 @@
 @extends('layouts.master')
 @section('event', 'nav-link nav-link active')
+@section('title', 'Admin - Events')
 @section('content')
+    <h1 class="text-center">Edit Event</h1>
+
     <div>
         <a href="{{ route('admin.event.index') }}" class="btn btn-success float-right mb-2">Back</a>
     </div>
@@ -24,7 +27,7 @@
                     <div class="form-group">
                         <label for="description">Event Description<span style="color: red">*</span></label>
                         <textarea id="description" name="description"
-                                  class="form-control">{{ old('description') ?? $event->description }}</textarea>
+                                  class="form-control" rows="10">{{ old('description') ?? $event->description }}</textarea>
                         @error('description')
                         <span class="badge badge-danger">{{ $message }}</span>
                         @enderror
@@ -36,7 +39,7 @@
                         <img src="{{ url('/events/' . $event->featured_image) }}" style="width: 100px"
                              class="img-thumbnail"
                              alt="">
-                        <input type="file" class="form-control mt-2" name="featured_image">
+                        <input type="file" class="form-control mt-2" name="featured_image" accept="image/*">
                         @error('featured_image')
                         <span class="badge badge-danger">{{ $message }}</span>
                         @enderror
@@ -50,20 +53,20 @@
                                  class="img-thumbnail"
                                  alt="">
                         @endif
-                        <input type="file" class="form-control mt-2" name="content_image1">
+                        <input type="file" class="form-control mt-2" name="content_image1" accept="image/*">
                         @error('content_image1')
                         <span class="badge badge-danger">{{ $message }}</span>
                         @enderror
                     </div>
                 </div>
                 <div class="col-12">
-                    <div class="form-group">
+                    <div class="form-group d-flex flex-column">
                         <label for="">Content Image 2 <span class="text-gray">(Optional)</span></label>
                         @if($event->content_image2)
                             <img src="{{ url('/events/' . $event->content_image2) }}" style="width: 100px"
                                  class="img-thumbnail" alt="">
                         @endif
-                        <input type="file" class="form-control" name="content_image2">
+                        <input type="file" class="form-control mt-2" name="content_image2" accept="image/*">
                         @error('content_image2')
                         <span class="badge badge-danger">{{ $message }}</span>
                         @enderror

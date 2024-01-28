@@ -21,7 +21,7 @@ class FaqController extends Controller
                 })
                 ->addColumn('action', function ($a) {
 
-                    $details = "<a href='/admin/faq/$a->id' class='btn btn-sm btn-primary mt-1'>Details</a>";
+                    $details = "<a href='/admin/faq/$a->id' class='btn btn-sm btn-primary m-1'>Details</a>";
                     $edit = '<a href=" ' . route('admin.faq.edit', $a->id) . '" class="btn btn-sm m-1" style="background-color: yellow;">Edit</a>';
                     $delete = '<a href="" class="deleteFaqButton btn btn-sm btn-danger m-1" data-id="' . $a->id . '">Delete</a>';
 

@@ -1,6 +1,8 @@
 @extends('layouts.master')
 @section('campus', 'nav-link nav-link active')
+@section('title', 'Admin - Campus')
 @section('content')
+    <h1 class="text-center">Edit Campus Info</h1>
     <div>
         <a href="{{ route('admin.campus.index') }}" class="btn btn-success float-right mb-2">Back</a>
     </div>
@@ -35,17 +37,18 @@
                         <label for="phones">Campus Phones<span style="color: red">*</span></label>
                         @if(old('phones'))
                             @for($i = 0; $i < count(old('phones')); $i++)
-                                <div class="d-flex align-items-center justify-content-start">
+                                <div class="d-flex align-items-center">
                                     <div>
                                         <input id="phones" placeholder="Enter Phone Number" type="text"
-                                               class="form-control mt-3"
+                                               class="form-control mt-3 phone-input"
                                                value="{{ old('phones')[$i] }}" name="phones[]">
                                         @error('phones.' . $i)
                                         <span class="badge badge-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
                                     @if($i !== 0)
-                                        <button class="btn d-flex justify-content-center align-items-center btn-secondary rounded-circle closeBtn">
+                                        <button
+                                            class="closeBtn">
                                             X
                                         </button>
                                     @endif
@@ -55,17 +58,18 @@
                         @else
                                 <?php $phones = $campus->phones()->pluck('number') ?>
                             @for($i = 0; $i < count($phones); $i++)
-                                <div class="d-flex align-items-center justify-content-start">
+                                <div class="d-flex align-items-center">
                                     <div>
                                         <input id="phones" placeholder="Enter Phone Number" type="text"
-                                               class="form-control mt-3"
+                                               class="form-control mt-3 phone-input"
                                                value="{{ $phones[$i] }}" name="phones[]">
                                         @error('phones.' . $i)
                                         <span class="badge badge-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
                                     @if($i !== 0)
-                                        <button class="btn d-flex justify-content-center align-items-center btn-secondary rounded-circle closeBtn">
+                                        <button
+                                            class="closeBtn">
                                             X
                                         </button>
                                     @endif
@@ -93,17 +97,17 @@
         $(document).on('click', '.addPhone', function (a) {
             a.preventDefault();
             let div = document.createElement('div');
-            div.className = 'd-flex align-items-center justify-content-between mt-3 ';
+            div.className = 'd-flex align-items-center mt-3 ';
 
             var input = document.createElement('input');
             input.type = 'text';
-            input.className = 'form-control';
+            input.className = 'form-control phone-input';
             input.name = 'phones[]';
             input.placeholder = 'Enter Phone Number';
 
             let closeBtn = document.createElement('button');
             closeBtn.innerText = 'X';
-            closeBtn.className = 'btn btn-primary d-flex justify-content-center align-items-center closeBtn';
+            closeBtn.className = 'closeBtn';
 
             div.appendChild(input);
             div.appendChild(closeBtn);

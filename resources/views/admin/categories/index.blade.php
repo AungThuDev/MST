@@ -1,4 +1,6 @@
 @extends('layouts.master')
+@section('title', 'Admin - Programme Categories')
+@section('category', 'nav-link nav-link active')
 @section('content')
     <div class="container-fluid">
         <div class="row">
@@ -6,7 +8,8 @@
                 <div class="card">
                     <div class="card-header">
                         <h1 class="card-title">Programme Categories</h1>
-                        <a href="{{ route('admin.categories.create') }}" class="btn btn-success top-right-btn">Add New Category</a>
+                        <a href="{{ route('admin.categories.create') }}" class="btn btn-success top-right-btn">Add New
+                            Category</a>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
@@ -42,7 +45,7 @@
             'processing': true,
             'ajax': {
                 url: '/admin/categories/',
-                error: function(xhr, testStatus, errorThrown) {
+                error: function (xhr, testStatus, errorThrown) {
 
                 }
             },
@@ -65,7 +68,7 @@
             ]
         });
 
-        $(document).on('click', '.deleteCategoriesButton', function(a) {
+        $(document).on('click', '.deleteCategoriesButton', function (a) {
             a.preventDefault();
             const id = $(this).data('id');
             Swal.fire({
@@ -78,7 +81,7 @@
                     $.ajax({
                         url: '/admin/categories/' + id,
                         type: 'DELETE',
-                        success: function() {
+                        success: function () {
                             categoriesTable.ajax.reload();
                         }
                     });

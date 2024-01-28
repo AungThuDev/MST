@@ -1,5 +1,6 @@
 @extends('layouts.master')
 @section('lecturer', 'nav-link nav-link active')
+@section('title', 'Admin - Lectures')
 @section('content')
     <div class="d-flex justify-content-end">
         <a href="{{ route('admin.lecturer.index') }}" class="btn btn-success">Back</a>
@@ -31,12 +32,12 @@
             @if ($lecturer->image)
                 <div class="d-flex flex-column mb-3">
                     <label>Current Image <span class="text-gray">(Optional)</span></label>
-                    <img src="/lecturer/{{ $lecturer->image }}" style="width: 125px;">
+                    <img src="/lecturer/{{ $lecturer->image }}" style="width: 125px;" alt="lecture image">
                 </div>
             @endif
             <div class="form-group">
                 <label>Image</label>
-                <input name="image" class="form-control" type="file"/>
+                <input name="image" class="form-control" type="file" accept="image/*"/>
                 @error('image')
                 <span class="badge badge-danger">{{ $message }}</span>
                 @enderror

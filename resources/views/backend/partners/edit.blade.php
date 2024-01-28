@@ -1,5 +1,6 @@
 @extends('layouts.master')
 @section('partner', 'nav-link nav-link active')
+@section('title', 'Admin - Partners')
 @section('content')
     <div class="d-flex justify-content-end">
         <a href="{{ route('admin.partner.index') }}" class="btn btn-success">Back</a>
@@ -23,7 +24,7 @@
             <div class="form-group">
                 <label for="description">Description <span class="text-danger">*</span></label>
                 <textarea name="description" id="description" class="form-control"
-                          type="text">{{ old('description') ?? $partner->description }}</textarea>
+                          type="text" rows="5">{{ old('description') ?? $partner->description }}</textarea>
                 @error('description')
                 <span class="badge badge-danger">{{ $message }}</span>
                 @enderror
@@ -31,7 +32,7 @@
             @if ($partner->image)
                 <div class="d-flex flex-column mb-3">
                     <label>Current Image</label>
-                    <img src="/partner/{{ $partner->image }}" style="width: 125px;">
+                    <img src="/partner/{{ $partner->image }}" style="width: 125px;" alt="partner image">
                 </div>
             @endif
             <div class="form-group">

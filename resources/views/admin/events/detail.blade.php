@@ -1,6 +1,9 @@
 @extends('layouts.master')
 @section('event', 'nav-link nav-link active')
+@section('title', 'Admin - Events')
 @section('content')
+    <h1 class="text-center">Event</h1>
+
     <div>
         <a href="{{ route('admin.event.index') }}" class="btn btn-success float-right mb-2">Back</a>
     </div>
@@ -9,13 +12,15 @@
             <div class="col-12">
                 <div class="form-group">
                     <label for="title">Event Title<span style="color: red">*</span></label>
-                    <input id="title" disabled type="text" class="form-control" value="{{ $event->title }}" name="title">
+                    <input id="title" disabled type="text" class="form-control" value="{{ $event->title }}"
+                           name="title">
                 </div>
             </div>
             <div class="col-12">
                 <div class="form-group">
                     <label for="description">Event Description<span style="color: red">*</span></label>
-                    <textarea id="description" disabled name="description" class="form-control">{{ $event->description }}</textarea>
+                    <textarea id="description" disabled name="description"
+                              class="form-control" rows="10">{{ $event->description }}</textarea>
                 </div>
             </div>
             <div class="col-4">

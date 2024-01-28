@@ -17,14 +17,6 @@ class LecturerController extends Controller
             $lecturer = Lecturer::query();
 
             return DataTables::of($lecturer)
-                ->editColumn("position", function ($e) {
-                    if (Str::length($e->position) > 30) {
-                        $position = substr($e->position, 0, 20) . "...";
-                    } else {
-                        $position = $e->position;
-                    }
-                    return '<p>' . $position . '</p>';
-                })
                 ->editColumn("image", function ($e) {
                     $path = "/lecturer/{$e->image}";
                     return '<img style="width: 125px;" src="' . $path . '">';
@@ -39,7 +31,7 @@ class LecturerController extends Controller
 
                     return '<div class="action">' . $edit . $delete . '</div>';
                 })
-                ->rawColumns(['action', 'image', 'position'])->make(true);
+                ->rawColumns(['action', 'image'])->make(true);
         }
         return view("backend.lecturer.index");
     }

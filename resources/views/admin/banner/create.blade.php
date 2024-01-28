@@ -1,5 +1,6 @@
 @extends('layouts.master')
 @section('banner', 'nav-link nav-link active')
+@section('title', 'Admin - Banners')
 @section('content')
     <div>
         <a href="{{ route('admin.banner.index') }}" class="btn btn-success float-right mb-2">Back</a>

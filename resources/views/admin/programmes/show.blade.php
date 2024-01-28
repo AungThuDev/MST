@@ -1,7 +1,6 @@
 @extends('layouts.master')
-
 @section('programme', 'nav-link nav-link active')
-
+@section('title', 'Admin - Programmes')
 @section('content')
     <section>
         <h1 class="text-center">Programme</h1>

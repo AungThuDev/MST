@@ -1,7 +1,6 @@
 @extends('layouts.master')
-
 @section('faq', 'nav-link nav-link active')
-
+@section('title', 'Admin - FAQ')
 @section('content')
     <section>
         <h1 class="text-center">FAQ</h1>

@@ -1,10 +1,11 @@
 @extends('layouts.master')
-
 @section('programme-page', 'nav-link nav-link active')
-
+@section('title', 'Admin - Programme Page')
 @section('content')
     <div class="px-4 py-3">
         <h1 class="text-center">Edit Programme Page Content</h1>
+
+        <a class="btn btn-success text-white top-right-btn" href="{{ route('admin.programme_page.index') }}">Back</a>
 
         <form method="POST" action="{{ route('admin.programme_page.update', $programmePage->id) }}"
               enctype="multipart/form-data">

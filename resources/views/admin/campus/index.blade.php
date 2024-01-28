@@ -1,21 +1,22 @@
 @extends('layouts.master')
-
 @section('campus', 'nav-link nav-link active')
-
+@section('title', 'Admin - Campus')
 @section('content')
+    <h1>Campus Infos</h1>
+
     <div class="d-flex justify-content-end mb-5">
         <a href="{{ route('admin.campus.create') }}" class="btn btn-success text-white">Add New Campus</a>
     </div>
 
     <table class="table table-bordered table-hover" id="campus">
         <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Address</th>
-                <th>Phones</th>
-                <th>Action</th>
-            </tr>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Phones</th>
+            <th>Action</th>
+        </tr>
         </thead>
         <tbody>
 
@@ -33,14 +34,14 @@
             ],
             'ajax': {
                 url: '/admin/campus/',
-                error: function(xhr, testStatus, errorThrown) {
+                error: function (xhr, testStatus, errorThrown) {
 
                 }
             },
 
             "columns": [{
-                    "data": "id"
-                },
+                "data": "id"
+            },
                 {
                     "data": "name"
                 },
@@ -55,7 +56,7 @@
                 }
             ]
         });
-        $(document).on('click', '.deleteButton', function(a) {
+        $(document).on('click', '.deleteButton', function (a) {
             a.preventDefault();
             var id = $(this).data('id');
 
@@ -69,7 +70,7 @@
                     $.ajax({
                         url: '/admin/campus/' + id,
                         type: 'DELETE',
-                        success: function() {
+                        success: function () {
                             table.ajax.reload()
                         }
                     });

@@ -1,8 +1,6 @@
 @extends('layouts.master')
-
 @section('lecturer', 'nav-link nav-link active')
-
-
+@section('title', 'Admin - Lectures')
 @section('content')
     <div class="d-flex justify-content-start">
         <h1 class="p-2">Lecturers</h1>

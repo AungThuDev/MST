@@ -1,5 +1,6 @@
 @extends('layouts.master')
 @section('partner', 'nav-link nav-link active')
+@section('title', 'Admin - Partners')
 @section('content')
     <div class="d-flex justify-content-end">
         <a href="{{ route('admin.partner.index') }}" class="btn btn-success">Back</a>
@@ -19,14 +20,14 @@
             </div>
             <div class="form-group">
                 <label for="description">Description <span class="text-danger">*</span></label>
-                <textarea name="description" id="description" class="form-control" type="text">{{ old('description') }}</textarea>
+                <textarea name="description" id="description" class="form-control" type="text" rows="5">{{ old('description') }}</textarea>
                 @error('description')
                     <span class="badge badge-danger">{{ $message }}</span>
                 @enderror
             </div>
             <div class="form-group">
                 <label for="image">Image <span class="text-danger">*</span></label>
-                <input id="image" name="image" class="form-control" type="file" />
+                <input id="image" name="image" class="form-control" type="file" accept="image/*"/>
                 @error('image')
                     <span class="badge badge-danger">{{ $message }}</span>
                 @enderror

@@ -8,7 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="author" content="Creative Tim">
 
-    <title>Argon Dashboard - Free Dashboard for Bootstrap 4</title>
+    <title>@yield('title')</title>
     <!-- Favicon -->
     <link rel="icon" href="/assets/img/brand/favicon.png" type="image/png">
     <!-- Fonts -->
