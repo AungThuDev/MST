@@ -25,7 +25,7 @@ class CreateHomePagesTable extends Migration
             $table->string('journey_image2');
             $table->string('eval_image');
             $table->string('eval_title');
-            $table->string('eval_text');
+            $table->longText('eval_text');
             $table->string('progress1');
             $table->string('progress1_percent');
             $table->string('progress2');

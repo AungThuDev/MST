@@ -1,5 +1,3 @@
 eval_text max characters?
 home page have to rechoose images4
 
-check alt attributes
-id and for label and input
