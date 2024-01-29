@@ -28,7 +28,6 @@
     <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
     <!-- Data Table -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
-
     @yield('style')
 </head>
 
@@ -169,11 +168,10 @@
 
 <!-- Argon Scripts -->
 <!-- ... (your script tags) ... -->
-<script>
-    // Your scripts here
-</script>
 <!-- sweet alert -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+@yield('script')
 
 <script>
     $(document).ready(function () {
@@ -211,9 +209,7 @@
 
 </script>
 
-{{-- <script src="/js/custom.js"></script> --}}
 
-@yield('script')
 </body>
 
 </html>

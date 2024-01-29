@@ -8,23 +8,23 @@
                 <div class="card">
                     <div class="card-header">
                         <h1 class="card-title">Programmes</h1>
-                        <a href="{{ route('admin.programmes.create') }}" class="btn btn-success top-right-btn">Add new
-                            programme</a>
+                        <a href="{{ route('admin.programmes.create') }}" class="btn btn-success top-right-btn">Add New
+                            Programme</a>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
                         <table id="programmes" class="table-responsive table-bordered table-hover">
                             <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Name</th>
-                                <th>Category</th>
-                                <th>Image</th>
-                                <th>duration</th>
-                                <th>link</th>
-                                <th>Created</th>
-                                <th>Action</th>
-                            </tr>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Category</th>
+                                    <th>Image</th>
+                                    <th>duration</th>
+                                    <th>link</th>
+                                    <th>Created</th>
+                                    <th>Action</th>
+                                </tr>
                             </thead>
                             <tbody>
 
@@ -43,19 +43,21 @@
 
     <script>
         var programmesTable = $('#programmes').DataTable({
-            "order": [[0, 'desc']],
+            "order": [
+                [0, 'desc']
+            ],
             'serverSide': true,
             'processing': true,
             'ajax': {
                 url: '/admin/programmes/',
-                error: function (xhr, testStatus, errorThrown) {
+                error: function(xhr, testStatus, errorThrown) {
 
                 }
             },
 
             "columns": [{
-                "data": "id"
-            },
+                    "data": "id"
+                },
                 {
                     'data': 'name'
                 },
@@ -80,7 +82,7 @@
             ]
         });
 
-        $(document).on('click', '.deleteProgrammesButton', function (a) {
+        $(document).on('click', '.deleteProgrammesButton', function(a) {
             a.preventDefault();
             const id = $(this).data('id');
             Swal.fire({
@@ -93,7 +95,7 @@
                     $.ajax({
                         url: '/admin/programmes/' + id,
                         type: 'DELETE',
-                        success: function () {
+                        success: function() {
                             programmesTable.ajax.reload();
                         }
                     });

@@ -29,8 +29,8 @@ class BannerController extends Controller
 
                 ->addColumn('action', function ($a) {
 
-                    $edit = '<a href=" ' . route('admin.banner.edit', $a->id) . '" class="btn" style="margin-right: 10px;background-color: yellow;">Edit</a>';
-                    $delete = '<a href="javascript:void(0)" class="deleteButton btn btn-danger" record="award" data-id="' . $a->id . '">Delete</a>';
+                    $edit = '<a href=" ' . route('admin.banner.edit', $a->id) . '" class="btn btn-sm mt-4" style="margin-right: 10px;background-color: yellow;">Edit</a>';
+                    $delete = '<a href="javascript:void(0)" class="deleteButton btn btn-danger btn-sm mt-4" record="award" data-id="' . $a->id . '">Delete</a>';
 
                     return '<div class="action">'  . $edit . $delete . '</div>';
                 })->rawColumns(['action', 'image'])->make(true);
@@ -61,7 +61,7 @@ class BannerController extends Controller
     {
         //
         $request->validate([
-            'page_type' => 'required',
+            'page_type' => 'required|unique:banners,page',
             'page_banner' => 'required|image|mimes:jpg,jpeg,png'
         ]);
 

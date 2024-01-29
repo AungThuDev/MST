@@ -4,17 +4,17 @@
 @section('content')
     <div class="card p-2">
         <div>
-            <a href="{{ route('admin.banner.create') }}" class="btn btn-success float-right mb-2">Create</a>
+            <a href="{{ route('admin.banner.create') }}" class="btn btn-success float-right mb-2">Add New Banner</a>
         </div>
 
         <table class="table table-bordered table-hover" id="banner">
             <thead>
-            <tr>
-                <th>Id</th>
-                <th>Page Name</th>
-                <th>Banner Image</th>
-                <th>Action</th>
-            </tr>
+                <tr>
+                    <th>ID</th>
+                    <th>Page Name</th>
+                    <th>Banner Image</th>
+                    <th>Action</th>
+                </tr>
             </thead>
             <tbody>
 
@@ -33,14 +33,14 @@
             ],
             'ajax': {
                 url: '/admin/banner/',
-                error: function (xhr, testStatus, errorThrown) {
+                error: function(xhr, testStatus, errorThrown) {
 
                 }
             },
 
             "columns": [{
-                "data": "id"
-            },
+                    "data": "id"
+                },
                 {
                     "data": "page"
                 },
@@ -52,12 +52,12 @@
                 }
             ]
         });
-        $(document).on('click', '.deleteButton', function (a) {
+        $(document).on('click', '.deleteButton', function(a) {
             a.preventDefault();
             var id = $(this).data('id');
 
             Swal.fire({
-                title: 'Do you want to delete this campus?',
+                title: 'Do you want to delete this banner?',
                 showCancelButton: true,
                 confirmButtonText: 'Delete',
                 confirmButtonColor: '#FF0000',
@@ -66,7 +66,7 @@
                     $.ajax({
                         url: '/admin/banner/' + id,
                         type: 'DELETE',
-                        success: function () {
+                        success: function() {
                             table.ajax.reload()
                         }
                     });

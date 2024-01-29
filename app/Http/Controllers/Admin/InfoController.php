@@ -23,8 +23,8 @@ class InfoController extends Controller
 
                 ->addColumn('action', function ($a) {
 
-                    $edit = '<a href=" ' . route('admin.info.edit', $a->id) . '" class="btn" style="margin-right: 10px;background-color: yellow;">Edit</a>';
-                    $delete = '<a href="javascript:void(0)" class="deleteButton btn btn-danger" record="award" data-id="' . $a->id . '">Delete</a>';
+                    $edit = '<a href=" ' . route('admin.info.edit', $a->id) . '" class="btn btn-sm" style="margin-right: 10px;background-color: yellow;">Edit</a>';
+                    $delete = '<a href="javascript:void(0)" class="deleteButton btn btn-danger btn-sm" record="award" data-id="' . $a->id . '">Delete</a>';
 
                     return '<div class="action">'  . $edit . $delete . '</div>';
                 })->rawColumns(['action'])->make(true);

@@ -29,8 +29,8 @@ class CampusContentController extends Controller
                 ->addColumn('action', function ($a) {
 
                     $details = "<a href='/admin/campus/$a->id' class='btn btn-sm btn-primary mt-1'>Details</a>";
-                    $edit = '<a href=" ' . route('admin.campus.edit', $a->id) . '" class="btn btn-sm m-1" style="background-color: yellow;">Edit</a>';
-                    $delete = '<a href="javascript:void(0)" class="deleteButton btn btn-sm btn-danger" record="award" data-id="' . $a->id . '">Delete</a>';
+                    $edit = '<a href=" ' . route('admin.campus.edit', $a->id) . '" class="btn btn-sm mt-1" style="background-color: yellow;">Edit</a>';
+                    $delete = '<a href="javascript:void(0)" class="deleteButton btn btn-sm btn-danger mt-1" record="award" data-id="' . $a->id . '">Delete</a>';
 
                     return '<div class="action">' . $details . $edit . $delete . '</div>';
                 })->rawColumns(['action', 'phones'])->make(true);
