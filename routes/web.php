@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\PartnerController;
 use App\Http\Controllers\Admin\PrincipalController;
 use App\Http\Controllers\Admin\ProgrammeController;
 use App\Http\Controllers\Admin\ProgrammePageController;
+use App\Models\Banner;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,7 +35,10 @@ Route::get('/test', function () {
 });
 
 Route::get('/', function () {
-    return view('welcome');
+    $home_banner = Banner::where('page', 'home')->first();
+
+
+    return view('frontend.home', compact('home_banner'));
 });
 
 Auth::routes();

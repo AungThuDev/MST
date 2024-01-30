@@ -1,5 +1,5 @@
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
     /* font-family: 'DM Sans', sans-serif; */
     margin: 0;
     padding: 0;
@@ -7,7 +7,7 @@ body {
 }
 
 nav {
-    font-family: 'DM Sans', sans-serif;
+    font-family: "DM Sans", sans-serif;
 }
 
 .contact-bar p {
@@ -16,7 +16,7 @@ nav {
 
 .small-heading {
     font-size: 18px;
-    font-family: 'DM Sans', sans-serif;
+    font-family: "DM Sans", sans-serif;
     letter-spacing: 3px;
 }
 
@@ -26,7 +26,7 @@ p {
 
 .banner-heading {
     font-size: 90px;
-    font-family: 'Cormorant Garamond', serif;
+    font-family: "Cormorant Garamond", serif;
     font-weight: 700;
 }
 
@@ -36,68 +36,67 @@ p {
 }
 
 .contact-banner {
-    background-image: url('images/contact-banner-min.jpg');
+    background-image: url("images/contact-banner-min.jpg");
     background-size: cover;
     background-position: bottom;
 }
 
 .faq-banner {
-    background-image: url('images/faq-banner.jpg');
+    background-image: url("images/faq-banner.jpg");
     background-size: cover;
     background-position: center;
 }
 
 .academic-banner {
-    background-image: url('images/academic-banner-min.jpg');
+    background-image: url("images/academic-banner-min.jpg");
     background-size: cover;
     background-position: center;
 }
 
 .lecturer-banner {
-    background-image: url('images/Lecturers-min.png');
+    background-image: url("images/Lecturers-min.png");
     background-size: cover;
     background-position: top;
 }
 
 .index-banner {
-    background-image: url('images/home.png');
     background-size: cover;
     background-position: top;
 }
 .event-banner {
-    background-image: url('images/event\ banner.jpg');
+    background-image: url("images/event\ banner.jpg");
     background-size: cover;
     background-position: top;
 }
 .graduation-banner {
-    background-image: url('images/Graduation\ Banner.jpg');
+    background-image: url("images/Graduation\ Banner.jpg");
     background-size: cover;
     background-position: top;
 }
 .fresher-banner {
-    background-image: url('images/Fresher\ Welcome\ Banner.jpg');
+    background-image: url("images/Fresher\ Welcome\ Banner.jpg");
     background-size: cover;
     background-position: top;
 }
 .futsal-banner {
-    background-image: url('images/Futsal\ Banner.jpg');
+    background-image: url("images/Futsal\ Banner.jpg");
     background-size: cover;
     background-position: top;
 }
 .badminton-banner {
-    background-image: url('images/Badminton\ banner-min.jpg');
+    background-image: url("images/Badminton\ banner-min.jpg");
     background-size: cover;
     background-position: top;
 }
 .mdy-banner {
-    background-image: url('images/Mdy\ opening\ banner.jpg');
+    background-image: url("images/Mdy\ opening\ banner.jpg");
     background-size: cover;
     background-position: top;
 }
 
 /* mnm */
 .relative-container:not(.lecturer-banner)::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
@@ -125,35 +124,33 @@ p {
     color: white !important;
 }
 
-
 .heading {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: "Cormorant Garamond", serif;
     font-size: 55px;
     font-weight: bold;
 }
 
-.programme-container{
+.programme-container {
     width: 80%;
     max-width: 1300px;
-
 }
 
-.programme-header{
-    font-family: 'DM Sans', sans-serif;
+.programme-header {
+    font-family: "DM Sans", sans-serif;
     font-size: 35px;
-    color: #36348E;
+    color: #36348e;
 }
 
-.programme-name{
+.programme-name {
     font-size: 28px;
     font-weight: bolder;
 }
 
-.programme-text{
+.programme-text {
     font-size: 20px;
 }
 
-.itpec-logo{
+.itpec-logo {
     height: 90px;
 }
 
@@ -186,19 +183,19 @@ p {
         font-size: 40px;
     }
 
-    .programme-header{
+    .programme-header {
         font-size: 30px;
     }
 
-    .programme-name{
+    .programme-name {
         font-size: 25px;
     }
 
-    .programme-text{
+    .programme-text {
         font-size: 20px;
     }
 
-    .itpec-logo{
+    .itpec-logo {
         height: 90px;
     }
 
@@ -213,7 +210,6 @@ p {
         font-size: 14px;
     }
 
-    
     .dropdown-item:hover {
         background-color: #2826c1;
         color: white !important;
@@ -230,15 +226,15 @@ p {
         font-size: 30px;
     }
 
-    .programme-header{
+    .programme-header {
         font-size: 25px;
     }
 
-    .programme-name{
+    .programme-name {
         font-size: 20px;
     }
 
-    .programme-text{
+    .programme-text {
         font-size: 17px;
     }
 
@@ -252,7 +248,6 @@ p {
         font-size: 10px;
     }
 
-    
     .dropdown-item:hover {
         background-color: #2826c1;
         color: white !important;
@@ -278,19 +273,19 @@ p {
         font-size: 30px;
     }
 
-    .programme-header{
+    .programme-header {
         font-size: 25px;
     }
 
-    .programme-name{
+    .programme-name {
         font-size: 20px;
     }
 
-    .programme-text{
+    .programme-text {
         font-size: 17px;
     }
 
-    .itpec-logo{
+    .itpec-logo {
         height: 60px;
     }
 
@@ -298,7 +293,7 @@ p {
         font-size: 16px;
         line-height: 30px;
     }
-}  
+}
 
 img {
     width: 100%;
@@ -317,7 +312,7 @@ img {
 }
 
 .question p {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: "Cormorant Garamond", serif;
     font-weight: bold;
     font-size: 22px;
     margin-bottom: 0;
@@ -328,7 +323,7 @@ li {
 }
 
 .cormorant {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: "Cormorant Garamond", serif;
 }
 
 .send-message-btn {
@@ -366,7 +361,7 @@ li {
 }
 
 .academic-items:hover {
-    background-color: #36348E;
+    background-color: #36348e;
     transform: scale(1.05);
 }
 
@@ -384,23 +379,23 @@ li {
 
 .academic-icon {
     font-size: 35px;
-    color: #36348E;
+    color: #36348e;
 }
 
 .academic-header {
     font-size: 24px;
-    font-family: 'Cormorant Garamond', serif;
+    font-family: "Cormorant Garamond", serif;
 }
 
 .image {
-    background-image: url('./images/academic-banner-2-cropped-min.jpg'), linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5));
+    background-image: url("./images/academic-banner-2-cropped-min.jpg"),
+        linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5));
     background-size: cover;
     background-position: right;
     background-attachment: fixed;
     height: 500px;
     position: relative;
 }
-
 
 .counter {
     position: absolute;
@@ -412,7 +407,7 @@ li {
 
 .counter-icon {
     font-size: 20px;
-    color: #36348E;
+    color: #36348e;
 }
 
 .image-container {
@@ -449,7 +444,7 @@ li {
 }
 
 .progress-bar {
-    background-color: #36348E;
+    background-color: #36348e;
 }
 
 .lect-name {
@@ -459,7 +454,7 @@ li {
 
 .lect-role {
     font-size: 15px;
-    color: #36348E;
+    color: #36348e;
 }
 
 /* hhn */
@@ -470,29 +465,29 @@ li {
 }
 
 .fa-brands:hover {
-    color: #36348E;
+    color: #36348e;
 }
 
-.relative-container .col{
+.relative-container .col {
     color: #ffffff;
     margin-left: 15px;
 }
 
 /* visionmission */
 
-.vision-heading{
-    font-family: 'Cormorant Garamond', serif;
+.vision-heading {
+    font-family: "Cormorant Garamond", serif;
     font-size: 35px;
     font-weight: 900;
 }
 
 /* about-us */
 
-.about-us{
+.about-us {
     position: relative;
 }
 
-.about-us .image1{
+.about-us .image1 {
     position: relative;
     overflow: hidden;
     margin-top: 150px;
@@ -500,15 +495,14 @@ li {
     /* height: 1000px; */
 }
 
-
-.about-us .image1 img{
+.about-us .image1 img {
     transition: transform 0.5s ease-in-out, filter 0.5s ease-in-out;
 }
 
-.about-us .image2 img{
+.about-us .image2 img {
     transition: transform 0.5s ease-in-out, filter 0.5s ease-in-out;
 }
-.about-us .image2{
+.about-us .image2 {
     position: relative;
     overflow: hidden;
     margin-top: 100px;
@@ -516,59 +510,59 @@ li {
     /* height: 1200px; */
 }
 
-.about-us .image1:hover img{
+.about-us .image1:hover img {
     transform: scale(0.9);
     filter: brightness(70%);
 }
 
-.about-us .image2:hover img{
+.about-us .image2:hover img {
     transform: scale(0.9);
     filter: brightness(70%);
 }
 
-.aboutus{
+.aboutus {
     margin-top: 100px;
     padding-left: 0;
 }
 
-.aboutuslist{
+.aboutuslist {
     margin-top: 40px;
 }
 
-.aboutusicon{
+.aboutusicon {
     font-size: 15px;
     padding-right: 8px;
     color: #2826c1;
 }
 
-.aboutusplus{
+.aboutusplus {
     font-size: 25px;
     padding-left: 8px;
     color: #2826c1;
 }
 
-.aboutuslist h1{
+.aboutuslist h1 {
     margin-top: 30px;
     font-size: 50px;
 }
 
 /* knowledge and experience */
 
-.knowledge{
+.knowledge {
     margin-top: 100px;
 }
 
-.knowledge-heading{
+.knowledge-heading {
     font-size: 34px;
-    font-family: 'DM Sans', sans-serif;
+    font-family: "DM Sans", sans-serif;
     font-weight: 900;
 }
 
-.knowledge-list{
+.knowledge-list {
     margin-top: 25px;
 }
 
-.knowledge-icon .uni{
+.knowledge-icon .uni {
     font-size: 25px;
     padding: 20px;
     background-color: #36348e;
@@ -578,7 +572,7 @@ li {
     transition: background-color 0.4s ease-in-out;
 }
 
-.knowledge-icon .online{
+.knowledge-icon .online {
     font-size: 25px;
     padding: 20px;
     background-color: #ffc53a;
@@ -588,15 +582,14 @@ li {
     transition: background-color 0.4s ease-in-out;
 }
 
-.knowledge-icon .campus{
+.knowledge-icon .campus {
     font-size: 25px;
     padding: 20px;
-    background-color: #2B7258;
+    background-color: #2b7258;
     border-radius: 50%;
     color: #ffffff;
     background-size: 20px;
     transition: background-color 0.4s ease-in-out;
-
 }
 
 .knowledge-list:hover .knowledge-icon .uni {
@@ -614,64 +607,62 @@ li {
     color: #292928;
 }
 
-.applyconnect{
+.applyconnect {
     /* margin-top: 80px; */
     column-gap: 0;
 }
 
-.knowledge-letter-apply{
+.knowledge-letter-apply {
     background-color: #36348e;
     color: #ffffff;
 }
 
-.knowledge-letter-connect{
+.knowledge-letter-connect {
     background-color: #ffc53a;
     color: #292928;
 }
 
-.knowledge-letter-apply h2{
+.knowledge-letter-apply h2 {
     margin-top: 20px;
 }
 
-.knowledge-letter-apply p{
+.knowledge-letter-apply p {
     padding: 10px;
 }
 
-.knowledge-letter-connect h2{
+.knowledge-letter-connect h2 {
     margin-top: 20px;
 }
 
-.knowledge-letter-connect p{
+.knowledge-letter-connect p {
     padding: 10px;
 }
 
 @media screen and (min-width: 992px) {
-    .valuable-img{
+    .valuable-img {
         max-height: 280px;
     }
 }
 
-
 @media screen and (max-width: 576px) {
-    .valuable-img{
+    .valuable-img {
         height: 300px;
     }
-}  
+}
 
 /* largest-Univeristy progress bar  */
 
-.largest-paragraph{
+.largest-paragraph {
     height: 100%;
     width: 100%;
     /* padding: 120px; */
     background-color: #36348e;
     color: #ffffff;
-
 }
 
-.largest-heading{
+.largest-heading {
     font-size: 20px;
-    font-family: 'Cormorant Garamond', serif;
+    font-family: "Cormorant Garamond", serif;
     font-weight: 900;
 }
 
@@ -712,16 +703,15 @@ li {
     /* Add more styling for your absolute element */
 }
 
-.absolute-element-largest a{
+.absolute-element-largest a {
     background-color: #ffc53a;
     text-decoration: none;
     color: black;
     padding: 20px;
-    
 }
 
 .course-title {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: "Cormorant Garamond", serif;
     font-size: 25px;
 }
 
@@ -746,27 +736,27 @@ li {
 
 .quote-text {
     font-style: italic;
-    font-family: 'Cormorant Garamond', serif;
+    font-family: "Cormorant Garamond", serif;
     color: #010035;
 }
 
-.vision-text, 
+.vision-text,
 .mission-text {
     line-height: 30px;
     letter-spacing: 1.2px;
 }
 
-.award-img .image1 img{
+.award-img .image1 img {
     transition: transform 0.5s ease-in-out, filter 0.5s ease-in-out;
 }
 
-.award-img .image1:hover img{
+.award-img .image1:hover img {
     transform: scale(0.9);
     filter: brightness(70%);
 }
 
-.partner-view-title{
-    font-family: 'Cormorant Garamond', serif;
+.partner-view-title {
+    font-family: "Cormorant Garamond", serif;
     font-weight: 900;
     font-size: 29px;
 }
@@ -774,55 +764,52 @@ li {
 .cards-wrapper {
     display: flex;
     justify-content: center;
-  }
+}
 .card img {
-max-width: 100%;
-max-height: 100%;
+    max-width: 100%;
+    max-height: 100%;
 }
 .card {
-/* margin: 0 0.5em; */ /* Is this necessary? */
-box-shadow: 2px 6px 8px 0 rgba(22, 22, 26, 0.18);
-border: none;
-border-radius: 0;
+    /* margin: 0 0.5em; */ /* Is this necessary? */
+    box-shadow: 2px 6px 8px 0 rgba(22, 22, 26, 0.18);
+    border: none;
+    border-radius: 0;
 }
 .carousel-inner {
-padding: 1em;
+    padding: 1em;
 }
 .carousel-control-prev,
 .carousel-control-next {
-  background-color: #e1e1e1;
-  width: 5vh;
-  height: 5vh;
-  border-radius: 50%;
-  top: 50%;
-  transform: translateY(-50%);
+    background-color: #e1e1e1;
+    width: 5vh;
+    height: 5vh;
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .owl-carousel .owl-nav button {
     font-size: 24px; /* Adjust the font size as needed */
     width: 40px; /* Adjust the width as needed */
     height: 40px; /* Adjust the height as needed */
-  }
+}
 
-  .event-card:hover{
-    transform: scale(1.1); 
+.event-card:hover {
+    transform: scale(1.1);
     transition: transform 0.5s ease;
-  }
-
+}
 
 #nav-bar {
     padding-left: 35px;
     padding-right: 35px;
 }
 
-.event-title{
-    font-family: 'DM Sans', serif;
+.event-title {
+    font-family: "DM Sans", serif;
     font-weight: bolder;
     font-size: 27px;
 }
 
-.event-text{
+.event-text {
     font-size: 17px;
 }
-
-
