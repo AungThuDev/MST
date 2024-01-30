@@ -4,6 +4,6 @@
 
 @section('content')
     <div>
-        <h1>Hello</h1>
+        <h1>Hello {{ ucwords(auth()->user()->name) }}</h1>
     </div>
 @endsection
