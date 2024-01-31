@@ -28,12 +28,13 @@
                         <label for="page_type">Page Type<span style="color: red">*</span></label>
                         <select class="page-selector" name="page_type">
                             <option value="">-Select Page Name</option>
-                            <option value="home">Home</option>
-                            <option value="programme">Programme</option>
-                            <option value="faculty">Faculty</option>
-                            <option value="events">Events</option>
-                            <option value="faq">FAQ</option>
-                            <option value="contact">Contact</option>
+                            <option value="home" {{ old('page_type') == 'home' ? 'selected' : '' }}>Home</option>
+                            <option value="programme" {{ old('page_type') == 'programme' ? 'selected' : '' }}>Programme
+                            </option>
+                            <option value="faculty" {{ old('page_type') == 'faculty' ? 'selected' : '' }}>Faculty</option>
+                            <option value="events" {{ old('page_type') == 'events' ? 'selected' : '' }}>Events</option>
+                            <option value="faq" {{ old('page_type') == 'faq' ? 'selected' : '' }}>FAQ</option>
+                            <option value="contact" {{ old('page_type') == 'contact' ? 'selected' : '' }}>Contact</option>
                         </select>
                         @error('page_type')
                             <span class="badge badge-danger">{{ $message }}</span>

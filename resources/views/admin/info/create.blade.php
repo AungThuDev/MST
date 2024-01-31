@@ -1,4 +1,6 @@
 @extends('layouts.master')
+@section('title', 'Admin - Contact Info')
+
 
 @section('info', 'nav-link nav-link active')
 
