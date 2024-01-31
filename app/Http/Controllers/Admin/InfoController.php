@@ -98,6 +98,7 @@ class InfoController extends Controller
     public function update(Request $request, Info $info)
     {
         //
+
         $request->validate([
             'name' => 'required',
             'link' => 'required'
@@ -105,7 +106,7 @@ class InfoController extends Controller
 
         $info->update([
             'name' => $request->name,
-            'linl' => $request->link
+            'link' => $request->link
         ]);
 
         return redirect()->route('admin.info.index')->with('update', 'Contact Information');

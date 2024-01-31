@@ -42,18 +42,18 @@
             class="d-none d-md-flex justify-content-between align-items-center text-white px-md-4 py-md-3"
             style="background-color: rgba(0, 0, 0, 0.5);">
             <div class="contact-bar d-none d-md-flex justify-content-between gap-5" style="font-size: 14px;">
-                <p>Phone : 09 422 288 601</p>
-                <p>Email : info@mstinstitute.net</p>
+                <p>Phone : {{ $phoneNumber1 }}</p>
+                @if ($email)
+                    <p>Email : {{ $email }}</p>
+                @endif
                 <p>Opening Hours : Mon - Fri : 09:00 - 17:00</p>
             </div>
             <div class="d-none d-lg-flex justify-content-between gap-3">
-                <a style="text-decoration: none; color: #ffffff;" target="_blank"
-                    href="https://www.facebook.com/MyanmarSkillofTechnologies/"><i
+                <a style="text-decoration: none; color: #ffffff;" target="_blank" href="{{ $facebook }}"><i
                         class="fa-brands fa-facebook-f"></i></a>
-                <a style="text-decoration: none; color: #ffffff;" target="_blank"
-                    href="https://mm.linkedin.com/company/mstuniversity/"><i class="fa-brands fa-linkedin"></i></a>
-                <a style="text-decoration: none; color: #ffffff;" target="_blank"
-                    href="https://youtube.com/@M.S.TUniversity?si=qX2rGwJN3E_c0bnd/"><i
+                <a style="text-decoration: none; color: #ffffff;" target="_blank" href="{{ $linkedin }}"><i
+                        class="fa-brands fa-linkedin"></i></a>
+                <a style="text-decoration: none; color: #ffffff;" target="_blank" href="{{ $youtube }}"><i
                         class="fa-brands fa-youtube"></i></a>
             </div>
         </div>
@@ -140,10 +140,14 @@
                     <div class="footer-content">
                         <img src="{{ asset('template_assets/images/mst-logo-min.png') }}" class="pt-3 footer-logo"
                             alt="">
-                        <p class="text-white ms-3 mt-2">Yangon Campus 1 - 09 422 288 106</p>
-                        <p class="text-white ms-3 mt-2">Yangon Campus 2 - 09 422 288 601</p>
-                        <p class="text-white ms-3 mt-2">Mandalay Campus - 09 979 700 830</p>
-                        <p class="text-white ms-3 pb-2">Email Address - info@mstinstitute.net</p>
+                        @if ($campus)
+                            @foreach ($campus as $c)
+                                <p class="text-white ms-3 mt-2">{{ $c->name }} - {{ $c->phones[0]->number }}</p>
+                            @endforeach
+                        @endif
+                        @if ($email)
+                            <p class="text-white ms-3 pb-2">Email Address - {{ $email }}</p>
+                        @endif
                     </div>
 
                 </div>
