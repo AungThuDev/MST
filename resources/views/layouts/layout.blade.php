@@ -42,19 +42,27 @@
             class="d-none d-md-flex justify-content-between align-items-center text-white px-md-4 py-md-3"
             style="background-color: rgba(0, 0, 0, 0.5);">
             <div class="contact-bar d-none d-md-flex justify-content-between gap-5" style="font-size: 14px;">
-                <p>Phone : {{ $phoneNumber1 }}</p>
+                @if ($phoneNumber1)
+                    <p>Phone : {{ $phoneNumber1 }}</p>
+                @endif
                 @if ($email)
                     <p>Email : {{ $email }}</p>
                 @endif
                 <p>Opening Hours : Mon - Fri : 09:00 - 17:00</p>
             </div>
             <div class="d-none d-lg-flex justify-content-between gap-3">
-                <a style="text-decoration: none; color: #ffffff;" target="_blank" href="{{ $facebook }}"><i
-                        class="fa-brands fa-facebook-f"></i></a>
-                <a style="text-decoration: none; color: #ffffff;" target="_blank" href="{{ $linkedin }}"><i
-                        class="fa-brands fa-linkedin"></i></a>
-                <a style="text-decoration: none; color: #ffffff;" target="_blank" href="{{ $youtube }}"><i
-                        class="fa-brands fa-youtube"></i></a>
+                @if ($facebook)
+                    <a style="text-decoration: none; color: #ffffff;" target="_blank" href="{{ $facebook }}"><i
+                            class="fa-brands fa-facebook-f"></i></a>
+                @endif
+                @if ($linkedin)
+                    <a style="text-decoration: none; color: #ffffff;" target="_blank" href="{{ $linkedin }}"><i
+                            class="fa-brands fa-linkedin"></i></a>
+                @endif
+                @if ($youtube)
+                    <a style="text-decoration: none; color: #ffffff;" target="_blank" href="{{ $youtube }}"><i
+                            class="fa-brands fa-youtube"></i></a>
+                @endif
             </div>
         </div>
         <nav id="nav-bar" class="navbar navbar-expand-lg text-white">
