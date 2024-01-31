@@ -16,6 +16,9 @@ use App\Http\Controllers\Admin\PrincipalController;
 use App\Http\Controllers\Admin\ProgrammeController;
 use App\Http\Controllers\Admin\ProgrammePageController;
 use App\Models\Banner;
+use App\Models\Category;
+use App\Models\Faq;
+use App\Models\ProgrammePage;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,9 +39,20 @@ Route::get('/test', function () {
 
 Route::get('/', function () {
     $home_banner = Banner::where('page', 'home')->first();
-
-
     return view('frontend.home', compact('home_banner'));
+});
+
+Route::get('/frequently_asked_questions', function () {
+    $faq_banner = Banner::where('page', 'faq')->first();
+    $faqs = Faq::all();
+    return view('frontend.faq', compact('faq_banner', 'faqs'));
+});
+
+Route::get('/programmes_at_mst', function () {
+    $programmes_banner = Banner::where('page', 'programme')->first();
+    $categories = Category::all();
+    $programmePage = ProgrammePage::first();
+    return view('frontend.programmes', compact('programmes_banner', 'categories', 'programmePage'));
 });
 
 Auth::routes();

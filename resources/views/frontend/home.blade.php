@@ -1,5 +1,4 @@
 @extends('layouts.layout')
-
 @section('style')
     <style>
         .index-banner {
@@ -7,7 +6,6 @@
         }
     </style>
 @endsection
-
 @section('content')
     <div class="relative-container index-banner">
         <div class="banner-text text-white container-fluid text-start">

@@ -387,16 +387,6 @@ li {
     font-family: "Cormorant Garamond", serif;
 }
 
-.image {
-    background-image: url("./images/academic-banner-2-cropped-min.jpg"),
-        linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5));
-    background-size: cover;
-    background-position: right;
-    background-attachment: fixed;
-    height: 500px;
-    position: relative;
-}
-
 .counter {
     position: absolute;
     top: 50%;
