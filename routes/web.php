@@ -15,7 +15,16 @@ use App\Http\Controllers\Admin\PartnerController;
 use App\Http\Controllers\Admin\PrincipalController;
 use App\Http\Controllers\Admin\ProgrammeController;
 use App\Http\Controllers\Admin\ProgrammePageController;
+use App\Http\Controllers\EventController as FrontendEventController;
 use App\Models\Banner;
+use App\Models\CampusContent;
+use App\Models\Category;
+use App\Models\Event;
+use App\Models\HomePage;
+use App\Models\Info;
+use App\Models\Lecturer;
+use App\Models\Partner;
+use App\Models\Principal;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,10 +45,33 @@ Route::get('/test', function () {
 
 Route::get('/', function () {
     $home_banner = Banner::where('page', 'home')->first();
+    $home = HomePage::first();
+    $categories = Category::all();
+    $principal = Principal::first();
+    $partners = Partner::pluck('image');
+    $campus = CampusContent::with('phones')->get();
+    $contact = Info::all();
 
 
-    return view('frontend.home', compact('home_banner'));
+    return view('frontend.home', compact('home_banner', 'home', 'categories', 'principal', 'partners', 'campus', 'comtact'));
 });
+
+Route::get('/faculty', function () {
+    $faculty_banner = Banner::where('page', 'faculty')->first();
+    $principal = Principal::first();
+    $lecturers = Lecturer::latest()->paginate(4);
+
+    if(!$faculty_banner && !$principal && !$lecturers)
+    {
+        return redirect()->back()->with('error', 'No data to view');
+    }
+
+    return view('frontend.faculty', compact('faculty_banner', 'principal', 'lecturers'));
+});
+
+Route::get('/event', [FrontendEventController::class, 'index']);
+
+Route::get('/event/{event}', [FrontendEventController::class, 'detail'])->name('frontend.event.detail');
 
 Auth::routes();
 

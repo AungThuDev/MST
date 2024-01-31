@@ -1,5 +1,7 @@
 @extends('layouts.master')
 
+@section('title', 'Admin - Dashboard')
+
 @section('dashboard', 'nav-link nav-link active')
 
 @section('content')

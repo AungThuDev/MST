@@ -74,7 +74,7 @@ class BannerController extends Controller
             'image' => $image_name
         ]);
 
-        return redirect()->route('admin.banner.index')->with('create', 'Banner');
+        return redirect()->route('admin.banner.index')->with('create', ucwords($request->page_type) . ' Banner');
     }
 
     /**
@@ -131,7 +131,7 @@ class BannerController extends Controller
             'image' => $image_name
         ]);
 
-        return redirect()->route('admin.banner.index')->with('update', $request->page_type . 'Banner');
+        return redirect()->route('admin.banner.index')->with('update', ucwords($request->page_type) . ' Banner');
     }
 
     /**
