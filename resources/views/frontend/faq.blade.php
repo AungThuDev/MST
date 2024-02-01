@@ -1,13 +1,15 @@
 @extends('layouts.layout')
 @section('title', 'FAQ')
 @section('style')
-    <style>
-        .faq-banner {
-            background-image: url('{{ '/banners/' . $faq_banner->image }}');
-            background-size: cover;
-            background-repeat: no-repeat;
-        }
-    </style>
+    @if ($faq_banner)
+        <style>
+            .faq-banner {
+                background-image: url('{{ '/banners/' . $faq_banner->image }}');
+                background-size: cover;
+                background-repeat: no-repeat;
+            }
+        </style>
+    @endif
 @endsection
 @section('content')
     <div class="relative-container faq-banner">
@@ -22,21 +24,24 @@
                 <h2 class="small-heading" style="color: #36348e;">FREQUENTLY ASKED QUESTIONS</h2>
                 <h2 class="heading">Popular Questions</h2>
                 <div class="d-flex flex-column gap-3">
-                    @foreach($faqs as $faq)
-                        <article>
-                            <a onclick="clickQuestion(event)" class="text-black no-underline" data-bs-toggle="collapse"
-                               href="#{{ $faq->id }}" role="button" aria-expanded="false"
-                               aria-controls="collapseExample">
-                                <div class="question d-flex align-items-center gap-4 {{ $loop->first ? 'open' : ''}}">
-                                    <i class="fa-solid {{ $loop->first ? 'fa-xmark' : 'fa-plus' }}"></i>
-                                    <p>{{$faq->question}}</p>
+                    @if ($faqs)
+                        @foreach ($faqs as $faq)
+                            <article>
+                                <a onclick="clickQuestion(event)" class="text-black no-underline" data-bs-toggle="collapse"
+                                    href="#{{ $faq->id }}" role="button" aria-expanded="false"
+                                    aria-controls="collapseExample">
+                                    <div class="question d-flex align-items-center gap-4 {{ $loop->first ? 'open' : '' }}">
+                                        <i class="fa-solid {{ $loop->first ? 'fa-xmark' : 'fa-plus' }}"></i>
+                                        <p>{{ $faq->question }}</p>
+                                    </div>
+                                </a>
+                                <div class="collapse {{ $loop->first ? 'show' : '' }}" id="{{ $faq->id }}"
+                                    data-bs-parent="#faq">
+                                    <p class="px-5 mt-3">{{ $faq->answer }}</p>
                                 </div>
-                            </a>
-                            <div class="collapse {{ $loop->first ? 'show' : '' }}" id="{{ $faq->id }}" data-bs-parent="#faq">
-                                <p class="px-5 mt-3">{{ $faq->answer }}</p>
-                            </div>
-                        </article>
-                    @endforeach
+                            </article>
+                        @endforeach
+                    @endif
                 </div>
             </section>
         </section>
@@ -49,12 +54,14 @@
                         <i class="fa-solid fa-phone-volume fa-xl pt-3" style="color: #36348e;"></i>
                         <div>
                             <p style="color: #36348e; font-size: 19px;">Contact Us</p>
-                            @foreach($campuses as $camp)
-                                <div class="mb-3">
-                                    <p class="m-0">{{ $camp->name }}</p>
-                                    <p class="m-0">{{ $camp->phones()->first()['number'] }}</p>
-                                </div>
-                            @endforeach
+                            @if ($campuses)
+                                @foreach ($campuses as $camp)
+                                    <div class="mb-3">
+                                        <p class="m-0">{{ $camp->name }}</p>
+                                        <p class="m-0">{{ $camp->phones()->first()['number'] }}</p>
+                                    </div>
+                                @endforeach
+                            @endif
                         </div>
                     </div>
                     <div class="d-flex justify-content-start gap-3">

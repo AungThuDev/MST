@@ -1,13 +1,15 @@
 @extends('layouts.layout')
 @section('title', 'Contact')
 @section('style')
-    <style>
-        .contact-banner {
-            background-image: url('{{ '/banners/' . $contact_banner->image }}');
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
-    </style>
+    @if ($contact_banner)
+        <style>
+            .contact-banner {
+                background-image: url('{{ '/banners/' . $contact_banner->image }}');
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+        </style>
+    @endif
 @endsection
 @section('content')
     <div class="relative-container contact-banner">
@@ -43,21 +45,23 @@
                 <p class="cormorant fw-bold" style="font-size: 30px;">Email - info@mstinstitute.net</p>
 
                 <div class="row">
-                    @foreach($campuses as $camp)
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-12">
-                            <p class="cormorant fw-bold" style="font-size: 24px;">{{ $camp->name }}</p>
-                            <div class="d-flex flex-column gap-3">
-                                <div>
-                                    <div style="height: 80px;">
-                                        @foreach($camp->phones()->pluck('number') as $phone)
-                                            <p style="margin-bottom: 0;">{{ $phone }}</p>
-                                        @endforeach
+                    @if ($campuses)
+                        @foreach ($campuses as $camp)
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-12">
+                                <p class="cormorant fw-bold" style="font-size: 24px;">{{ $camp->name }}</p>
+                                <div class="d-flex flex-column gap-3">
+                                    <div>
+                                        <div style="height: 80px;">
+                                            @foreach ($camp->phones()->pluck('number') as $phone)
+                                                <p style="margin-bottom: 0;">{{ $phone }}</p>
+                                            @endforeach
+                                        </div>
+                                        <p style="line-height: 25px;">{{ $camp->address }}</p>
                                     </div>
-                                    <p style="line-height: 25px;">{{ $camp->address }}</p>
                                 </div>
                             </div>
-                        </div>
-                    @endforeach
+                        @endforeach
+                    @endif
                 </div>
                 <hr>
                 <div class="row">
@@ -66,9 +70,13 @@
                     </div>
                 </div>
                 <div class="d-flex d-lg-flex justify-content-start gap-4 pt-3">
-                    <a style="text-decoration: none; color: black;" target="_blank" href="https://www.facebook.com/MyanmarSkillofTechnologies/"><i class="fa-brands fa-facebook-f"></i></a>
-                    <a style="text-decoration: none; color: black;" target="_blank" href="https://mm.linkedin.com/company/mstuniversity/"><i class="fa-brands fa-linkedin"></i></a>
-                    <a style="text-decoration: none; color: black;" target="_blank" href="https://www.youtube.com/@M.S.TUniversity"><i class="fa-brands fa-youtube"></i></a>
+                    <a style="text-decoration: none; color: black;" target="_blank"
+                        href="https://www.facebook.com/MyanmarSkillofTechnologies/"><i
+                            class="fa-brands fa-facebook-f"></i></a>
+                    <a style="text-decoration: none; color: black;" target="_blank"
+                        href="https://mm.linkedin.com/company/mstuniversity/"><i class="fa-brands fa-linkedin"></i></a>
+                    <a style="text-decoration: none; color: black;" target="_blank"
+                        href="https://www.youtube.com/@M.S.TUniversity"><i class="fa-brands fa-youtube"></i></a>
                 </div>
             </section>
         </section>
