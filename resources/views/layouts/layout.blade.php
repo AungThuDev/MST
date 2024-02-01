@@ -10,7 +10,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
-
     <!-- font awesome-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
           integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
@@ -37,59 +36,32 @@
 </head>
 
 <body>
-    <header class="fixed-top">
-        <div id="address-bar"
-            class="d-none d-md-flex justify-content-between align-items-center text-white px-md-4 py-md-3"
-            style="background-color: rgba(0, 0, 0, 0.5);">
-            <div class="contact-bar d-none d-md-flex justify-content-between gap-5" style="font-size: 14px;">
-                @if ($phoneNumber1)
-                    <p>Phone : {{ $phoneNumber1 }}</p>
-                @endif
-                @if ($email)
-                    <p>Email : {{ $email }}</p>
-                @endif
-                <p>Opening Hours : Mon - Fri : 09:00 - 17:00</p>
-            </div>
-            <div class="d-none d-lg-flex justify-content-between gap-3">
-                @if ($facebook)
-                    <a style="text-decoration: none; color: #ffffff;" target="_blank" href="{{ $facebook }}"><i
-                            class="fa-brands fa-facebook-f"></i></a>
-                @endif
-                @if ($linkedin)
-                    <a style="text-decoration: none; color: #ffffff;" target="_blank" href="{{ $linkedin }}"><i
-                            class="fa-brands fa-linkedin"></i></a>
-                @endif
-                @if ($youtube)
-                    <a style="text-decoration: none; color: #ffffff;" target="_blank" href="{{ $youtube }}"><i
-                            class="fa-brands fa-youtube"></i></a>
-                @endif
-            </div>
-        </div>
-        <nav id="nav-bar" class="navbar navbar-expand-lg text-white">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="index.html">
-                    <img src="{{ asset('template_assets/images/mst-logo-min.png') }}" alt="uni logo"
-                        style="max-width: 150px; max-height: 130px;">
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
 <header class="fixed-top">
     <div id="address-bar"
          class="d-none d-md-flex justify-content-between align-items-center text-white px-md-4 py-md-3"
          style="background-color: rgba(0, 0, 0, 0.5);">
         <div class="contact-bar d-none d-md-flex justify-content-between gap-5" style="font-size: 14px;">
-            <p>Phone : 09 422 288 601</p>
-            <p>Email : info@mstinstitute.net</p>
+            @if ($phoneNumber1)
+                <p>Phone : {{ $phoneNumber1 }}</p>
+            @endif
+            @if ($email)
+                <p>Email : {{ $email }}</p>
+            @endif
             <p>Opening Hours : Mon - Fri : 09:00 - 17:00</p>
         </div>
         <div class="d-none d-lg-flex justify-content-between gap-3">
-            <a style="text-decoration: none; color: #ffffff;" target="_blank"
-               href="https://www.facebook.com/MyanmarSkillofTechnologies/"><i
-                    class="fa-brands fa-facebook-f"></i></a>
-            <a style="text-decoration: none; color: #ffffff;" target="_blank"
-               href="https://mm.linkedin.com/company/mstuniversity/"><i class="fa-brands fa-linkedin"></i></a>
-            <a style="text-decoration: none; color: #ffffff;" target="_blank"
-               href="https://youtube.com/@M.S.TUniversity?si=qX2rGwJN3E_c0bnd/"><i
-                    class="fa-brands fa-youtube"></i></a>
+            @if ($facebook)
+                <a style="text-decoration: none; color: #ffffff;" target="_blank" href="{{ $facebook }}"><i
+                        class="fa-brands fa-facebook-f"></i></a>
+            @endif
+            @if ($linkedin)
+                <a style="text-decoration: none; color: #ffffff;" target="_blank" href="{{ $linkedin }}"><i
+                        class="fa-brands fa-linkedin"></i></a>
+            @endif
+            @if ($youtube)
+                <a style="text-decoration: none; color: #ffffff;" target="_blank" href="{{ $youtube }}"><i
+                        class="fa-brands fa-youtube"></i></a>
+            @endif
         </div>
     </div>
     <nav id="nav-bar" class="navbar navbar-expand-lg text-white">
@@ -99,7 +71,8 @@
                      style="max-width: 150px; max-height: 130px;">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
-                    data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                    data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar"
+                    aria-label="Toggle navigation">
                 <i class="fa-solid fa-bars" style="color: #ffffff;"></i>
             </button>
             <div class="offcanvas offcanvas-start" tabindex="1" id="offcanvasNavbar"
@@ -115,7 +88,8 @@
                 <div class="offcanvas-body">
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3 gap-3">
                         <li class="nav-item">
-                            <a class="nav-link text-white" aria-current="page" href="{{ url('/') }}">Home</a>
+                            <a class="nav-link text-white" aria-current="page"
+                               href="{{ url('/') }}">Home</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-white" href="/academics" role="button"
@@ -139,7 +113,8 @@
                                href="{{ url('/event') }}">Events</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" aria-current="page" href="/frequently_asked_questions">FAQ</a>
+                            <a class="nav-link text-white" aria-current="page"
+                               href="/frequently_asked_questions">FAQ</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-white" aria-current="page" href="/contacts">Contact</a>
@@ -150,73 +125,60 @@
         </div>
     </nav>
 </header>
+
 @if (session('error'))
-    <div class="alert alert-danger text-center">{{ session('errior') }}</div>
+    <div class="alert alert-danger text-center">{{ session('error') }}</div>
 @endif
+
 @yield('content')
 
-
-
-
-    <div class="container-fluid mt-5" style="background-color: #010035; margin-top: auto;">
-        <div class="row">
-            <div class="col-lg-6 col-md-6 col-sm-12 ">
-                <div class="d-flex justify-content-center">
-                    <div class="footer-content">
-                        <img src="{{ asset('template_assets/images/mst-logo-min.png') }}" class="pt-3 footer-logo"
-                            alt="">
-                        @if ($campus)
-                            @foreach ($campus as $c)
-                                <p class="text-white ms-3 mt-2">{{ $c->name }} - {{ $c->phones[0]->number }}</p>
-                            @endforeach
-                        @endif
-                        @if ($email)
-                            <p class="text-white ms-3 pb-2">Email Address - {{ $email }}</p>
-                        @endif
-                    </div>
-<div class="container-fluid" style="background-color: #010035; margin-top: auto;">
+<div class="container-fluid mt-5" style="background-color: #010035; margin-top: auto;">
     <div class="row">
         <div class="col-lg-6 col-md-6 col-sm-12 ">
             <div class="d-flex justify-content-center">
                 <div class="footer-content">
-                    <img src="{{ asset('template_assets/images/mst-logo-min.png') }}" class="pt-3 footer-logo"
+                    <img src="{{ asset('template_assets/images/mst-logo-min.png') }}"
+                         class="pt-3 footer-logo"
                          alt="">
-                    <p class="text-white ms-3 mt-2">Yangon Campus 1 - 09 422 288 106</p>
-                    <p class="text-white ms-3 mt-2">Yangon Campus 2 - 09 422 288 601</p>
-                    <p class="text-white ms-3 mt-2">Mandalay Campus - 09 979 700 830</p>
-                    <p class="text-white ms-3 pb-2">Email Address - info@mstinstitute.net</p>
+                    @if ($campus)
+                        @foreach ($campus as $c)
+                            <p class="text-white ms-3 mt-2">{{ $c->name }} - {{ $c->phones[0]->number }}</p>
+                        @endforeach
+                    @endif
+                    @if ($email)
+                        <p class="text-white ms-3 pb-2">Email Address - {{ $email }}</p>
+                    @endif
                 </div>
-
             </div>
-
         </div>
         <div class="col-lg-6 col-md-6 col-sm-12 ">
             <div class="d-flex justify-content-center">
                 <div>
                     <p class="text-white mt-4 ms-4"
-                       style="font-size: 25px; font-family: 'Cormorant Garamond', serif; font-weight: 900;">Useful
-                        Links</p>
+                       style="font-size: 25px; font-family: 'Cormorant Garamond', serif; font-weight: 900;">
+                        Useful Links</p>
                     <ul style="list-style-type: none;" class="link-list">
                         <li class="text-white mb-4"> > <a href="index.html">Home</a></li>
-                        <li class="text-white mb-4"> > <a href="academics.html">Programmes</a></li>
-                        <li class="text-white mb-4"> > <a href="lecturer.html">Faculty</a></li>
+                        <li class="text-white mb-4"> > <a
+                                href="academics.html">Programmes</a></li>
+                        <li class="text-white mb-4"> > <a href="lecturer.html">Faculty</a>
+                        </li>
                         <li class="text-white mb-4"> > <a href="events.html">Events</a></li>
                         <li class="text-white mb-4"> > <a href="faq.html">FAQ</a></li>
-                        <li class="text-white mb-4"> > <a href="contact.html">Contact</a></li>
+                        <li class="text-white mb-4"> > <a href="contact.html">Contact</a>
+                        </li>
                     </ul>
                 </div>
-
             </div>
-
         </div>
     </div>
     <hr>
     <div class="container-fluid">
-        <p class="text-white text-center pb-3 m-0">Copyright &copy; 2023 by BigTech International. All rights
+        <p class="text-white text-center pb-3 m-0">Copyright &copy; 2023 by BigTech
+            International. All rights
             reserved!</p>
     </div>
 </div>
-
 
 <!-- custom js -->
 <script src="{{ asset('template_assets/script.js') }}"></script>
@@ -226,7 +188,8 @@
 
 <!-- bootstrap -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous">
 </script>
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"

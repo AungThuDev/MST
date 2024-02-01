@@ -36,7 +36,7 @@
     </div>
 
     <div class="container-fluid mt-5">
-        <h2 class="heading text-center">Lecturers of M.S.T University</h2>
+        <h2 id="lectures" class="heading text-center">Lecturers of M.S.T University</h2>
         <div class="mt-5">
             <div class="row gy-5" style="max-width: 1300px; margin: auto;">
                 @if ($lecturers)
@@ -45,7 +45,7 @@
                             <div class="d-flex justify-content-center">
                                 <div class="card shadow shadow-lg rounded" style="width: 30rem;">
                                     <img src="{{ url('/lecturer/' . $lecturer->image) }}" class="card-img-top"
-                                        alt="">
+                                        alt="lecture image">
                                     <div class="card-body">
                                         <p class="lect-role">{{ $lecturer->position }}</p>
                                         <h2 class="lect-name">{{ $lecturer->name }}</h2>

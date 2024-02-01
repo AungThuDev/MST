@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Banner;
 use App\Models\CampusContent;
+use App\Models\Category;
 use App\Models\Event;
 use App\Models\Info;
 use Illuminate\Http\Request;
@@ -18,27 +19,30 @@ class EventController extends Controller
         $campus1 = CampusContent::with('phones')->where('id', 1)->first();
 
         $phoneNumber1 = $campus1->phones->pluck('number')->first();
-    
+
         $campus = CampusContent::with('phones')->get();
-    
+
         $email = Info::where('name', 'email')->pluck('link')->first();
-        
+
         $facebook = Info::where('name', 'facebook')->pluck('link')->first();
-    
+
         $youtube = Info::where('name', 'youtube')->pluck('link')->first();
-    
+
         $linkedin = Info::where('name', 'linkedin')->pluck('link')->first();
-    
-        return view('frontend.events', 
+
+        $categories = Category::all();
+
+        return view('frontend.events',
         compact(
-            'event_banner', 
+            'event_banner',
             'events',
             'email',
             'facebook',
             'youtube',
             'linkedin',
             'campus',
-            'phoneNumber1'
+            'phoneNumber1',
+            'categories'
         ));
     }
 
@@ -50,34 +54,36 @@ class EventController extends Controller
         $campus1 = CampusContent::with('phones')->where('id', 1)->first();
 
         $phoneNumber1 = $campus1->phones->pluck('number')->first();
-    
+
         $campus = CampusContent::with('phones')->get();
-    
+
         $email = Info::where('name', 'email')->pluck('link')->first();
-        
+
         $facebook = Info::where('name', 'facebook')->pluck('link')->first();
-    
+
         $youtube = Info::where('name', 'youtube')->pluck('link')->first();
-    
+
         $linkedin = Info::where('name', 'linkedin')->pluck('link')->first();
 
+        $categories = Category::all();
 
         if(!$event)
         {
             return redirect('/event')->with('error', 'Event not found');
         }
-    
-        return view('frontend.events-detail', 
+
+        return view('frontend.events-detail',
         compact(
-            'event', 
-            'event_banner', 
+            'event',
+            'event_banner',
             'events',
             'email',
             'facebook',
             'youtube',
             'linkedin',
             'campus',
-            'phoneNumber1'
+            'phoneNumber1',
+            'categories'
         ));
     }
 }

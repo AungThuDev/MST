@@ -49,9 +49,12 @@
                         <i class="fa-solid fa-phone-volume fa-xl pt-3" style="color: #36348e;"></i>
                         <div>
                             <p style="color: #36348e; font-size: 19px;">Contact Us</p>
-                            <p>Yangon Campus 1 - 09 422 288 106</p>
-                            <p>Yangon Campus 2 - 09 422 288 601</p>
-                            <p>Mandalay Campus - 09 979 700 830</p>
+                            @foreach($campuses as $camp)
+                                <div class="mb-3">
+                                    <p class="m-0">{{ $camp->name }}</p>
+                                    <p class="m-0">{{ $camp->phones()->first()['number'] }}</p>
+                                </div>
+                            @endforeach
                         </div>
                     </div>
                     <div class="d-flex justify-content-start gap-3">

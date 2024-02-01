@@ -126,8 +126,9 @@
         </div>
     </div>
 
-    <div id="awards" class="container-fluid mb-5" style="width: 95%; max-width: 1000px;">
+    <div class="container-fluid mb-5" style="width: 95%; max-width: 1000px;">
         <div class="text-center mb-5">
+            <div id="awards" style="position: relative; top:-6px;"></div>
             <h2 class="small-heading" style="color: #36348E;">LETS JOIN AND PROVE IT</h2>
             <h2 class="heading">Recent Awards</h2>
             <p class="">M.S.T University, recognized for academic excellence, has earned accredited partner

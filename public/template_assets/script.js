@@ -61,5 +61,6 @@ window.addEventListener('scroll', function () {
 
 function navigateToPage(url) {
     window.location.href = url;
+    event.preventDefault();
 }
 

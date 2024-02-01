@@ -15,7 +15,7 @@
 @section('content')
     @if ($event)
         <div class="relative-container event-banner">
-            <div class="banner-text text-white container-fluid text-start">
+            <div class="banner-text text-white container-fluid text-start" style="max-width: fit-content;">
                 <h2 class="small-heading">M.S.T University</h2>
                 <h2 class="banner-heading">{{ $event->title }}</h2>
             </div>

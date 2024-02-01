@@ -43,17 +43,17 @@
                 <p class="cormorant fw-bold" style="font-size: 30px;">Email - info@mstinstitute.net</p>
 
                 <div class="row">
-                    @foreach($campuses as $campus)
+                    @foreach($campuses as $camp)
                         <div class="col-lg-4 col-md-4 col-sm-4 col-12">
-                            <p class="cormorant fw-bold" style="font-size: 24px;">{{ $campus->name }}</p>
+                            <p class="cormorant fw-bold" style="font-size: 24px;">{{ $camp->name }}</p>
                             <div class="d-flex flex-column gap-3">
                                 <div>
                                     <div style="height: 80px;">
-                                        @foreach($campus->phones()->pluck('number') as $phone)
+                                        @foreach($camp->phones()->pluck('number') as $phone)
                                             <p style="margin-bottom: 0;">{{ $phone }}</p>
                                         @endforeach
                                     </div>
-                                    <p style="line-height: 25px;">{{ $campus->address }}</p>
+                                    <p style="line-height: 25px;">{{ $camp->address }}</p>
                                 </div>
                             </div>
                         </div>

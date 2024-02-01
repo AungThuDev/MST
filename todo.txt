@@ -2,3 +2,6 @@ eval_text max characters?
 home page have to rechoose images4
 
 partner card height
+lecture card height
+lecturer campus name ???
+
