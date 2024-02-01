@@ -10,12 +10,14 @@ class HomePageController extends Controller
 {
     public function index()
     {
-        $homePage = HomePage::first();
+        $homepage = HomePage::first();
 
-        if ($homePage) {
-            return redirect(route('admin.homepage.show', $homePage->id));
+        // dd($homepage);
+
+        if ($homepage) {
+            return view('admin.homepage.show', compact('homepage'));
         } else {
-            return redirect('/admin/homepage/create');
+            return view('admin.homepage.create');
         }
     }
 

@@ -164,8 +164,13 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::get('/dashboard', [AdminController::class, 'showDashboard']);
     Route::resource('/faq', FaqController::class);
     Route::resource('/programmes', ProgrammeController::class);
-
-    Route::resource('/homepage', HomePageController::class)->except('destroy');
+    // Route::resource('/homepage', HomePageController::class)->middleware('home')->only('create');
+    Route::get('/homepage', [HomePageController::class, 'index'])->name('homepage.index');
+    Route::get('/homepage/create', [HomePageController::class, 'create'])->name('homepage.create')->middleware('home');
+    Route::post('/homepage/create', [HomePageController::class, 'store'])->name('homepage.store');
+    Route::get('/homepage/{homepage}/edit', [HomePageController::class, 'edit'])->name('homepage.edit');
+    Route::post('/homepage/{homepage}/edit', [HomePageController::class, 'update'])->name('homepage.update');
+    Route::get('/homepage/{homepage}', [HomePageController::class, 'show'])->name('homepage.show');
     Route::resource('/award', AwardController::class);
     Route::resource('/banner', BannerController::class);
     Route::resource('/event', EventController::class);
