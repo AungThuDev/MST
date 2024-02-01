@@ -37,6 +37,41 @@
 </head>
 
 <body>
+    <header class="fixed-top">
+        <div id="address-bar"
+            class="d-none d-md-flex justify-content-between align-items-center text-white px-md-4 py-md-3"
+            style="background-color: rgba(0, 0, 0, 0.5);">
+            <div class="contact-bar d-none d-md-flex justify-content-between gap-5" style="font-size: 14px;">
+                @if ($phoneNumber1)
+                    <p>Phone : {{ $phoneNumber1 }}</p>
+                @endif
+                @if ($email)
+                    <p>Email : {{ $email }}</p>
+                @endif
+                <p>Opening Hours : Mon - Fri : 09:00 - 17:00</p>
+            </div>
+            <div class="d-none d-lg-flex justify-content-between gap-3">
+                @if ($facebook)
+                    <a style="text-decoration: none; color: #ffffff;" target="_blank" href="{{ $facebook }}"><i
+                            class="fa-brands fa-facebook-f"></i></a>
+                @endif
+                @if ($linkedin)
+                    <a style="text-decoration: none; color: #ffffff;" target="_blank" href="{{ $linkedin }}"><i
+                            class="fa-brands fa-linkedin"></i></a>
+                @endif
+                @if ($youtube)
+                    <a style="text-decoration: none; color: #ffffff;" target="_blank" href="{{ $youtube }}"><i
+                            class="fa-brands fa-youtube"></i></a>
+                @endif
+            </div>
+        </div>
+        <nav id="nav-bar" class="navbar navbar-expand-lg text-white">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="index.html">
+                    <img src="{{ asset('template_assets/images/mst-logo-min.png') }}" alt="uni logo"
+                        style="max-width: 150px; max-height: 130px;">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
 <header class="fixed-top">
     <div id="address-bar"
          class="d-none d-md-flex justify-content-between align-items-center text-white px-md-4 py-md-3"
@@ -121,6 +156,24 @@
 @yield('content')
 
 
+
+
+    <div class="container-fluid mt-5" style="background-color: #010035; margin-top: auto;">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12 ">
+                <div class="d-flex justify-content-center">
+                    <div class="footer-content">
+                        <img src="{{ asset('template_assets/images/mst-logo-min.png') }}" class="pt-3 footer-logo"
+                            alt="">
+                        @if ($campus)
+                            @foreach ($campus as $c)
+                                <p class="text-white ms-3 mt-2">{{ $c->name }} - {{ $c->phones[0]->number }}</p>
+                            @endforeach
+                        @endif
+                        @if ($email)
+                            <p class="text-white ms-3 pb-2">Email Address - {{ $email }}</p>
+                        @endif
+                    </div>
 <div class="container-fluid" style="background-color: #010035; margin-top: auto;">
     <div class="row">
         <div class="col-lg-6 col-md-6 col-sm-12 ">

@@ -15,11 +15,17 @@ use App\Http\Controllers\Admin\PartnerController;
 use App\Http\Controllers\Admin\PrincipalController;
 use App\Http\Controllers\Admin\ProgrammeController;
 use App\Http\Controllers\Admin\ProgrammePageController;
+use App\Http\Controllers\EventController as ControllersEventController;
 use App\Models\Award;
 use App\Models\Banner;
 use App\Models\CampusContent;
 use App\Models\Category;
 use App\Models\Faq;
+use App\Models\HomePage;
+use App\Models\Info;
+use App\Models\Lecturer;
+use App\Models\Partner;
+use App\Models\Principal;
 use App\Models\Partner;
 use App\Models\ProgrammePage;
 use Illuminate\Support\Facades\Route;
@@ -42,8 +48,86 @@ Route::get('/test', function () {
 
 Route::get('/', function () {
     $home_banner = Banner::where('page', 'home')->first();
-    return view('frontend.home', compact('home_banner'));
+
+    $home = HomePage::first();
+
+    $categories = Category::all();
+
+    $principal = Principal::first();
+
+    $partners = Partner::pluck('image');
+
+    $campus1 = CampusContent::with('phones')->where('id', 1)->first();
+
+    $phoneNumber1 = $campus1->phones->pluck('number')->first();
+
+    $campus = CampusContent::with('phones')->get();
+
+    $email = Info::where('name', 'email')->pluck('link')->first();
+
+    $facebook = Info::where('name', 'facebook')->pluck('link')->first();
+
+    $youtube = Info::where('name', 'youtube')->pluck('link')->first();
+
+    $linkedin = Info::where('name', 'linkedin')->pluck('link')->first();
+
+
+    //  dd($phoneNumber1, $email);
+
+    return view('frontend.home',
+    compact(
+        'home_banner',
+        'home',
+        'categories',
+        'principal',
+        'partners',
+        'email',
+        'facebook',
+        'youtube',
+        'linkedin',
+        'campus',
+        'phoneNumber1'
+    ));
 });
+
+Route::get('/faculty', function() {
+
+    $faculty_banner = Banner::where('page', 'faculty')->first();
+
+    $principal = Principal::first();
+
+    $lecturers = Lecturer::latest()->paginate(4);
+
+    $campus1 = CampusContent::with('phones')->where('id', 1)->first();
+
+    $phoneNumber1 = $campus1->phones->pluck('number')->first();
+
+    $campus = CampusContent::with('phones')->get();
+
+    $email = Info::where('name', 'email')->pluck('link')->first();
+
+    $facebook = Info::where('name', 'facebook')->pluck('link')->first();
+
+    $youtube = Info::where('name', 'youtube')->pluck('link')->first();
+
+    $linkedin = Info::where('name', 'linkedin')->pluck('link')->first();
+
+    return view('frontend.faculty',
+    compact(
+        'faculty_banner',
+        'principal',
+        'lecturers',
+        'email',
+        'facebook',
+        'youtube',
+        'linkedin',
+        'campus',
+        'phoneNumber1'
+    ));
+});
+
+Route::get('/event', [ControllersEventController::class, 'index']);
+Route::get('/event/{event}', [ControllersEventController::class, 'detail'])->name('frontend.event.detail');
 
 Route::get('/frequently_asked_questions', function () {
     $faq_banner = Banner::where('page', 'faq')->first();
@@ -92,8 +176,13 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::get('/dashboard', [AdminController::class, 'showDashboard']);
     Route::resource('/faq', FaqController::class);
     Route::resource('/programmes', ProgrammeController::class);
-
-    Route::resource('/homepage', HomePageController::class)->except('destroy');
+    // Route::resource('/homepage', HomePageController::class)->middleware('home')->only('create');
+    Route::get('/homepage', [HomePageController::class, 'index'])->name('homepage.index');
+    Route::get('/homepage/create', [HomePageController::class, 'create'])->name('homepage.create')->middleware('home');
+    Route::post('/homepage/create', [HomePageController::class, 'store'])->name('homepage.store');
+    Route::get('/homepage/{homepage}/edit', [HomePageController::class, 'edit'])->name('homepage.edit');
+    Route::post('/homepage/{homepage}/edit', [HomePageController::class, 'update'])->name('homepage.update');
+    Route::get('/homepage/{homepage}', [HomePageController::class, 'show'])->name('homepage.show');
     Route::resource('/award', AwardController::class);
     Route::resource('/banner', BannerController::class);
     Route::resource('/event', EventController::class);
