@@ -27,13 +27,12 @@
                             <a onclick="clickQuestion(event)" class="text-black no-underline" data-bs-toggle="collapse"
                                href="#{{ $faq->id }}" role="button" aria-expanded="false"
                                aria-controls="collapseExample">
-                                <div class="question d-flex align-items-center gap-4"
-                                     style="background-color: #36348e;">
-                                    <i class="fa-solid fa-xmark"></i>
-                                    <p style="color: white;">{{$faq->question}}</p>
+                                <div class="question d-flex align-items-center gap-4 {{ $loop->first ? 'open' : ''}}">
+                                    <i class="fa-solid {{ $loop->first ? 'fa-xmark' : 'fa-plus' }}"></i>
+                                    <p>{{$faq->question}}</p>
                                 </div>
                             </a>
-                            <div class="collapse" id="{{ $faq->id }}" data-bs-parent="#faq">
+                            <div class="collapse {{ $loop->first ? 'show' : '' }}" id="{{ $faq->id }}" data-bs-parent="#faq">
                                 <p class="px-5 mt-3">{{ $faq->answer }}</p>
                             </div>
                         </article>

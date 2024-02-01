@@ -15,9 +15,12 @@ use App\Http\Controllers\Admin\PartnerController;
 use App\Http\Controllers\Admin\PrincipalController;
 use App\Http\Controllers\Admin\ProgrammeController;
 use App\Http\Controllers\Admin\ProgrammePageController;
+use App\Models\Award;
 use App\Models\Banner;
+use App\Models\CampusContent;
 use App\Models\Category;
 use App\Models\Faq;
+use App\Models\Partner;
 use App\Models\ProgrammePage;
 use Illuminate\Support\Facades\Route;
 
@@ -45,14 +48,24 @@ Route::get('/', function () {
 Route::get('/frequently_asked_questions', function () {
     $faq_banner = Banner::where('page', 'faq')->first();
     $faqs = Faq::all();
-    return view('frontend.faq', compact('faq_banner', 'faqs'));
+    $categories = Category::all();
+    return view('frontend.faq', compact('faq_banner', 'faqs', 'categories'));
 });
 
-Route::get('/programmes_at_mst', function () {
+Route::get('/academics', function () {
     $programmes_banner = Banner::where('page', 'programme')->first();
     $categories = Category::all();
     $programmePage = ProgrammePage::first();
-    return view('frontend.programmes', compact('programmes_banner', 'categories', 'programmePage'));
+    $partners = Partner::all();
+    $awards = Award::paginate(3);
+    return view('frontend.programmes', compact('awards', 'programmes_banner', 'categories', 'programmePage', 'partners'));
+});
+
+Route::get('/contacts', function () {
+    $contact_banner = Banner::where('page', 'contact')->first();
+    $campuses = CampusContent::all();
+    $categories = Category::all();
+    return view('frontend.contact', compact('contact_banner', 'campuses', 'categories'));
 });
 
 Auth::routes();

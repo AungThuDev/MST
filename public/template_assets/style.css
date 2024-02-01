@@ -803,3 +803,11 @@ li {
 .event-text {
     font-size: 17px;
 }
+
+.open {
+    background-color: #36348e;
+}
+
+.open p {
+    color: white;
+}
