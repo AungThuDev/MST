@@ -9,11 +9,12 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('dist/img/logo.png') }}">
+    <link rel="icon" href="{{ asset('template_assets/images/mst-icon.png') }}">
+
 
     <style>
         .container {
-            margin-top: 150px;
+            margin-top: 70px;
         }
 
         body {
@@ -22,8 +23,8 @@
 
         .loginbutton {
             width: 100px;
-            background-color: #2f79ba;
-            border: solid 1px #2f79ba;
+            background-color: #03294a;
+            border: solid 1px #03294a;
         }
 
         .loginbutton:hover {
@@ -43,9 +44,9 @@
                     <div class="card-body">
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
-                            <div class="imgcontainer text-center">
-                                <img src="{{ asset('dist/img/logo.png') }}" style="width: 800px; height: 350px;"
-                                    alt="">
+                            <div class="imgcontainer text-center" style="background-color: #03294a">
+                                <img src="{{ asset('template_assets/images/mst-logo-min.png') }}"
+                                    style="width: 100%; height: 300px;" alt="">
                             </div>
 
                             <div class="mb-3">

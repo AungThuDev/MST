@@ -258,6 +258,7 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::resource('/info', InfoController::class);
     Route::resource('/lecturer', LecturerController::class)->except('show');
     Route::resource('/partner', PartnerController::class);
+    Route::get('/', [AdminController::class, 'showDashboard']);
 });
 
 

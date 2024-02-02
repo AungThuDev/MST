@@ -167,7 +167,8 @@
                                     class="percentage float-end">{{ $home->progress1_percent }}%</span>
                             </h2>
                             <div class="progress" style="height: 4px; width: 100%;">
-                                <div class="progress-bar" role="progressbar" style="width: 96%; background-color: #ffc53a;"
+                                <div class="progress-bar" role="progressbar"
+                                    style="width: {{ $home->progress1_percent }}%; background-color: #ffc53a;"
                                     aria-valuenow="96" aria-valuemin="0" aria-valuemax="100"></div>
 
                             </div>
@@ -176,7 +177,8 @@
                                     class="percentage float-end">{{ $home->progress2_percent }}%</span>
                             </h2>
                             <div class="progress" style="height: 4px; width: 100%;">
-                                <div class="progress-bar" role="progressbar" style="width: 87%; background-color: #ffc53a;"
+                                <div class="progress-bar" role="progressbar"
+                                    style="width: {{ $home->progress2_percent }}%; background-color: #ffc53a;"
                                     aria-valuenow="87" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
 
@@ -185,8 +187,8 @@
                             </h2>
                             <div class="progress" style="height: 4px; width: 100%;">
                                 <div class="progress-bar" role="progressbar"
-                                    style="width: 92%; background-color: #ffc53a;" aria-valuenow="92" aria-valuemin="0"
-                                    aria-valuemax="100"></div>
+                                    style="width: {{ $home->progress3_percent }}%; background-color: #ffc53a;"
+                                    aria-valuenow="92" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                         </div>
 

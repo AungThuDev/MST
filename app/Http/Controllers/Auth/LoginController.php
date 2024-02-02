@@ -64,4 +64,11 @@ class LoginController extends Controller
         
         return redirect('/admin/dashboard')->with('success', 'Welocome' . $user->name);
     }
+
+    public function logout()
+    {
+        auth()->logout();
+
+        return redirect('/login');
+    }
 }
