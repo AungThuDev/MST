@@ -58,7 +58,11 @@ Route::get('/', function () {
 
     $campus1 = CampusContent::with('phones')->where('id', 1)->first();
 
+    if($campus1)
+    {
     $phoneNumber1 = $campus1->phones->pluck('number')->first();
+
+    }
 
     $campus = CampusContent::with('phones')->get();
 
@@ -101,7 +105,11 @@ Route::get('/faculty', function () {
 
     $campus1 = CampusContent::with('phones')->where('id', 1)->first();
 
+    if($campus1)
+    {
     $phoneNumber1 = $campus1->phones->pluck('number')->first();
+
+    }
 
     $campus = CampusContent::with('phones')->get();
 
@@ -137,7 +145,11 @@ Route::get('/frequently_asked_questions', function () {
     $categories = Category::all();
     $campuses = CampusContent::all();
     $campus1 = CampusContent::with('phones')->where('id', 1)->first();
+    if($campus1)
+    {
     $phoneNumber1 = $campus1->phones->pluck('number')->first();
+
+    }
     $campus = CampusContent::with('phones')->get();
     $email = Info::where('name', 'email')->pluck('link')->first();
     $facebook = Info::where('name', 'facebook')->pluck('link')->first();
@@ -166,7 +178,11 @@ Route::get('/academics', function () {
     $programmePage = ProgrammePage::first();
     $partners = Partner::all();
     $awards = Award::paginate(3)->fragment('awards');
-    $campus1 = CampusContent::with('phones')->where('id', 1)->first();
+    if($campus1)
+    {
+    $phoneNumber1 = $campus1->phones->pluck('number')->first();
+
+    }
     $phoneNumber1 = $campus1->phones->pluck('number')->first();
     $campus = CampusContent::with('phones')->get();
     $email = Info::where('name', 'email')->pluck('link')->first();
@@ -197,7 +213,11 @@ Route::get('/contacts', function () {
     $campuses = CampusContent::all();
     $categories = Category::all();
     $campus1 = CampusContent::with('phones')->where('id', 1)->first();
+    if($campus1)
+    {
     $phoneNumber1 = $campus1->phones->pluck('number')->first();
+
+    }
     $campus = CampusContent::with('phones')->get();
     $email = Info::where('name', 'email')->pluck('link')->first();
     $facebook = Info::where('name', 'facebook')->pluck('link')->first();
