@@ -12,8 +12,7 @@
                 <h1 class="col-12 mb-3">Vision - Mission section</h1>
                 <div class="col-6">
                     <div class="form-group">
-                        <label for="vision">Vision <span style="color: red">*</span> <span class="text-gray">(Maximum 300
-                                characters)</span></label>
+                        <label for="vision">Vision <span style="color: red">*</span> </label>
                         <textarea id="vision" name="vision" class="form-control" rows="4">{{ old('vision') }}</textarea>
                         @error('vision')
                             <span class="badge badge-danger">{{ $message }}</span>
@@ -22,8 +21,7 @@
                 </div>
                 <div class="col-6">
                     <div class="form-group">
-                        <label for="mission">Mission<span style="color: red">*</span> <span class="text-gray">(Maximum 300
-                                characters)</span></label>
+                        <label for="mission">Mission<span style="color: red">*</span> </label>
                         <textarea id="mission" name="mission" class="form-control" rows="4">{{ old('mission') }}</textarea>
                         @error('mission')
                             <span class="badge badge-danger">{{ $message }}</span>
@@ -89,7 +87,42 @@
                         @enderror
                     </div>
                 </div>
-
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="">Journey Title One <span style="color: red">*</span></label>
+                        <input type="text" class="form-control" name="journey_title1">
+                        @error('journey_title1')
+                            <span class="badge badge-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="">Journey Text One <span style="color: red">*</span></label>
+                        <textarea name="journey_text1" class="form-control"></textarea>
+                        @error('journey_text1')
+                            <span class="badge badge-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="">Journey Title Two <span style="color: red">*</span></label>
+                        <input type="text" class="form-control" name="journey_title2">
+                        @error('journey_title2')
+                            <span class="badge badge-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="">Journey Text Two <span style="color: red">*</span></label>
+                        <textarea name="journey_text2" class="form-control"></textarea>
+                        @error('journey_text2')
+                            <span class="badge badge-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                </div>
 
                 <h1 class="col-12 mt-5 pt-5">Evaluation Section</h1>
                 <div class="col-6">

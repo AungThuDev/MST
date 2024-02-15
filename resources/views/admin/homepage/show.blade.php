@@ -35,7 +35,19 @@
 
     <div class="mt-5">
         <h2>'To The Journey Ahead' section</h2>
+        <div class="row">
+            <div class="col-6">
+                <h3>{{ $homepage->journey_title1 }}</h3>
+                <p style="font-size: 12px">{{ $homepage->journey_text1 }}</p>
+            </div>
+            <div class="col-6">
+                <h3>{{ $homepage->journey_title2 }}</h3>
+                <p style="font-size: 12px">{{ $homepage->journey_text2 }}
+                </p>
+            </div>
+        </div>
         <div class="d-flex justify-content-start">
+
             <img src="{{ asset('/homepage/' . $homepage->journey_image1) }}" alt="journey section image 1"
                 style="width: 300px; height: 300px; object-fit: cover;">
             <img src="{{ asset('/homepage/' . $homepage->journey_image2) }}" alt="journey section image 2"

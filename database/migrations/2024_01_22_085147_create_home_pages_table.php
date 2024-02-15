@@ -21,6 +21,10 @@ class CreateHomePagesTable extends Migration
             $table->longText('about_text');
             $table->string('about_image1');
             $table->string('about_image2');
+            $table->string('journey_title1');
+            $table->string('journey_title2');
+            $table->longText('journey_text1');
+            $table->longText('journey_text2');
             $table->string('journey_image1');
             $table->string('journey_image2');
             $table->string('eval_image');
