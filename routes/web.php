@@ -63,8 +63,12 @@ Route::get('/', function () {
     $phoneNumber1 = null;
 
     }
-
+    else
+    {
     $phoneNumber1 = $campus1->phones->pluck('number')->first();
+
+    }
+
 
     $campus = CampusContent::with('phones')->get();
 
@@ -112,8 +116,11 @@ Route::get('/faculty', function () {
     $phoneNumber1 = null;
 
     }
-
+    else
+    {
     $phoneNumber1 = $campus1->phones->pluck('number')->first();
+
+    }
 
     $campus = CampusContent::with('phones')->get();
 
@@ -154,8 +161,11 @@ Route::get('/frequently_asked_questions', function () {
     $phoneNumber1 = null;
 
     }
-
+    else
+    {
     $phoneNumber1 = $campus1->phones->pluck('number')->first();
+
+    }
     $campus = CampusContent::with('phones')->get();
     $email = Info::where('name', 'email')->pluck('link')->first();
     $facebook = Info::where('name', 'facebook')->pluck('link')->first();
@@ -191,8 +201,11 @@ Route::get('/academics', function () {
     $phoneNumber1 = null;
 
     }
-
+    else
+    {
     $phoneNumber1 = $campus1->phones->pluck('number')->first();
+
+    }
     $campus = CampusContent::with('phones')->get();
     $email = Info::where('name', 'email')->pluck('link')->first();
     $facebook = Info::where('name', 'facebook')->pluck('link')->first();
@@ -227,8 +240,11 @@ Route::get('/contacts', function () {
     $phoneNumber1 = null;
 
     }
-
+    else
+    {
     $phoneNumber1 = $campus1->phones->pluck('number')->first();
+
+    }
     $campus = CampusContent::with('phones')->get();
     $email = Info::where('name', 'email')->pluck('link')->first();
     $facebook = Info::where('name', 'facebook')->pluck('link')->first();
