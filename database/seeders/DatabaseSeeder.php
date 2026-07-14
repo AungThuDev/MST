@@ -23,9 +23,9 @@ class DatabaseSeeder extends Seeder
         Faq::factory(10)->create();
 
         User::create([
-            'name' => 'userone',
-            'email' => 'userone@gmail.com',
-            'password' => Hash::make('password')
+            'name' => 'mstinstitute',
+            'email' => 'content@mstinstitute.net',
+            'password' => Hash::make('y0M$TRk')
         ]);
         CampusContent::create([
             'name' => 'MST Campus',
