@@ -156,13 +156,13 @@
                             style="font-size: 25px; font-family: 'Cormorant Garamond', serif; font-weight: 900;">
                             Useful Links</p>
                         <ul style="list-style-type: none;" class="link-list">
-                            <li class="text-white mb-4"> > <a href="index.html">Home</a></li>
-                            <li class="text-white mb-4"> > <a href="academics.html">Programmes</a></li>
-                            <li class="text-white mb-4"> > <a href="lecturer.html">Faculty</a>
+                            <li class="text-white mb-4"> > <a href="{{ url('/') }}">Home</a></li>
+                            <li class="text-white mb-4"> > <a href="{{ url('/academics') }}">Programmes</a></li>
+                            <li class="text-white mb-4"> > <a href="{{ url('/faculty') }}">Faculty</a>
                             </li>
-                            <li class="text-white mb-4"> > <a href="events.html">Events</a></li>
-                            <li class="text-white mb-4"> > <a href="faq.html">FAQ</a></li>
-                            <li class="text-white mb-4"> > <a href="contact.html">Contact</a>
+                            <li class="text-white mb-4"> > <a href="{{ url('/event') }}">Events</a></li>
+                            <li class="text-white mb-4"> > <a href="{{ url('/frequently_asked_questions') }}">FAQ</a></li>
+                            <li class="text-white mb-4"> > <a href="{{ url('/contacts') }}">Contact</a>
                             </li>
                         </ul>
                     </div>

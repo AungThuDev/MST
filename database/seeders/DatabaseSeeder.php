@@ -22,11 +22,11 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
         Faq::factory(10)->create();
 
-        User::create([
-            'name' => 'mstinstitute',
-            'email' => 'content@mstinstitute.net',
-            'password' => Hash::make('y0M$TRk')
-        ]);
+        // User::create([
+        //     'name' => 'userone',
+        //     'email' => 'userone@gmail.com',
+        //     'password' => Hash::make('password')
+        // ]);
         CampusContent::create([
             'name' => 'MST Campus',
             'address' => 'No. 36, Alan Pya Pagoda Street, Yangon, Myanmar',
