@@ -74,9 +74,9 @@
                         href="https://www.facebook.com/MyanmarSkillofTechnologies/"><i
                             class="fa-brands fa-facebook-f"></i></a>
                     <a style="text-decoration: none; color: black;" target="_blank"
-                        href="https://mm.linkedin.com/company/mstuniversity/"><i class="fa-brands fa-linkedin"></i></a>
+                        href="https://mm.linkedin.com/company/mstcollege/"><i class="fa-brands fa-linkedin"></i></a>
                     <a style="text-decoration: none; color: black;" target="_blank"
-                        href="https://www.youtube.com/@M.S.TUniversity"><i class="fa-brands fa-youtube"></i></a>
+                        href="https://www.youtube.com/@M.S.TCollege/"><i class="fa-brands fa-youtube"></i></a>
                 </div>
             </section>
         </section>

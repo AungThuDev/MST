@@ -108,7 +108,7 @@
         </div>
     </div>
 
-    <div class="container mt-5">
+    <!-- <div class="container mt-5">
         <div>
             <h2 class="small-heading text-center mt-5" style="color: #36348E;">OUR PARTNERS</h2>
             <h2 class="heading text-center">Our Partners' View</h2>
@@ -132,7 +132,7 @@
                 @endforeach
             @endif
         </div>
-    </div>
+    </div> -->
 
     <div class="container-fluid mb-5" style="width: 95%; max-width: 1000px;">
         <div class="text-center mb-5">
