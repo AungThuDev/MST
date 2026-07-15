@@ -226,7 +226,7 @@
                             <div class="card-body">
                                 <h5 class="card-title course-title">{{ $category->name }}</h5>
                                 <div style="width: 100%;">
-                                    <a href="#" onclick="navigateToPage('academics.html#dp')"
+                                    <a href="#" onclick="navigateToPage('academics#{{ $category->name }}')"
                                         class="btn btn-primary" style="background-color: #36348E;">More</a>
                                 </div>
                             </div>
